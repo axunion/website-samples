@@ -1,0 +1,34 @@
+{
+  "name": "website-samples",
+  "type": "module",
+  "version": "0.0.1",
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24.16.0",
+      "onFail": "warn"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.5.2",
+      "onFail": "warn"
+    }
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "biome check ./src && astro check",
+    "fix": "biome check --write ./src"
+  },
+  "dependencies": {
+    "astro": "^6.4.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@biomejs/biome": "2.4.16",
+    "lightningcss": "^1.32.0",
+    "typescript": "^6.0.3"
+  }
+}
