@@ -57,6 +57,18 @@ Each website sample **must be fully independent**. This is a hard constraint:
 - Use CSS Modules (`.module.css`) for all component and page styles.
 - Do not use global stylesheets except for bare resets scoped to each sample's root.
 
+## Design Rules
+
+### Typography
+- Do not use web fonts for Japanese text — the payload is too large for mobile.
+- Use device/system fonts (`font-family: system-ui, sans-serif`) as the default. This project is mobile-first.
+
+### Icons & SVG
+- Use `astro-icon` (Lucide set via `@iconify-json/lucide`) for UI icons.
+- Use inline SVG for titles, logos, and branding — craft these as SVG rather than text or raster images.
+- When a figure, diagram, or illustration adds clarity, prefer inline SVG over raster images.
+- SVG shapes and illustrations are also a valid alternative or supplement to icon libraries when they fit the design better.
+
 ## Code Rules
 
 - Keep code simple, efficient, and clean — prefer clarity over cleverness.
