@@ -1,0 +1,38 @@
+---
+import base from "../index.module.css";
+import styles from "./Header.module.css";
+---
+
+<header class={styles.header}>
+  <div class:list={[base.container, styles.inner]}>
+    <a href="/lumina-fit/" class={styles.logo} aria-label="LUMINA FIT トップへ">
+      <!-- Geometric diamond ornament -->
+      <svg
+        class={styles.logoMark}
+        viewBox="0 0 20 20"
+        fill="none"
+        aria-hidden="true"
+      >
+        <polygon
+          points="10,1 19,10 10,19 1,10"
+          stroke="currentColor"
+          stroke-width="1"
+          fill="none"
+        />
+        <polygon
+          points="10,5 15,10 10,15 5,10"
+          stroke="currentColor"
+          stroke-width="0.6"
+          fill="currentColor"
+          fill-opacity="0.15"
+        />
+      </svg>
+      <span class={styles.logoText}>LUMINA FIT</span>
+    </a>
+    <nav aria-label="メインナビゲーション">
+      <button class:list={[base.ctaBtn, styles.ctaNav]} data-cta type="button">
+        体験予約
+      </button>
+    </nav>
+  </div>
+</header>

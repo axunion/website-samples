@@ -1,0 +1,112 @@
+---
+import { Image } from "astro:assets";
+import gymImg from "../_assets/program-gym.jpg";
+import pilatesImg from "../_assets/program-pilates.jpg";
+import yogaImg from "../_assets/program-yoga.jpg";
+import base from "../index.module.css";
+import styles from "./Program.module.css";
+
+const programs = [
+  {
+    id: "yoga",
+    label: "ヨガ",
+    title: "Yoga",
+    desc: "呼吸と姿勢を整え、心身をゆるやかにリセット。初心者から経験者まで、自分のペースで深めることができます。",
+    stars: "★★☆☆☆",
+    starsLabel: "強度 2 / 5",
+    img: yogaImg,
+    imgAlt: "静かなスタジオでヨガを行う女性",
+  },
+  {
+    id: "pilates",
+    label: "ピラティス",
+    title: "Pilates",
+    desc: "インナーマッスルに働きかけ、しなやかな姿勢へ導く。専用マシンを使い、体の深部から整えます。",
+    stars: "★★★☆☆",
+    starsLabel: "強度 3 / 5",
+    img: pilatesImg,
+    imgAlt: "マシンピラティスをするスタジオの様子",
+  },
+  {
+    id: "gym",
+    label: "ジム",
+    title: "Gym",
+    desc: "最新マシンで効率よくボディメイク。トレーニングの目的や体力に合わせて、自分だけのプログラムを組めます。",
+    stars: "★★★★☆",
+    starsLabel: "強度 4 / 5",
+    img: gymImg,
+    imgAlt: "洗練されたトレーニングジムの設備",
+  },
+];
+---
+
+<section class:list={[base.section, styles.program]}>
+  <div class={base.container}>
+    <header class={base.sectionHeader} data-reveal>
+      <span class={base.secLabel}>Program</span>
+      <h2 class={base.secHeading}>PROGRAM</h2>
+    </header>
+
+    <!-- Tab navigation -->
+    <div
+      role="tablist"
+      aria-label="プログラム選択"
+      class={styles.tablist}
+      data-reveal
+    >
+      {
+        programs.map((p, i) => (
+          <button
+            role="tab"
+            id={`tab-${p.id}`}
+            aria-controls={`panel-${p.id}`}
+            aria-selected={i === 0 ? "true" : "false"}
+            tabindex={i === 0 ? 0 : -1}
+            class={styles.tab}
+            data-tab-btn={p.id}
+            type="button"
+          >
+            {p.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- Tab panels -->
+    {
+      programs.map((p, i) => (
+        <div
+          role="tabpanel"
+          id={`panel-${p.id}`}
+          aria-labelledby={`tab-${p.id}`}
+          class={styles.panel}
+          data-tab-panel={p.id}
+          data-active={i === 0 ? "" : undefined}
+          data-reveal
+        >
+          <div class={styles.panelInner}>
+            <div class={styles.panelImg}>
+              <Image
+                src={p.img}
+                alt={p.imgAlt}
+                width={900}
+                height={506}
+                loading={i === 0 ? "eager" : "lazy"}
+              />
+            </div>
+            <div class={styles.panelBody}>
+              <h3 class={styles.panelTitle}>{p.title}</h3>
+              <p class={styles.panelDesc}>{p.desc}</p>
+              <div class={styles.intensity}>
+                <span class={styles.intensityLabel}>Intensity</span>
+                <span class={styles.stars} aria-label={p.starsLabel}>
+                  {p.stars}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

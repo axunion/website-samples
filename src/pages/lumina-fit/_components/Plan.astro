@@ -1,0 +1,54 @@
+---
+import base from "../index.module.css";
+import styles from "./Plan.module.css";
+
+const plans = [
+  {
+    name: "Premium",
+    price: "¥12,800",
+    desc: "ヨガ・ピラティス・ジムを自由に利用したい方へ。すべてのプログラムが通い放題。",
+    featured: true,
+  },
+  {
+    name: "Light",
+    price: "¥7,800",
+    desc: "週1回のペースで無理なく始めたい方へ。月4回のレッスンチケット付き。",
+    featured: false,
+  },
+];
+---
+
+<section class:list={[base.section, styles.plan]}>
+  <div class={base.container}>
+    <header class={base.sectionHeader} data-reveal>
+      <span class={base.secLabel}>Pricing</span>
+      <h2 class={base.secHeading}>PLAN</h2>
+    </header>
+
+    <div class={styles.grid}>
+      {
+        plans.map((plan, i) => (
+          <article
+            class:list={[styles.card, plan.featured && styles.cardFeatured]}
+            data-reveal
+            style={`--reveal-delay: ${(i + 1) * 0.1}s`}
+          >
+            {plan.featured && <span class={styles.badge}>おすすめ</span>}
+            <p class={styles.planName}>{plan.name}</p>
+            <div class={styles.price}>
+              <span class={styles.priceNum}>{plan.price}</span>
+              <span class={styles.pricePer}>/ 月</span>
+            </div>
+            <p class={styles.planDesc}>{plan.desc}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Campaign banner -->
+    <div class={styles.campaign} data-reveal style="--reveal-delay: 0.3s">
+      <p class={styles.campaignText}>今だけ 入会金0円キャンペーン</p>
+      <p class={styles.campaignSub}>体験予約受付中 &#8212; お気軽にご相談ください</p>
+    </div>
+  </div>
+</section>

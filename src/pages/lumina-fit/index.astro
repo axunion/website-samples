@@ -1,0 +1,183 @@
+---
+import Concerns from "./_components/Concerns.astro";
+import Faq from "./_components/Faq.astro";
+import FinalCta from "./_components/FinalCta.astro";
+import Footer from "./_components/Footer.astro";
+import Header from "./_components/Header.astro";
+import Hero from "./_components/Hero.astro";
+import Plan from "./_components/Plan.astro";
+import Program from "./_components/Program.astro";
+import Reasons from "./_components/Reasons.astro";
+import Studio from "./_components/Studio.astro";
+import TrialFlow from "./_components/TrialFlow.astro";
+import styles from "./index.module.css";
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LUMINA FIT | ヨガ・マシンピラティス・ジム複合スタジオ</title>
+    <meta
+      name="description"
+      content="LUMINA FITは、ヨガ・マシンピラティス・ジムを1つのメンバーシップで楽しめる高級フィットネススタジオです。初心者から経験者まで、上質な空間で自分のペースを整えましょう。まずは無料体験レッスンへ。"
+    />
+
+    <!-- Google Fonts: Playfair Display (Latin only, lightweight) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class={styles.root}>
+      <Header />
+      <main>
+        <Hero />
+        <Concerns />
+        <Reasons />
+        <Program />
+        <Plan />
+        <Studio />
+        <TrialFlow />
+        <Faq />
+        <FinalCta />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<script>
+  // ─── Motion preference ────────────────────────────────────────────────────
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  // ─── Scroll-reveal (IntersectionObserver) ────────────────────────────────
+  const revealEls = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-reveal]")
+  );
+
+  if (reducedMotion) {
+    // Skip animation — mark all elements visible immediately
+    revealEls.forEach((el) => el.setAttribute("data-visible", ""));
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute("data-visible", "");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -48px 0px" }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+  }
+
+  // ─── Program tabs ─────────────────────────────────────────────────────────
+  const tabBtns = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-tab-btn]")
+  );
+  const tabPanels = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-tab-panel]")
+  );
+
+  function activateTab(tabId: string) {
+    tabBtns.forEach((btn) => {
+      const isActive = btn.dataset.tabBtn === tabId;
+      btn.setAttribute("aria-selected", String(isActive));
+      btn.tabIndex = isActive ? 0 : -1;
+    });
+    tabPanels.forEach((panel) => {
+      const isActive = panel.dataset.tabPanel === tabId;
+      if (isActive) {
+        panel.setAttribute("data-active", "");
+        // Trigger reveal on newly shown panel children
+        const els = Array.from(
+          panel.querySelectorAll<HTMLElement>("[data-reveal]:not([data-visible])")
+        );
+        if (reducedMotion) {
+          els.forEach((el) => el.setAttribute("data-visible", ""));
+        } else {
+          requestAnimationFrame(() =>
+            els.forEach((el) => el.setAttribute("data-visible", ""))
+          );
+        }
+      } else {
+        panel.removeAttribute("data-active");
+      }
+    });
+  }
+
+  tabBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.tabBtn;
+      if (id) activateTab(id);
+    });
+
+    btn.addEventListener("keydown", (e: KeyboardEvent) => {
+      const idx = tabBtns.indexOf(btn);
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        const next = tabBtns[(idx + 1) % tabBtns.length];
+        const id = next.dataset.tabBtn;
+        if (id) {
+          activateTab(id);
+          next.focus();
+        }
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        const prev = tabBtns[(idx - 1 + tabBtns.length) % tabBtns.length];
+        const id = prev.dataset.tabBtn;
+        if (id) {
+          activateTab(id);
+          prev.focus();
+        }
+      }
+    });
+  });
+
+  // ─── FAQ accordion ────────────────────────────────────────────────────────
+  const faqBtns = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-faq-btn]")
+  );
+
+  faqBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      const panelId = btn.getAttribute("aria-controls");
+      if (!panelId) return;
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+
+      const nowExpanded = !expanded;
+      btn.setAttribute("aria-expanded", String(nowExpanded));
+      panel.setAttribute("aria-hidden", String(!nowExpanded));
+
+      if (nowExpanded) {
+        panel.setAttribute("data-open", "");
+      } else {
+        panel.removeAttribute("data-open");
+      }
+    });
+  });
+
+  // ─── CTA smooth scroll to #trial ─────────────────────────────────────────
+  const trialSection = document.getElementById("trial");
+
+  if (trialSection) {
+    document.querySelectorAll<HTMLElement>("[data-cta]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        trialSection.scrollIntoView({
+          behavior: reducedMotion ? "auto" : "smooth",
+        });
+      });
+    });
+  }
+</script>

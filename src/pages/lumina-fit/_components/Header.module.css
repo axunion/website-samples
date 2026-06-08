@@ -1,0 +1,63 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--lf-header-h);
+  background: rgba(251, 251, 250, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--lf-border);
+}
+
+.inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration: none;
+}
+
+.logoMark {
+  width: 20px;
+  height: 20px;
+  color: var(--lf-accent);
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-family: var(--lf-font-serif);
+  font-size: 1.0625rem;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  color: var(--lf-text);
+}
+
+.logo:focus-visible {
+  outline: 2px solid var(--lf-accent-strong);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.ctaNav {
+  font-size: 0.8rem;
+  padding: 0.625rem 1.375rem;
+}
+
+@media (min-width: 768px) {
+  .logoText {
+    font-size: 1.1875rem;
+  }
+
+  .ctaNav {
+    font-size: 0.875rem;
+    padding: 0.75rem 1.875rem;
+  }
+}

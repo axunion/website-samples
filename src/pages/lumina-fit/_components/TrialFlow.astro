@@ -1,0 +1,52 @@
+---
+import base from "../index.module.css";
+import styles from "./TrialFlow.module.css";
+
+const steps = [
+  {
+    title: "WEBから体験予約",
+    desc: "ページ下部のフォームから、ご希望の日時・プログラムを選んでご予約ください。",
+  },
+  {
+    title: "カウンセリング",
+    desc: "当日ご来店後、インストラクターが目標や体の状態をヒアリングします。",
+  },
+  {
+    title: "体験レッスン",
+    desc: "選んだプログラムを、インストラクターのサポートのもとで体験します。",
+  },
+  {
+    title: "プランのご案内",
+    desc: "レッスン後に、あなたに合ったプランをご提案します。無理な勧誘は一切ありません。",
+  },
+];
+---
+
+<section class:list={[base.section, styles.trialFlow]}>
+  <div class={base.container}>
+    <header class={base.sectionHeader} data-reveal>
+      <span class={base.secLabel}>How It Works</span>
+      <h2 class={base.secHeading}>TRIAL FLOW</h2>
+    </header>
+
+    <ol class={styles.timeline}>
+      {
+        steps.map((step, i) => (
+          <li
+            class={styles.step}
+            data-reveal
+            style={`--reveal-delay: ${i * 0.12}s`}
+          >
+            <div class={styles.stepNumWrap} aria-hidden="true">
+              <span class={styles.stepNum}>0{i + 1}</span>
+            </div>
+            <div class={styles.stepBody}>
+              <h3 class={styles.stepTitle}>{step.title}</h3>
+              <p class={styles.stepDesc}>{step.desc}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

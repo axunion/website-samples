@@ -1,0 +1,195 @@
+/* Design tokens and layout primitives for the LUMINA FIT sample */
+
+.root {
+  /* Color palette */
+  --lf-bg: #fbfbfa;
+  --lf-bg-sub: #f4f3f0;
+  --lf-text: #2b2b2b;
+  --lf-text-sub: #666666;
+  --lf-accent: #c5a880;
+  --lf-accent-strong: #d4af37;
+  --lf-border: #e5e1da;
+
+  /* Layout */
+  --lf-container: 1120px;
+  --lf-radius: 10px;
+  --lf-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --lf-header-h: 64px;
+
+  /* Typography */
+  --lf-font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --lf-font-sans:
+    -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+
+  background-color: var(--lf-bg);
+  color: var(--lf-text);
+  font-family: var(--lf-font-sans);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+ * Scoped reset — :where() keeps specificity at 0 so component classes always win.
+ * Without :where(), .root button (0-1-1) would override .ctaBtn (0-1-0).
+ */
+:where(.root) *,
+:where(.root) *::before,
+:where(.root) *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:where(.root) img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+:where(.root) a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:where(.root) button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* Anchor scroll offset */
+:where(.root) section {
+  scroll-margin-top: var(--lf-header-h);
+}
+
+/* ─── Layout utilities ─────────────────────────────────────────────────────── */
+
+.container {
+  width: 100%;
+  max-width: var(--lf-container);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.section {
+  padding-block: 5.5rem;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.secLabel {
+  display: block;
+  font-family: var(--lf-font-serif);
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--lf-accent);
+  margin-bottom: 0.875rem;
+}
+
+.secHeading {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  color: var(--lf-text);
+}
+
+/* ─── Shared CTA button ────────────────────────────────────────────────────── */
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--lf-accent-strong);
+  color: #fff;
+  font-size: 0.875rem;
+  letter-spacing: 0.12em;
+  padding: 0.9rem 2.25rem;
+  border-radius: var(--lf-radius);
+  box-shadow: 0 4px 20px rgba(197, 168, 128, 0.55);
+  transition:
+    background-color 0.25s,
+    box-shadow 0.25s,
+    transform 0.25s var(--lf-ease);
+  white-space: nowrap;
+}
+
+/* Hover: pointer devices only — not applied on touch screens */
+@media (hover: hover) {
+  .ctaBtn:hover {
+    background-color: var(--lf-accent);
+    box-shadow: 0 10px 32px rgba(197, 168, 128, 0.6);
+    transform: translateY(-2px);
+  }
+}
+
+/* Touch tap feedback */
+.ctaBtn:active {
+  box-shadow: 0 2px 10px rgba(197, 168, 128, 0.4);
+  transform: scale(0.97);
+}
+
+.ctaBtn:focus-visible {
+  outline: 2px solid var(--lf-accent-strong);
+  outline-offset: 4px;
+}
+
+/* ─── Scroll-reveal animation ──────────────────────────────────────────────── */
+/*
+ * [data-reveal] elements start hidden. JS (IntersectionObserver) adds
+ * [data-visible] to trigger the transition. Stagger is controlled by
+ * the --reveal-delay custom property set inline on each element.
+ */
+
+.root [data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.75s var(--lf-ease) var(--reveal-delay, 0s),
+    transform 0.75s var(--lf-ease) var(--reveal-delay, 0s);
+}
+
+.root [data-reveal][data-visible] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ─── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (min-width: 768px) {
+  .root {
+    --lf-header-h: 72px;
+  }
+
+  .container {
+    padding-inline: 2.5rem;
+  }
+
+  .section {
+    padding-block: 7.5rem;
+  }
+
+  .secHeading {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-block: 9.5rem;
+  }
+}

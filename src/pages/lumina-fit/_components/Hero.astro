@@ -1,0 +1,67 @@
+---
+import { getImage } from "astro:assets";
+import heroLandscapeSrc from "../_assets/hero-landscape.jpg";
+import heroPortraitSrc from "../_assets/hero-portrait.jpg";
+import base from "../index.module.css";
+import styles from "./Hero.module.css";
+
+const [heroPortrait, heroLandscape] = await Promise.all([
+  getImage({ src: heroPortraitSrc, width: 828, height: 1472, format: "webp" }),
+  getImage({
+    src: heroLandscapeSrc,
+    width: 1920,
+    height: 1080,
+    format: "webp",
+  }),
+]);
+---
+
+<section class={styles.hero} aria-labelledby="hero-heading">
+  <!-- Background -->
+  <div class={styles.bg} aria-hidden="true">
+    <picture>
+      <!-- Portrait crop for mobile (< 768px) -->
+      <source media="(max-width: 767px)" srcset={heroPortrait.src} type="image/webp" />
+      <!-- Landscape for tablet and up -->
+      <img
+        src={heroLandscape.src}
+        alt=""
+        class={styles.bgImg}
+        loading="eager"
+        fetchpriority="high"
+        width="1920"
+        height="1080"
+      />
+    </picture>
+    <div class={styles.overlay}></div>
+  </div>
+
+  <!-- Content -->
+  <div class:list={[base.container, styles.content]}>
+    <h1 class={styles.heading} id="hero-heading" data-reveal>
+      <span class={styles.headingEn}>LUMINA FIT</span>
+      <span class={styles.rule} aria-hidden="true"></span>
+      <span class={styles.headingJa}>
+        わたしを整える、<br />新しい習慣。
+      </span>
+    </h1>
+    <p class={styles.sub} data-reveal style="--reveal-delay: 0.15s">
+      ヨガ・ピラティス・ジムがこれひとつで。
+    </p>
+    <button
+      class:list={[base.ctaBtn, styles.heroCta]}
+      data-cta
+      type="button"
+      data-reveal
+      style="--reveal-delay: 0.3s"
+    >
+      体験予約
+    </button>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class={styles.scrollHint} aria-hidden="true">
+    <span class={styles.scrollLabel}>Scroll</span>
+    <span class={styles.scrollLine}></span>
+  </div>
+</section>

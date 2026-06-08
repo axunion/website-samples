@@ -1,0 +1,86 @@
+.studio {
+  background-color: var(--lf-bg-sub);
+}
+
+.facilities {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.facility {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--lf-bg);
+  border: 1px solid var(--lf-border);
+  border-radius: var(--lf-radius);
+}
+
+.facilityIcon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  color: var(--lf-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.facilityLabel {
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  color: var(--lf-text);
+}
+
+/* Map placeholder */
+.mapWrap {
+  border-radius: var(--lf-radius);
+  overflow: hidden;
+  aspect-ratio: 16 / 7;
+  background: var(--lf-bg);
+  border: 1px solid var(--lf-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--lf-text-sub);
+}
+
+.mapIcon {
+  width: 32px;
+  height: 32px;
+  color: var(--lf-border);
+}
+
+.mapLabel {
+  font-family: var(--lf-font-serif);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lf-border);
+}
+
+@media (min-width: 480px) {
+  .facilities {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .facilities {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .facility {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+}

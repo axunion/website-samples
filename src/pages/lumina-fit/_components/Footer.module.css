@@ -1,0 +1,81 @@
+.footer {
+  background-color: var(--lf-bg-sub);
+  border-top: 1px solid var(--lf-border);
+  padding-block: 3.5rem 2.5rem;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.brandName {
+  font-family: var(--lf-font-serif);
+  font-size: 1.0625rem;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  color: var(--lf-text);
+}
+
+.brandTagline {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--lf-text-sub);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  list-style: none;
+}
+
+.link {
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--lf-text-sub);
+  transition: color 0.2s;
+  padding: 0.25rem 0;
+}
+
+.link:hover {
+  color: var(--lf-accent);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--lf-accent-strong);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--lf-border);
+}
+
+.copyright {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: rgba(102, 102, 102, 0.6);
+}
+
+@media (min-width: 768px) {
+  .inner {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .links {
+    flex-direction: column;
+    gap: 0.625rem;
+    text-align: right;
+  }
+}

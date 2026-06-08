@@ -1,0 +1,83 @@
+---
+import base from "../index.module.css";
+import styles from "./Faq.module.css";
+
+const faqs = [
+  {
+    q: "初心者でも参加できますか？",
+    a: "はい、もちろんです。すべてのクラスは初心者の方を歓迎しています。体験レッスンでは、インストラクターがあなたの体の状態に合わせて丁寧にサポートします。",
+  },
+  {
+    q: "必要な持ち物はありますか？",
+    a: "基本的には手ぶらでご参加いただけます。ウェアとタオルはレンタルが可能です。運動しやすい服装でお越しいただくか、更衣室でお着替えいただけます。",
+  },
+  {
+    q: "ヨガとピラティスの両方を受けられますか？",
+    a: "プレミアムプランにご入会いただくと、ヨガ・ピラティス・ジムのすべてのプログラムを自由に組み合わせてご利用いただけます。",
+  },
+  {
+    q: "体験当日に入会しなくても大丈夫ですか？",
+    a: "もちろんです。体験レッスン後にプランをご案内しますが、当日のご入会は一切必須ではありません。ゆっくり検討していただいて構いません。",
+  },
+];
+---
+
+<section class:list={[base.section, styles.faq]}>
+  <div class={base.container}>
+    <header class={base.sectionHeader} data-reveal>
+      <span class={base.secLabel}>Questions</span>
+      <h2 class={base.secHeading}>FAQ</h2>
+    </header>
+
+    <ul class={styles.list}>
+      {
+        faqs.map((faq, i) => {
+          const panelId = `faq-panel-${i}`;
+          const btnId = `faq-btn-${i}`;
+          return (
+            <li class={styles.item} data-reveal style={`--reveal-delay: ${i * 0.08}s`}>
+              <button
+                id={btnId}
+                class={styles.questionBtn}
+                aria-expanded="false"
+                aria-controls={panelId}
+                type="button"
+                data-faq-btn
+              >
+                <span class={styles.qMark} aria-hidden="true">Q</span>
+                <span class={styles.questionText}>{faq.q}</span>
+                <span class={styles.toggle} aria-hidden="true">
+                  <svg
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    width="12"
+                    height="12"
+                  >
+                    <path d="M8 2v12M2 8h12" stroke-linecap="round" />
+                  </svg>
+                </span>
+              </button>
+
+              <div
+                id={panelId}
+                class={styles.panel}
+                aria-labelledby={btnId}
+                aria-hidden="true"
+                role="region"
+              >
+                <div class={styles.panelInner}>
+                  <div class={styles.answer}>
+                    <span class={styles.aMark} aria-hidden="true">A</span>
+                    <p class={styles.answerText}>{faq.a}</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</section>

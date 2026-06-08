@@ -1,0 +1,72 @@
+---
+import base from "../index.module.css";
+import styles from "./Studio.module.css";
+
+const facilities = [
+  {
+    label: "シャワー完備",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" width="24" height="24"><path d="M4 12c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke-linecap="round"/><path d="M7 17v1a2 2 0 004 0v-1M13 17v1a2 2 0 004 0v-1" stroke-linecap="round"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>`,
+  },
+  {
+    label: "ウェアレンタル",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" width="24" height="24"><path d="M3 6l4-2 5 2 5-2 4 2v12l-4-2-5 2-5-2-4 2V6z" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    label: "パウダールーム",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" width="24" height="24"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round"/></svg>`,
+  },
+  {
+    label: "駅徒歩3分",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" width="24" height="24"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7z" stroke-linecap="round"/></svg>`,
+  },
+  {
+    label: "女性専用エリア",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" width="24" height="24"><circle cx="12" cy="8" r="4"/><path d="M12 12v8M9 17h6" stroke-linecap="round"/></svg>`,
+  },
+  {
+    label: "ロッカー完備",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" width="24" height="24"><rect x="3" y="2" width="18" height="20" rx="2"/><path d="M3 8h18M12 2v6M10 14h4" stroke-linecap="round"/></svg>`,
+  },
+];
+---
+
+<section class:list={[base.section, styles.studio]}>
+  <div class={base.container}>
+    <header class={base.sectionHeader} data-reveal>
+      <span class={base.secLabel}>Studio</span>
+      <h2 class={base.secHeading}>STUDIO</h2>
+    </header>
+
+    <ul class={styles.facilities}>
+      {
+        facilities.map((f, i) => (
+          <li
+            class={styles.facility}
+            data-reveal
+            style={`--reveal-delay: ${i * 0.07}s`}
+          >
+            <span class={styles.facilityIcon} aria-hidden="true" set:html={f.icon} />
+            <span class={styles.facilityLabel}>{f.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Map placeholder -->
+    <div class={styles.mapWrap} data-reveal>
+      <svg
+        class={styles.mapIcon}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        aria-hidden="true"
+      >
+        <path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3V6z" stroke-linejoin="round"
+        ></path>
+        <path d="M9 3v15M15 6v15" stroke-linecap="round"></path>
+      </svg>
+      <span class={styles.mapLabel}>Map Placeholder</span>
+    </div>
+  </div>
+</section>

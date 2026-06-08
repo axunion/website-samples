@@ -1,0 +1,25 @@
+---
+import base from "../index.module.css";
+import styles from "./FinalCta.module.css";
+---
+
+<section class:list={[base.section, styles.finalCta]} id="trial">
+  <div class:list={[base.container, styles.inner]}>
+    <span class:list={[base.secLabel, styles.eyebrow]} data-reveal>Trial Lesson</span>
+    <h2 class={styles.heading} data-reveal style="--reveal-delay: 0.1s">
+      まずは一度、上質な空間を体験してください。
+    </h2>
+    <p class={styles.desc} data-reveal style="--reveal-delay: 0.2s">
+      無理な勧誘はありません。あなたに合った通い方をご提案します。
+    </p>
+    <button
+      class:list={[base.ctaBtn, styles.ctaLarge]}
+      type="button"
+      data-cta
+      data-reveal
+      style="--reveal-delay: 0.3s"
+    >
+      体験予約する
+    </button>
+  </div>
+</section>

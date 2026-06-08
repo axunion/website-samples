@@ -1,0 +1,40 @@
+---
+import base from "../index.module.css";
+import styles from "./Footer.module.css";
+
+const links = [
+  { label: "会社概要", href: "#" },
+  { label: "プライバシーポリシー", href: "#" },
+  { label: "特定商取引法に基づく表記", href: "#" },
+];
+---
+
+<footer class={styles.footer}>
+  <div class={base.container}>
+    <div class={styles.inner}>
+      <div class={styles.brand}>
+        <span class={styles.brandName}>LUMINA FIT</span>
+        <span class={styles.brandTagline}>
+          ヨガ・ピラティス・ジム複合スタジオ
+        </span>
+      </div>
+      <nav aria-label="フッターナビゲーション">
+        <ul class={styles.links}>
+          {
+            links.map((l) => (
+              <li>
+                <a href={l.href} class={styles.link}>
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+    <hr class={styles.divider} />
+    <p class={styles.copyright}>
+      &copy; {new Date().getFullYear()} LUMINA FIT. All rights reserved.
+    </p>
+  </div>
+</footer>

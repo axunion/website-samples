@@ -1,0 +1,46 @@
+---
+import base from "../index.module.css";
+import styles from "./Reasons.module.css";
+
+const reasons = [
+  {
+    title: "初心者でも安心のパーソナルサポート",
+    desc: "経験豊富なインストラクターが、あなたのペースに合わせて丁寧に指導。運動が初めての方でも無理なくスタートできます。",
+  },
+  {
+    title: "ヨガもマシンピラティスも、その日の気分で選び放題",
+    desc: "3つのプログラムをひとつのメンバーシップで。気分や目的に合わせて、自由にプログラムを組み合わせられます。",
+  },
+  {
+    title: "駅徒歩3分、手ぶらで通える快適な空間",
+    desc: "アクセス抜群の立地に、ウェアレンタルやシャワー完備。仕事帰りや休日のふとした時間に立ち寄れます。",
+  },
+];
+---
+
+<section class:list={[base.section, styles.reasons]}>
+  <div class={base.container}>
+    <header class={base.sectionHeader} data-reveal>
+      <span class={base.secLabel}>Why Choose Us</span>
+      <h2 class={base.secHeading}>LUMINA FITが選ばれる3つの理由</h2>
+    </header>
+
+    <div class={styles.grid}>
+      {
+        reasons.map((reason, i) => (
+          <article
+            class={styles.card}
+            data-reveal
+            style={`--reveal-delay: ${(i + 1) * 0.12}s`}
+          >
+            <span class={styles.num} aria-hidden="true">
+              0{i + 1}
+            </span>
+            <h3 class={styles.title}>{reason.title}</h3>
+            <p class={styles.desc}>{reason.desc}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

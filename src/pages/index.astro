@@ -1,11 +1,38 @@
 ---
-import Welcome from "../components/Welcome.astro";
-import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import styles from "./index.module.css";
+import luminaFitHero from "./lumina-fit/_assets/hero-landscape.jpg";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const samples = [
+  { href: "/lumina-fit/", name: "LUMINA FIT", img: luminaFitHero },
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>website-samples</title>
+  </head>
+  <body class={styles.body}>
+    <ul class={styles.grid} role="list">
+      {
+        samples.map((s) => (
+          <li>
+            <a href={s.href} class={styles.tile}>
+              <Image
+                src={s.img}
+                alt=""
+                width={800}
+                height={800}
+                class={styles.img}
+              />
+              <span class={styles.title}>{s.name}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </body>
+</html>
