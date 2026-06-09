@@ -63,6 +63,18 @@ Each website sample **must be fully independent**. This is a hard constraint:
 - Do not use web fonts for Japanese text — the payload is too large for mobile.
 - Use device/system fonts (`font-family: system-ui, sans-serif`) as the default. This project is mobile-first.
 
+### Images
+- Do not store raster images in the repository; use external CDN URLs (e.g., Unsplash) for photographs.
+- Size every image container with `aspect-ratio` and a `background-color` so layout does not shift when the image is absent or loading.
+- On every `<img>` that loads from an external URL, add an `onerror` handler that replaces the broken image with a single-color gradient SVG data URI. Always set `this.onerror=null` first to prevent retry loops. Choose gradient colors that suit the component's palette.
+
+```html
+<img
+  src="https://..."
+  onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3ClinearGradient id=%22g%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%23AAA%22/%3E%3Cstop offset=%221%22 stop-color=%22%23888%22/%3E%3C/linearGradient%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/%3E%3C/svg%3E'"
+/>
+```
+
 ### Icons & SVG
 - Use `astro-icon` (Lucide set via `@iconify-json/lucide`) for UI icons.
 - Use inline SVG for titles, logos, and branding — craft these as SVG rather than text or raster images.

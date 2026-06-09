@@ -120,7 +120,7 @@ const programs = {
                 style={`transition-delay: ${pIdx * 0.1}s;`}
               >
                 <div class={styles.imageFrame}>
-                  <img src={prog.imgSrc} alt={prog.name} class={styles.cardImage} loading="lazy" />
+                  <img src={prog.imgSrc} alt={prog.name} class={styles.cardImage} loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3ClinearGradient id=%22g%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%23e8e5df%22/%3E%3Cstop offset=%221%22 stop-color=%22%23d0ccc4%22/%3E%3C/linearGradient%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/%3E%3C/svg%3E'" />
                   <span class={styles.timeTag}>{prog.time}</span>
                 </div>
                 <div class={styles.cardContent}>
