@@ -1,0 +1,93 @@
+---
+import { Icon } from "astro-icon/components";
+import styles from "./Faq.module.css";
+
+const faqs = [
+  {
+    q: "フィットネス未経験でも本当に大丈夫でしょうか？",
+    a: "はい、全く問題ありません。当スタジオの会員様の約7割が未経験からスタートされています。専任のトレーナーやインストラクターがお客様の体力レベルに合わせて、基礎から丁寧にお教えしますのでご安心ください。",
+  },
+  {
+    q: "体験レッスンの当日の持ち物は何が必要ですか？",
+    a: "ウエア、フェイスタオル、バスタオル、お飲み物（水素水サーバーあり）など、セッションに必要なものはすべて無料でレンタル・ご提供しております。靴下の着用が必要なプログラムもございますので、靴下のみご持参（または着用）のうえ、手ぶらでお越しください。",
+  },
+  {
+    q: "ヨガとピラティス、どちらを受講すべきか迷っています。",
+    a: "呼吸や瞑想を重視し、心身のリラックスや柔軟性向上を目指す方には「ヨガ」がおすすめです。一方で、ピラティスマシンを使いながら体幹（インナーマッスル）を鍛え、姿勢改善やボディメイクを目指す方には「ピラティス」をおすすめしています。当スタジオではどちらも自由に組み合わせて受講可能です。",
+  },
+  {
+    q: "予約のキャンセルや日時変更はいつまで可能ですか？",
+    a: "ご予約のキャンセルや日時変更は、セッション開始時刻の2時間前までWEBマイページよりお手続きいただけます。それ以降の直前キャンセルにつきましては、1回分のチケット消化となりますのであらかじめご了承ください。",
+  },
+];
+---
+
+<section class={styles.section} id="faq">
+  <div class={styles.container}>
+    <div class={styles.header} data-reveal>
+      <span class={styles.tag}>COMMON QUESTIONS</span>
+      <h2 class={styles.title}>よくあるご質問</h2>
+    </div>
+
+    <!-- Accordion List -->
+    <div class={styles.faqList}>
+      {faqs.map((faq, idx) => (
+        <div class={styles.faqItem} data-reveal style={`transition-delay: ${idx * 0.05}s;`}>
+          <button
+            class={styles.faqBtn}
+            id={`faq-btn-${idx}`}
+            aria-expanded="false"
+            aria-controls={`faq-panel-${idx}`}
+            data-faq-btn
+            type="button"
+          >
+            <span class={styles.qText}>
+              <span class={styles.prefix}>Q</span>
+              {faq.q}
+            </span>
+            <span class={styles.iconWrapper}>
+              <Icon name="lucide:chevron-down" class={styles.chevronIcon} />
+            </span>
+          </button>
+          <div
+            class={styles.faqPanel}
+            id={`faq-panel-${idx}`}
+            aria-labelledby={`faq-btn-${idx}`}
+            aria-hidden="true"
+            data-faq-panel
+          >
+            <div class={styles.panelContent}>
+              <span class={styles.prefixA}>A</span>
+              <p class={styles.aText}>{faq.a}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // FAQ Accordion controller
+  const faqBtns = document.querySelectorAll("[data-faq-btn]");
+
+  faqBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const isExpanded = btn.getAttribute("aria-expanded") === "true";
+      const panelId = btn.getAttribute("aria-controls");
+      if (!panelId) return;
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+
+      const nextExpanded = !isExpanded;
+      btn.setAttribute("aria-expanded", String(nextExpanded));
+      panel.setAttribute("aria-hidden", String(!nextExpanded));
+
+      if (nextExpanded) {
+        panel.style.gridTemplateRows = "1fr";
+      } else {
+        panel.style.gridTemplateRows = "0fr";
+      }
+    });
+  });
+</script>

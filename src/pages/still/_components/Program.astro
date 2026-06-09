@@ -1,0 +1,190 @@
+---
+import { Icon } from "astro-icon/components";
+import styles from "./Program.module.css";
+
+const categories = [
+  { id: "yoga", label: "Yoga" },
+  { id: "pilates", label: "Pilates" },
+  { id: "gym", label: "Gym" },
+];
+
+const programs = {
+  yoga: [
+    {
+      name: "マインドフルネス・フロー",
+      subtitle: "Mindfulness Flow",
+      intensity: 1,
+      time: "60 min",
+      desc: "心地よい呼吸と流れるような動作を調和させ、脳の疲労を和らげるクラス。初心者の方でもリラックスして深い静寂を感じていただけます。",
+      imgSrc:
+        "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80",
+    },
+    {
+      name: "アクティブ・ヴィンヤサ",
+      subtitle: "Active Vinyasa",
+      intensity: 3,
+      time: "60 min",
+      desc: "ダイナミックなポーズ展開で運動量を高め、全身の代謝と集中力を研ぎ澄ますクラス。心身をアクティブに整えたいときにおすすめです。",
+      imgSrc:
+        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80",
+    },
+  ],
+  pilates: [
+    {
+      name: "リフォーマー・イントロ",
+      subtitle: "Reformer Intro",
+      intensity: 2,
+      time: "50 min",
+      desc: "ピラティス専用マシン「リフォーマー」を使用し、普段意識しづらいインナーマッスルにアプローチ。正しい骨格アライメントへと導きます。",
+      imgSrc:
+        "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+    },
+    {
+      name: "アライン・コア",
+      subtitle: "Align Core",
+      intensity: 3,
+      time: "50 min",
+      desc: "体幹部（コア）の強化に特化し、骨盤の歪みや猫背を整えるクラス。体の中心を安定させることで、疲れにくいしなやかな体をつくります。",
+      imgSrc:
+        "https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=600&q=80",
+    },
+  ],
+  gym: [
+    {
+      name: "パーソナル・コンディショニング",
+      subtitle: "Personal Conditioning",
+      intensity: 2,
+      time: "45 min",
+      desc: "プロのトレーナーが一人ひとりの体型や体力レベルに合わせてマンツーマンで指導。筋力強化だけでなく、機能回復まで幅広く対応します。",
+      imgSrc:
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80",
+    },
+    {
+      name: "ストレッチ＆可動域改善",
+      subtitle: "Stretch & Mobilization",
+      intensity: 1,
+      time: "45 min",
+      desc: "固まった筋肉を丁寧にゆるめ、関節の可動域を広げるリカバリー専用セッション。肩こりや腰痛の予防、日々の疲労蓄積のケアに最適です。",
+      imgSrc:
+        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80",
+    },
+  ],
+};
+---
+
+<section class={styles.section} id="programs">
+  <div class={styles.container}>
+    <div class={styles.header} data-reveal>
+      <span class={styles.tag}>PROGRAMS</span>
+      <h2 class={styles.title}>整える、3つのアプローチ</h2>
+    </div>
+
+    <!-- Tab Buttons -->
+    <div class={styles.tabContainer} data-reveal>
+      <div class={styles.tabList} role="tablist" aria-label="Select Program Category">
+        {categories.map((cat, idx) => (
+          <button
+            class={styles.tabBtn}
+            role="tab"
+            aria-selected={idx === 0 ? "true" : "false"}
+            aria-controls={`panel-${cat.id}`}
+            id={`tab-${cat.id}`}
+            data-tab-trigger={cat.id}
+            tabindex={idx === 0 ? "0" : "-1"}
+            type="button"
+          >
+            <span class={styles.tabLabelJa}>{cat.id === 'yoga' ? 'ヨガ' : cat.id === 'pilates' ? 'ピラティス' : 'ジム'}</span>
+            <span class={styles.tabLabelEn}>{cat.label}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Tab Panels -->
+    <div class={styles.panelContainer}>
+      {categories.map((cat, idx) => (
+        <div
+          class={styles.tabPanel}
+          id={`panel-${cat.id}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${cat.id}`}
+          aria-hidden={idx === 0 ? "false" : "true"}
+          data-tab-panel={cat.id}
+          data-active={idx === 0 ? "" : undefined}
+        >
+          <div class={styles.grid}>
+            {programs[cat.id as keyof typeof programs].map((prog, pIdx) => (
+              <div 
+                class={styles.card} 
+                data-reveal
+                style={`transition-delay: ${pIdx * 0.1}s;`}
+              >
+                <div class={styles.imageFrame}>
+                  <img src={prog.imgSrc} alt={prog.name} class={styles.cardImage} loading="lazy" />
+                  <span class={styles.timeTag}>{prog.time}</span>
+                </div>
+                <div class={styles.cardContent}>
+                  <div class={styles.cardHeader}>
+                    <div>
+                      <h3 class={styles.progName}>{prog.name}</h3>
+                      <p class={styles.progSub}>{prog.subtitle}</p>
+                    </div>
+                    <!-- Star Ratings -->
+                    <div class={styles.intensityWrapper} aria-label={`強度レベル ${prog.intensity}`}>
+                      {Array.from({ length: 3 }).map((_, i) => (
+                        <Icon 
+                          name={i < prog.intensity ? "lucide:star" : "lucide:star"} 
+                          class={i < prog.intensity ? styles.starFilled : styles.starEmpty} 
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <p class={styles.progDesc}>{prog.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Tab UI controller
+  const tabTriggers = document.querySelectorAll("[data-tab-trigger]");
+  const tabPanels = document.querySelectorAll("[data-tab-panel]");
+
+  tabTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const category = target.dataset.tabTrigger;
+
+      // Update triggers states
+      tabTriggers.forEach((btn) => {
+        btn.setAttribute("aria-selected", "false");
+        btn.setAttribute("tabindex", "-1");
+      });
+      target.setAttribute("aria-selected", "true");
+      target.setAttribute("tabindex", "0");
+
+      // Update panels states
+      tabPanels.forEach((panel) => {
+        const targetPanel = panel as HTMLElement;
+        if (targetPanel.dataset.tabPanel === category) {
+          targetPanel.setAttribute("aria-hidden", "false");
+          targetPanel.setAttribute("data-active", "");
+          
+          // Re-trigger animation on children if they are inside newly opened panel
+          const revealInside = targetPanel.querySelectorAll("[data-reveal]");
+          revealInside.forEach((el) => {
+            el.setAttribute("data-visible", "");
+          });
+        } else {
+          targetPanel.setAttribute("aria-hidden", "true");
+          targetPanel.removeAttribute("data-active");
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,67 @@
+---
+import styles from "./TrialFlow.module.css";
+
+const steps = [
+  {
+    num: "01",
+    title: "WEBからご予約",
+    tagline: "Reserve Online",
+    desc: "予約フォームよりご希望の日時、プログラム（ヨガ・ピラティス・ジム）を選択して送信してください。自動返信メールをもって予約完了となります。",
+  },
+  {
+    num: "02",
+    title: "ご来店・お着替え",
+    tagline: "Welcome & Change",
+    desc: "ご予約時間の15分前にスタジオにお越しいただき、受付を済ませてください。レンタルウェアやタオルはすべて無料で貸し出しております。",
+  },
+  {
+    num: "03",
+    title: "体験セッション（約50分）",
+    tagline: "Trial Session",
+    desc: "体調や運動経験に関するカウンセリングの後、セッションを開始。専属インストラクターがご自身の身体の状態に寄り添い優しく指導します。",
+  },
+  {
+    num: "04",
+    title: "アフターケア・ご案内",
+    tagline: "Counseling & Care",
+    desc: "セッション後は個室シャワールームやパウダールームでごゆっくりお支度ください。最後に体質改善に向けた今後のアドバイスやプランをご案内します。",
+  },
+];
+---
+
+<section class={styles.section} id="flow">
+  <div class={styles.container}>
+    <div class={styles.header} data-reveal>
+      <span class={styles.tag}>TRIAL FLOW</span>
+      <h2 class={styles.title}>体験レッスンの流れ</h2>
+    </div>
+
+    <!-- Timeline Wrapper -->
+    <div class={styles.timeline}>
+      <!-- Central/Left Line -->
+      <div class={styles.line}></div>
+
+      <div class={styles.stepList}>
+        {steps.map((step, idx) => (
+          <div 
+            class={styles.stepItem} 
+            data-reveal
+            style={`transition-delay: ${idx * 0.1}s;`}
+          >
+            <!-- Timeline node -->
+            <div class={styles.node}>
+              <span class={styles.nodeNum}>{step.num}</span>
+            </div>
+            
+            <!-- Content -->
+            <div class={styles.content}>
+              <span class={styles.stepTagline}>{step.tagline}</span>
+              <h3 class={styles.stepTitle}>{step.title}</h3>
+              <p class={styles.stepDesc}>{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,114 @@
+---
+import { Icon } from "astro-icon/components";
+import styles from "./Footer.module.css";
+---
+
+<footer class={styles.footer}>
+  <!-- Final CTA & Booking Form Section -->
+  <section class={styles.bookingSection} id="trial">
+    <div class={styles.bookingContainer}>
+      <div class={styles.ctaHeader} data-reveal>
+        <span class={styles.ctaTag}>RESERVATION</span>
+        <h2 class={styles.ctaTitle}>体験レッスンのご予約</h2>
+        <p class={styles.ctaDesc}>
+          50分の体験セッションで、心と身体が整う感覚を体感してください。<br />
+          今ならオープン記念につき、体験料金は <strong class={styles.goldText}>0円</strong> です。
+        </p>
+      </div>
+
+      <!-- Dummy Booking Form -->
+      <form class={styles.form} data-reveal onsubmit="return false;">
+        <div class={styles.formGroup}>
+          <label class={styles.label} for="still-name">お名前 <span class={styles.required}>必須</span></label>
+          <input class={styles.input} type="text" id="still-name" required placeholder="山田 花子" />
+        </div>
+
+        <div class={styles.formGroup}>
+          <label class={styles.label} for="still-email">メールアドレス <span class={styles.required}>必須</span></label>
+          <input class={styles.input} type="email" id="still-email" required placeholder="example@still.com" />
+        </div>
+
+        <div class={styles.formGroup}>
+          <label class={styles.label} for="still-program">ご希望のカテゴリー <span class={styles.required}>必須</span></label>
+          <div class={styles.selectWrapper}>
+            <select class={styles.select} id="still-program" required>
+              <option value="" disabled selected>選択してください</option>
+              <option value="yoga">ヨガ (Mindfulness / Vinyasa)</option>
+              <option value="pilates">マシンピラティス (Reformer / Core)</option>
+              <option value="gym">ジム (Conditioning / Stretch)</option>
+            </select>
+            <Icon name="lucide:chevron-down" class={styles.selectIcon} />
+          </div>
+        </div>
+
+        <div class={styles.formGroup}>
+          <label class={styles.label} for="still-date">ご希望の日時 <span class={styles.required}>必須</span></label>
+          <div class={styles.inputIconWrapper}>
+            <input class={styles.input} type="datetime-local" id="still-date" required />
+          </div>
+        </div>
+
+        <div class={styles.formCheck}>
+          <input class={styles.checkbox} type="checkbox" id="still-privacy" required />
+          <label class={styles.checkLabel} for="still-privacy">
+            <a href="#privacy" class={styles.textLink}>プライバシーポリシー</a>に同意する
+          </label>
+        </div>
+
+        <div class={styles.formAction}>
+          <button class={styles.submitBtn} type="submit">
+            この内容で体験レッスンを申し込む
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Company Info & Links -->
+  <div class={styles.bottomArea}>
+    <div class={styles.bottomContainer}>
+      <div class={styles.mainInfo}>
+        <div class={styles.logo}>
+          <!-- Minimalist balance line logo mark -->
+          <svg class={styles.logoMark} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <line x1="5" y1="12" x2="19" y2="12" stroke-dasharray="1 3" />
+          </svg>
+          <span class={styles.logoText}>STILL</span>
+        </div>
+        <p class={styles.brandDesc}>
+          STILLは、ヨガ・ピラティス・ジムを融合させたコンディショニングスタジオです。
+          静寂な空間で、自分本来の健やかさを取り戻す新しい習慣を提案します。
+        </p>
+      </div>
+
+      <div class={styles.linksGrid}>
+        <div class={styles.linkCol}>
+          <h4 class={styles.linkHeader}>Menu</h4>
+          <ul class={styles.linkList}>
+            <li><a href="#home" class={styles.link}>トップ</a></li>
+            <li><a href="#reasons" class={styles.link}>選ばれる理由</a></li>
+            <li><a href="#programs" class={styles.link}>プログラム</a></li>
+            <li><a href="#plans" class={styles.link}>料金システム</a></li>
+            <li><a href="#access" class={styles.link}>アクセス</a></li>
+            <li><a href="#faq" class={styles.link}>よくあるご質問</a></li>
+          </ul>
+        </div>
+        
+        <div class={styles.linkCol}>
+          <h4 class={styles.linkHeader}>Legal</h4>
+          <ul class={styles.linkList}>
+            <li><a href="#privacy" class={styles.link}>プライバシーポリシー</a></li>
+            <li><a href="#terms" class={styles.link}>利用規約</a></li>
+            <li><a href="#commerce" class={styles.link}>特定商取引法に基づく表記</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class={styles.copyrightArea}>
+      <p class={styles.copyright}>&copy; {new Date().getFullYear()} STILL Conditioning Studio. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

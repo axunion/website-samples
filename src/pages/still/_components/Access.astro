@@ -1,0 +1,101 @@
+---
+import { Icon } from "astro-icon/components";
+import styles from "./Access.module.css";
+
+const amenities = [
+  {
+    icon: "lucide:shower-head",
+    title: "シャワールーム完備",
+    desc: "完全個室のシャワールームを男女共に複数完備しています。",
+  },
+  {
+    icon: "lucide:shirt",
+    title: "ウェア＆タオルレンタル",
+    desc: "高品質なウエアと今治タオルを無料でご利用いただけます。",
+  },
+  {
+    icon: "lucide:sparkles",
+    title: "オーガニックアメニティ",
+    desc: "こだわりの厳選スキンケア製品をご用意しております。",
+  },
+  {
+    icon: "lucide:wind",
+    title: "パウダールーム",
+    desc: "ダイソンのドライヤーと大きなミラーを備えた快適な空間です。",
+  },
+  {
+    icon: "lucide:droplet",
+    title: "水素水サーバー",
+    desc: "セッション前後の水分補給に、ご自由にお飲みいただけます。",
+  },
+  {
+    icon: "lucide:wifi",
+    title: "フリーWi-Fi / 電源",
+    desc: "ラウンジスペースではWi-Fiやコンセントをご利用いただけます。",
+  },
+];
+---
+
+<section class={styles.section} id="access">
+  <div class={styles.container}>
+    <div class={styles.header} data-reveal>
+      <span class={styles.tag}>STUDIO & ACCESS</span>
+      <h2 class={styles.title}>店舗・設備・アクセス</h2>
+    </div>
+
+    <!-- Amenities Grid -->
+    <div class={styles.amenitiesSection}>
+      <h3 class={styles.subTitle} data-reveal>Comfort & Amenities</h3>
+      <div class={styles.grid}>
+        {amenities.map((item, idx) => (
+          <div 
+            class={styles.card} 
+            data-reveal
+            style={`transition-delay: ${idx * 0.05}s;`}
+          >
+            <div class={styles.iconWrapper}>
+              <Icon name={item.icon} class={styles.icon} />
+            </div>
+            <div class={styles.cardContent}>
+              <h4 class={styles.cardTitle}>{item.title}</h4>
+              <p class={styles.cardDesc}>{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Access Map & Info -->
+    <div class={styles.accessRow} data-reveal>
+      <div class={styles.infoCol}>
+        <div class={styles.brandTitle}>STILL Conditioning Studio</div>
+        <p class={styles.address}>
+          〒107-0062 東京都港区南青山 3-12-11 <br />
+          ラ・ミア・アオヤマ 2F
+        </p>
+        <div class={styles.details}>
+          <div class={styles.detailItem}>
+            <span class={styles.detailLabel}>営業時間</span>
+            <span class={styles.detailValue}>平日 7:00 - 22:00 / 土日祝 8:00 - 20:00</span>
+          </div>
+          <div class={styles.detailItem}>
+            <span class={styles.detailLabel}>定休日</span>
+            <span class={styles.detailValue}>毎週月曜日、年末年始</span>
+          </div>
+          <div class={styles.detailItem}>
+            <span class={styles.detailLabel}>アクセス</span>
+            <span class={styles.detailValue}>東京メトロ表参道駅 A4出口より徒歩3分</span>
+          </div>
+        </div>
+      </div>
+      <div class={styles.mapCol}>
+        <div class={styles.mapPlaceholder}>
+          <div class={styles.mapOverlay}>
+            <span class={styles.mapText}>STILL — Map Area</span>
+            <span class={styles.mapSubText}>Google Maps API placeholder</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

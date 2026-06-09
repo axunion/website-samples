@@ -1,0 +1,174 @@
+.section {
+  padding: 6rem 1.5rem;
+  background-color: #f4f3f0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 8rem 2.5rem;
+  }
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.tag {
+  font-family: "Playfair Display", serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: #c5a880;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #2b2b2b;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+@media (min-width: 768px) {
+  .timeline {
+    padding-left: 4rem;
+  }
+}
+
+.line {
+  position: absolute;
+  top: 0;
+  left: 0.75rem;
+  bottom: 0;
+  width: 1px;
+  background-color: rgba(197, 168, 128, 0.2);
+}
+
+@media (min-width: 768px) {
+  .line {
+    left: 1.5rem;
+  }
+}
+
+.stepList {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .stepList {
+    gap: 5rem;
+  }
+}
+
+.stepItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Timeline Node */
+.node {
+  position: absolute;
+  left: -2rem;
+  top: 0.25rem;
+  transform: translateX(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #f4f3f0;
+  border: 1px solid #c5a880;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .node {
+    left: -4rem;
+    width: 3rem;
+    height: 3rem;
+    top: 0;
+  }
+}
+
+.nodeNum {
+  font-family: "Playfair Display", serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #c5a880;
+}
+
+@media (min-width: 768px) {
+  .nodeNum {
+    font-size: 1rem;
+  }
+}
+
+/* Content block */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.stepTagline {
+  font-family: "Playfair Display", serif;
+  font-size: 0.675rem;
+  letter-spacing: 0.1em;
+  color: #c5a880;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .stepTagline {
+    font-size: 0.75rem;
+  }
+}
+
+.stepTitle {
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #2b2b2b;
+  margin: 0 0 0.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .stepTitle {
+    font-size: 1.35rem;
+  }
+}
+
+.stepDesc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #666666;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .stepDesc {
+    font-size: 0.95rem;
+  }
+}

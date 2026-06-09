@@ -1,0 +1,95 @@
+---
+import Access from "./_components/Access.astro";
+import Concerns from "./_components/Concerns.astro";
+import Faq from "./_components/Faq.astro";
+import Footer from "./_components/Footer.astro";
+import Header from "./_components/Header.astro";
+import Hero from "./_components/Hero.astro";
+import Plan from "./_components/Plan.astro";
+import Program from "./_components/Program.astro";
+import Reasons from "./_components/Reasons.astro";
+import TrialFlow from "./_components/TrialFlow.astro";
+import styles from "./index.module.css";
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STILL — Conditioning Studio | ヨガ・ピラティス・ジム複合スタジオ</title>
+    <meta
+      name="description"
+      content="表参道徒歩3分の高級フィットネススタジオ「STILL」。ヨガ・マシンピラティス・ジムを1つのメンバーシップで自由に選択して受講できます。わたしを整える、新しい習慣をここから。"
+    />
+    
+    <!-- Google Fonts: Playfair Display (for premium serif english text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class={styles.root}>
+      <Header />
+      <main class={styles.main}>
+        <Hero />
+        <Concerns />
+        <Reasons />
+        <Program />
+        <Plan />
+        <Access />
+        <TrialFlow />
+        <Faq />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<script>
+  // ─── Reduced Motion Detection ──────────────────────────────────────────────
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ─── Scroll-reveal Animation (Intersection Observer) ──────────────────────
+  const revealElements = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+
+  if (reducedMotion) {
+    revealElements.forEach((el) => el.setAttribute("data-visible", ""));
+  } else {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute("data-visible", "");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -60px 0px"
+      }
+    );
+
+    revealElements.forEach((el) => revealObserver.observe(el));
+  }
+
+  // ─── Smooth Scroll for CTA buttons to target booking anchor (#trial) ───
+  const bookingAnchor = document.getElementById("trial");
+
+  if (bookingAnchor) {
+    const ctaButtons = document.querySelectorAll<HTMLElement>("[data-cta]");
+    ctaButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        bookingAnchor.scrollIntoView({
+          behavior: reducedMotion ? "auto" : "smooth",
+          block: "start"
+        });
+      });
+    });
+  }
+</script>

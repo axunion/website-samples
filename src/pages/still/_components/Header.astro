@@ -1,0 +1,99 @@
+---
+import styles from "./Header.module.css";
+---
+
+<header class={styles.header}>
+  <div class={styles.inner}>
+    <a href="/still/" class={styles.logo} aria-label="STILL Top">
+      <!-- Minimalist abstract line logo mark representing balance/stillness -->
+      <svg class={styles.logoMark} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" />
+        <line x1="12" y1="5" x2="12" y2="19" />
+        <line x1="5" y1="12" x2="19" y2="12" stroke-dasharray="1 3" />
+      </svg>
+      <span class={styles.logoText}>STILL</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class={styles.desktopNav} aria-label="Desktop navigation">
+      <ul class={styles.navList}>
+        <li><a href="#reasons" class={styles.navLink}>強み</a></li>
+        <li><a href="#programs" class={styles.navLink}>プログラム</a></li>
+        <li><a href="#plans" class={styles.navLink}>料金</a></li>
+        <li><a href="#faq" class={styles.navLink}>FAQ</a></li>
+      </ul>
+    </nav>
+
+    <div class={styles.actions}>
+      <button class={styles.ctaBtn} data-cta type="button">
+        体験予約
+      </button>
+
+      <!-- Hamburger Menu Button -->
+      <button 
+        class={styles.menuBtn} 
+        id="still-menu-btn" 
+        aria-expanded="false" 
+        aria-controls="still-mobile-menu"
+        aria-label="Toggle navigation menu"
+        type="button"
+      >
+        <span class={styles.menuIconBar}></span>
+        <span class={styles.menuIconBar}></span>
+        <span class={styles.menuIconBar}></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div class={styles.drawer} id="still-mobile-menu" aria-hidden="true">
+    <nav class={styles.mobileNav} aria-label="Mobile navigation">
+      <ul class={styles.mobileNavList}>
+        <li><a href="#reasons" class={styles.mobileNavLink} data-menu-close>強み</a></li>
+        <li><a href="#programs" class={styles.mobileNavLink} data-menu-close>プログラム</a></li>
+        <li><a href="#plans" class={styles.mobileNavLink} data-menu-close>料金</a></li>
+        <li><a href="#faq" class={styles.mobileNavLink} data-menu-close>FAQ</a></li>
+      </ul>
+      <div class={styles.drawerCta}>
+        <button class={styles.drawerCtaBtn} data-cta data-menu-close type="button">
+          体験予約
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Mobile menu interaction
+  const menuBtn = document.getElementById("still-menu-btn");
+  const mobileMenu = document.getElementById("still-mobile-menu");
+  const closeLinks = document.querySelectorAll("[data-menu-close]");
+
+  if (menuBtn && mobileMenu) {
+    const toggleMenu = () => {
+      const isExpanded = menuBtn.getAttribute("aria-expanded") === "true";
+      const nextExpanded = !isExpanded;
+      
+      menuBtn.setAttribute("aria-expanded", String(nextExpanded));
+      mobileMenu.setAttribute("aria-hidden", String(!nextExpanded));
+      
+      if (nextExpanded) {
+        document.body.style.overflow = "hidden";
+        mobileMenu.classList.add(mobileMenu.dataset.activeClass || "active");
+      } else {
+        document.body.style.overflow = "";
+        mobileMenu.classList.remove(mobileMenu.dataset.activeClass || "active");
+      }
+    };
+
+    menuBtn.addEventListener("click", toggleMenu);
+
+    closeLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        menuBtn.setAttribute("aria-expanded", "false");
+        mobileMenu.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      });
+    });
+  }
+</script>

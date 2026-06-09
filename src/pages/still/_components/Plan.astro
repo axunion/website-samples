@@ -1,0 +1,89 @@
+---
+import { Icon } from "astro-icon/components";
+import styles from "./Plan.module.css";
+
+const plans = [
+  {
+    name: "月4回ライトプラン",
+    enName: "Light Member",
+    price: "7,800",
+    period: "/ 月",
+    features: [
+      "月4回のお好きなセッション受講",
+      "ヨガ・ピラティス・ジムから自由に選択",
+      "ウェア・タオルの無料レンタル付",
+      "シャワールーム・アメニティ利用可能",
+    ],
+    recommended: false,
+  },
+  {
+    name: "プレミアム通い放題プラン",
+    enName: "Premium Member",
+    price: "12,800",
+    period: "/ 月",
+    features: [
+      "毎日1セッション受講可能（通い放題）",
+      "ヨガ・ピラティス・ジムの全施設利用",
+      "ウェア・タオルの無料レンタル付",
+      "プロテイン1杯無料（毎日）",
+      "月1回のパーソナルカウンセリング",
+    ],
+    recommended: true,
+  },
+];
+---
+
+<section class={styles.section} id="plans">
+  <div class={styles.container}>
+    <div class={styles.header} data-reveal>
+      <span class={styles.tag}>PRICING PLAN</span>
+      <h2 class={styles.title}>シンプルな料金システム</h2>
+    </div>
+
+    <!-- Campaign Banner -->
+    <div class={styles.campaignBanner} data-reveal>
+      <div class={styles.campaignInner}>
+        <span class={styles.campaignTag}>CAMPAIGN</span>
+        <h3 class={styles.campaignTitle}>新規オープン記念キャンペーン</h3>
+        <p class={styles.campaignText}>
+          体験当日のご入会で、通常10,000円の<strong class={styles.goldText}>入会金が0円</strong>になります。
+        </p>
+      </div>
+    </div>
+
+    <!-- Pricing Grid -->
+    <div class={styles.grid}>
+      {plans.map((plan, idx) => (
+        <div 
+          class:list={[styles.card, plan.recommended && styles.recommended]} 
+          data-reveal
+          style={`transition-delay: ${idx * 0.1}s;`}
+        >
+          {plan.recommended && <div class={styles.cardBadge}>RECOMMENDED</div>}
+          <div class={styles.cardHeader}>
+            <span class={styles.planEnName}>{plan.enName}</span>
+            <h3 class={styles.planName}>{plan.name}</h3>
+          </div>
+          <div class={styles.priceContainer}>
+            <span class={styles.currency}>¥</span>
+            <span class={styles.price}>{plan.price}</span>
+            <span class={styles.period}>{plan.period}</span>
+          </div>
+          <ul class={styles.features}>
+            {plan.features.map(feature => (
+              <li class={styles.featureItem}>
+                <Icon name="lucide:check" class={styles.featureIcon} />
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+          <div class={styles.cardAction}>
+            <button class:list={[styles.btn, plan.recommended ? styles.btnPrimary : styles.btnSecondary]} data-cta type="button">
+              このプランで体験予約する
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

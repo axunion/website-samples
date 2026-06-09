@@ -1,0 +1,197 @@
+.hero {
+  position: relative;
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #f4f3f0; /* Fallback background color */
+  padding-top: 60px; /* Header height offset */
+}
+
+.bgWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.bgImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.9;
+  filter: contrast(0.95) brightness(0.9);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(251, 251, 250, 0.4) 0%,
+    rgba(251, 251, 250, 0.75) 50%,
+    rgba(251, 251, 250, 0.9) 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 1.5rem;
+  max-width: 800px;
+  margin-top: -2rem;
+}
+
+.subTitle {
+  font-family: "Playfair Display", serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: #c5a880;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.mainTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 0 0 2.5rem 0;
+}
+
+.enBrand {
+  font-family: "Playfair Display", serif;
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: #2b2b2b;
+  line-height: 1.1;
+  text-indent: 0.2em; /* Balance centering with letter-spacing */
+}
+
+@media (min-width: 768px) {
+  .enBrand {
+    font-size: 6rem;
+  }
+}
+
+.jaCatch {
+  font-size: 1.125rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: #2b2b2b;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .jaCatch {
+    font-size: 1.5rem;
+  }
+}
+
+.jaSubCatch {
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: #666666;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .jaSubCatch {
+    font-size: 1.05rem;
+  }
+}
+
+.ctaWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.ctaBtn {
+  background-color: #c5a880;
+  color: #ffffff;
+  border: none;
+  padding: 1.25rem 3rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(197, 168, 128, 0.2);
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.ctaBtn:hover {
+  background-color: #b59870;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(197, 168, 128, 0.3);
+}
+
+.ctaBtn:active {
+  transform: translateY(0);
+}
+
+/* Scroll indicator */
+.scrollDown {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.scrollText {
+  font-family: "Playfair Display", serif;
+  font-size: 0.625rem;
+  letter-spacing: 0.35em;
+  color: #666666;
+  text-indent: 0.35em;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 50px;
+  background-color: rgba(43, 43, 43, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.scrollLine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background-color: #c5a880;
+  animation: scrollAnim 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scrollAnim {
+  0% {
+    transform: translateY(-100%);
+  }
+  80% {
+    transform: translateY(250%);
+  }
+  100% {
+    transform: translateY(250%);
+  }
+}

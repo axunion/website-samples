@@ -1,0 +1,169 @@
+.section {
+  padding: 6rem 1.5rem;
+  background-color: #f4f3f0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 8rem 2.5rem;
+  }
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.tag {
+  font-family: "Playfair Display", serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: #c5a880;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #2b2b2b;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+.flowList {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+@media (min-width: 768px) {
+  .flowList {
+    gap: 8rem;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .row {
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .row:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+}
+
+.imageCol {
+  flex: 1;
+}
+
+.imageFrame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #e5e3df; /* Fallback for image loading */
+}
+
+@media (min-width: 768px) {
+  .imageFrame {
+    aspect-ratio: 16 / 11;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.row:hover .image {
+  transform: scale(1.03);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(43, 43, 43, 0.03);
+  pointer-events: none;
+}
+
+.textCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.number {
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #c5a880;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .number {
+    font-size: 3.5rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+.itemTitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #2b2b2b;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .itemTitle {
+    font-size: 1.5rem;
+  }
+}
+
+.itemTagline {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #c5a880;
+  margin: 0 0 1.25rem 0;
+}
+
+.itemDesc {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: #666666;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .itemDesc {
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,61 @@
+---
+import styles from "./Reasons.module.css";
+
+const reasons = [
+  {
+    num: "01",
+    title: "初心者でも安心のパーソナルサポート",
+    tagline: "一人ひとりに寄り添う、オーダーメイドの整え方",
+    desc: "フィットネスが初めての方でも緊張せずに始められるよう、経験豊富なトレーナーがマンツーマンでサポート。体のクセを見極め、正しいフォームと無理のないペースで、あなたにとって最適な「整え方」を指導します。",
+    imgSrc:
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
+    imgAlt: "Personal trainer guiding a client gently",
+  },
+  {
+    num: "02",
+    title: "ヨガもピラティスもジムも、その日の気分で選び放題",
+    tagline: "静と動のバランスを、ライフスタイルに合わせて",
+    desc: "心を穏やかにするヨガ、インナーマッスルを鍛えるマシンピラティス、筋力と基礎代謝を高めるジムトレーニング。これらすべてを1つのスタジオで利用できます。体調やスケジュールに合わせて自由に組み合わせられます。",
+    imgSrc:
+      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80",
+    imgAlt: "Yoga session in a serene, naturally lit room",
+  },
+  {
+    num: "03",
+    title: "駅徒歩3分 × 手ぶらで通える快適な空間",
+    tagline: "日常の延長にある、ホテルスパのような心地よさ",
+    desc: "最寄り駅からわずか徒歩3分。ウェアやタオルのレンタル、アメニティも完備しているため、お仕事帰りやお出かけ前に「手ぶら」で気軽にお立ち寄りいただけます。都会の喧騒を忘れる静寂な空間を提供します。",
+    imgSrc:
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
+    imgAlt: "Luxurious spa-like facility inside the conditioning studio",
+  },
+];
+---
+
+<section class={styles.section} id="reasons">
+  <div class={styles.container}>
+    <div class={styles.header} data-reveal>
+      <span class={styles.tag}>OUR FEATURES</span>
+      <h2 class={styles.title}>選ばれる3つの理由</h2>
+    </div>
+
+    <div class={styles.flowList}>
+      {reasons.map((reason) => (
+        <div class={styles.row} data-reveal>
+          <div class={styles.imageCol}>
+            <div class={styles.imageFrame}>
+              <img src={reason.imgSrc} alt={reason.imgAlt} class={styles.image} loading="lazy" />
+              <div class={styles.imageOverlay}></div>
+            </div>
+          </div>
+          <div class={styles.textCol}>
+            <div class={styles.number}>{reason.num}</div>
+            <h3 class={styles.itemTitle}>{reason.title}</h3>
+            <p class={styles.itemTagline}>{reason.tagline}</p>
+            <p class={styles.itemDesc}>{reason.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

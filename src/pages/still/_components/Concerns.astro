@@ -1,0 +1,42 @@
+---
+import { Icon } from "astro-icon/components";
+import styles from "./Concerns.module.css";
+
+const items = [
+  {
+    text: "自分に合う運動がわからず、何から始めればいいか迷う",
+    desc: "ヨガ、ピラティス、ジム、どれが自分に適しているのか選択肢が多くて決めきれない。",
+  },
+  {
+    text: "これまでにスタジオやジムに挑戦したが、長続きしなかった",
+    desc: "最初は意気込むものの、飽きてしまったり、モチベーションが維持できずに幽霊会員に。",
+  },
+  {
+    text: "忙しい毎日の中で、決まった時間に通い続けるのが難しい",
+    desc: "スケジュールが不規則で、当日の気分や体調に合わせて柔軟にメニューを選びたい。",
+  },
+];
+---
+
+<section class={styles.section} id="concerns">
+  <div class={styles.container}>
+    <div class={styles.header} data-reveal>
+      <span class={styles.tag}>ANXIETY</span>
+      <h2 class={styles.title}>こんなお悩みはありませんか？</h2>
+    </div>
+
+    <div class={styles.grid}>
+      {items.map((item, idx) => (
+        <div class={styles.card} data-reveal style={`transition-delay: ${idx * 0.1}s;`}>
+          <div class={styles.iconWrapper}>
+            <Icon name="lucide:check" class={styles.icon} />
+          </div>
+          <div class={styles.content}>
+            <h3 class={styles.itemTitle}>{item.text}</h3>
+            <p class={styles.itemDesc}>{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
