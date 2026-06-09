@@ -82,6 +82,10 @@ Each website sample **must be fully independent**. This is a hard constraint:
 - When a figure, diagram, or illustration adds clarity, prefer inline SVG over raster images.
 - SVG shapes and illustrations are also a valid alternative or supplement to icon libraries when they fit the design better.
 
+## Routing Rules
+
+- Always use `import.meta.env.BASE_URL` as a prefix for internal links (e.g., `` `${base}page/` ``). Never use root-relative paths (`/path/`) — they break under the GitHub Pages base path. Relative paths (`./`) are also unreliable when the URL lacks a trailing slash.
+
 ## Code Rules
 
 - Keep code simple, efficient, and clean — prefer clarity over cleverness.

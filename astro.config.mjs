@@ -5,7 +5,7 @@ import icon from "astro-icon";
 
 export default defineConfig({
   site: "https://axunion.github.io",
-  base: "website-samples",
+  base: "/website-samples/",
   vite: {
     css: {
       transformer: "lightningcss",

@@ -1,15 +1,17 @@
 ---
 import styles from "./index.module.css";
 
+const base = import.meta.env.BASE_URL;
+
 const samples = [
   {
-    href: "/lumina-fit/",
+    href: `${base}lumina-fit/`,
     name: "LUMINA FIT",
     imgSrc:
       "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=800&fit=crop&q=80",
   },
   {
-    href: "/still/",
+    href: `${base}still/`,
     name: "STILL",
     imgSrc:
       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=800&fit=crop&q=80",
