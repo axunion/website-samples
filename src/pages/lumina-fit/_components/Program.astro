@@ -1,8 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import gymImg from "../_assets/program-gym.jpg";
-import pilatesImg from "../_assets/program-pilates.jpg";
-import yogaImg from "../_assets/program-yoga.jpg";
 import base from "../index.module.css";
 import styles from "./Program.module.css";
 
@@ -14,7 +10,8 @@ const programs = [
     desc: "呼吸と姿勢を整え、心身をゆるやかにリセット。初心者から経験者まで、自分のペースで深めることができます。",
     stars: "★★☆☆☆",
     starsLabel: "強度 2 / 5",
-    img: yogaImg,
+    imgSrc:
+      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=900&h=506&fit=crop&q=80",
     imgAlt: "静かなスタジオでヨガを行う女性",
   },
   {
@@ -24,7 +21,8 @@ const programs = [
     desc: "インナーマッスルに働きかけ、しなやかな姿勢へ導く。専用マシンを使い、体の深部から整えます。",
     stars: "★★★☆☆",
     starsLabel: "強度 3 / 5",
-    img: pilatesImg,
+    imgSrc:
+      "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=900&h=506&fit=crop&q=80",
     imgAlt: "マシンピラティスをするスタジオの様子",
   },
   {
@@ -34,7 +32,8 @@ const programs = [
     desc: "最新マシンで効率よくボディメイク。トレーニングの目的や体力に合わせて、自分だけのプログラムを組めます。",
     stars: "★★★★☆",
     starsLabel: "強度 4 / 5",
-    img: gymImg,
+    imgSrc:
+      "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=900&h=506&fit=crop&q=80",
     imgAlt: "洗練されたトレーニングジムの設備",
   },
 ];
@@ -86,11 +85,11 @@ const programs = [
         >
           <div class={styles.panelInner}>
             <div class={styles.panelImg}>
-              <Image
-                src={p.img}
+              <img
+                src={p.imgSrc}
                 alt={p.imgAlt}
-                width={900}
-                height={506}
+                width="900"
+                height="506"
                 loading={i === 0 ? "eager" : "lazy"}
               />
             </div>

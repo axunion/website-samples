@@ -1,10 +1,13 @@
 ---
-import { Image } from "astro:assets";
 import styles from "./index.module.css";
-import luminaFitHero from "./lumina-fit/_assets/hero-landscape.jpg";
 
 const samples = [
-  { href: "/lumina-fit/", name: "LUMINA FIT", img: luminaFitHero },
+  {
+    href: "/lumina-fit/",
+    name: "LUMINA FIT",
+    imgSrc:
+      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=800&fit=crop&q=80",
+  },
 ];
 ---
 
@@ -21,11 +24,11 @@ const samples = [
         samples.map((s) => (
           <li>
             <a href={s.href} class={styles.tile}>
-              <Image
-                src={s.img}
+              <img
+                src={s.imgSrc}
                 alt=""
-                width={800}
-                height={800}
+                width="800"
+                height="800"
                 class={styles.img}
               />
               <span class={styles.title}>{s.name}</span>

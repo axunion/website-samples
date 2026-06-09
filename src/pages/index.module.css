@@ -31,6 +31,7 @@
   border-radius: 12px;
   position: relative;
   text-decoration: none;
+  background-color: #d6d4d0;
 }
 
 .tile:focus-visible {

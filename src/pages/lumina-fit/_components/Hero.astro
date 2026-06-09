@@ -1,19 +1,11 @@
 ---
-import { getImage } from "astro:assets";
-import heroLandscapeSrc from "../_assets/hero-landscape.jpg";
-import heroPortraitSrc from "../_assets/hero-portrait.jpg";
 import base from "../index.module.css";
 import styles from "./Hero.module.css";
 
-const [heroPortrait, heroLandscape] = await Promise.all([
-  getImage({ src: heroPortraitSrc, width: 828, height: 1472, format: "webp" }),
-  getImage({
-    src: heroLandscapeSrc,
-    width: 1920,
-    height: 1080,
-    format: "webp",
-  }),
-]);
+const heroPortraitSrc =
+  "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=828&h=1472&fit=crop&q=80";
+const heroLandscapeSrc =
+  "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&h=1080&fit=crop&q=80";
 ---
 
 <section class={styles.hero} aria-labelledby="hero-heading">
@@ -21,10 +13,10 @@ const [heroPortrait, heroLandscape] = await Promise.all([
   <div class={styles.bg} aria-hidden="true">
     <picture>
       <!-- Portrait crop for mobile (< 768px) -->
-      <source media="(max-width: 767px)" srcset={heroPortrait.src} type="image/webp" />
+      <source media="(max-width: 767px)" srcset={heroPortraitSrc} />
       <!-- Landscape for tablet and up -->
       <img
-        src={heroLandscape.src}
+        src={heroLandscapeSrc}
         alt=""
         class={styles.bgImg}
         loading="eager"
