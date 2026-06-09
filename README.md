@@ -1,46 +1,35 @@
-# Astro Starter Kit: Basics
+# Website Samples
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+A catalog of website design samples built with Astro.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Overview
 
-## 🚀 Project Structure
+Each sample is a self-contained website demonstrating a distinct design direction. The catalog index lists all available samples.
 
-Inside of your Astro project, you'll see the following folders and files:
+Published at: https://axunion.github.io/website-samples
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## Tech Stack
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- **Framework**: Astro 6
+- **Package manager**: pnpm
+- **CSS**: CSS Modules with LightningCSS
+- **Linter / Formatter**: Biome
 
-## 🧞 Commands
+## Commands
 
-All commands are run from the root of the project, from a terminal:
+| Command        | Description                    |
+| :------------- | :----------------------------- |
+| `pnpm dev`     | Start local dev server         |
+| `pnpm build`   | Build for production           |
+| `pnpm preview` | Preview the production build   |
+| `pnpm check`   | Lint and type-check            |
+| `pnpm fix`     | Auto-fix lint issues           |
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+## Adding a Sample
 
-## 👀 Want to learn more?
+1. Create a new directory under `src/pages/[sample-name]/`
+2. Add an `index.astro` as the entry point
+3. Place all related files (components, assets) inside `_` prefixed subdirectories
+4. Register the sample in `src/pages/index.astro`
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Each sample must be fully independent — no shared code or styles between samples.

@@ -5,11 +5,12 @@
 
 ## Project Overview
 
-This repository is a **website sample catalog** published via GitHub Pages.
+This repository is a **website sample catalog** published via GitHub Pages at `https://axunion.github.io/website-samples`.
 
 - The root page (`src/pages/index.astro`) serves as the catalog index, listing all available samples with links.
 - Each sample lives in its own subdirectory under `src/pages/` and is completely self-contained.
 - No tests — this project contains static web pages only.
+- Deployment triggers only on changes to `src/pages/**`. Config, documentation, and other file changes do not trigger a deploy.
 
 ### Sample Directory Structure
 
