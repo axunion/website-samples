@@ -1,0 +1,185 @@
+/* Design tokens and layout primitives for SO_SEI WELLNESS PORTAL */
+
+.root {
+  --wp-bg: #f9f8f6;
+  --wp-bg-sub: #f0ede7;
+  --wp-bg-green: #2c4a3e;
+  --wp-green-mid: #3d6357;
+  --wp-text: #333333;
+  --wp-text-sub: #777770;
+  --wp-text-inv: #f5f3ef;
+  --wp-terracotta: #c87a53;
+  --wp-terracotta-dark: #b36040;
+  --wp-gold: #b59a73;
+  --wp-gold-light: #d4c4a8;
+  --wp-border: #e2ddd6;
+  --wp-border-light: #ede9e3;
+  --wp-shadow-sm: 0 2px 12px rgba(44, 74, 62, 0.06);
+  --wp-shadow: 0 8px 32px rgba(44, 74, 62, 0.09);
+  --wp-shadow-lg: 0 20px 56px rgba(44, 74, 62, 0.13);
+  --wp-radius: 4px;
+  --wp-radius-card: 8px;
+  --wp-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --wp-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --wp-header-h: 64px;
+  --wp-container: 1160px;
+  --wp-font-serif:
+    "YuMincho", "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro",
+    "HG明朝E", Georgia, serif;
+  --wp-font-sans:
+    system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+    "Yu Gothic", "Meiryo", sans-serif;
+
+  background-color: var(--wp-bg);
+  color: var(--wp-text);
+  font-family: var(--wp-font-sans);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Zero-specificity reset */
+:where(.root) *,
+:where(.root) *::before,
+:where(.root) *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:where(.root) img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+:where(.root) a {
+  color: inherit;
+  text-decoration: none;
+}
+:where(.root) button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+:where(.root) ul,
+:where(.root) ol {
+  list-style: none;
+}
+:where(.root) section {
+  scroll-margin-top: var(--wp-header-h);
+}
+
+/* Layout */
+.container {
+  width: 100%;
+  max-width: var(--wp-container);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* Section label (small uppercase english above heading) */
+.secLabel {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--wp-gold);
+  margin-bottom: 0.75rem;
+}
+
+/* Scroll reveal */
+.root [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.85s var(--wp-ease) var(--reveal-delay, 0s),
+    transform 0.85s var(--wp-ease) var(--reveal-delay, 0s);
+}
+.root [data-reveal][data-visible] {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .root [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Primary CTA – terracotta */
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background-color: var(--wp-terracotta);
+  color: #fff;
+  font-size: 0.875rem;
+  font-family: var(--wp-font-sans);
+  letter-spacing: 0.12em;
+  padding: 0.9rem 2.25rem;
+  border-radius: var(--wp-radius);
+  transition:
+    background-color 0.25s,
+    box-shadow 0.25s,
+    transform 0.25s var(--wp-ease);
+  white-space: nowrap;
+}
+@media (hover: hover) {
+  .ctaBtn:hover {
+    background-color: var(--wp-terracotta-dark);
+    box-shadow: 0 10px 28px rgba(200, 122, 83, 0.42);
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+.ctaBtn:active {
+  transform: scale(0.97);
+}
+.ctaBtn:focus-visible {
+  outline: 2px solid var(--wp-terracotta);
+  outline-offset: 4px;
+}
+
+/* Ghost CTA – outlined forest green */
+.ctaGhost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background-color: transparent;
+  color: var(--wp-bg-green);
+  border: 1.5px solid var(--wp-bg-green);
+  font-size: 0.875rem;
+  font-family: var(--wp-font-sans);
+  letter-spacing: 0.12em;
+  padding: 0.875rem 2.25rem;
+  border-radius: var(--wp-radius);
+  transition:
+    background-color 0.25s,
+    color 0.25s,
+    transform 0.25s var(--wp-ease);
+  white-space: nowrap;
+}
+@media (hover: hover) {
+  .ctaGhost:hover {
+    background-color: var(--wp-bg-green);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+}
+.ctaGhost:active {
+  transform: scale(0.97);
+}
+.ctaGhost:focus-visible {
+  outline: 2px solid var(--wp-bg-green);
+  outline-offset: 4px;
+}
+
+@media (min-width: 768px) {
+  .root {
+    --wp-header-h: 72px;
+  }
+  .container {
+    padding-inline: 2.5rem;
+  }
+}

@@ -1,0 +1,384 @@
+/* Plans page – SO_SEI WELLNESS PORTAL */
+
+/* ── Page header ─────────────────────────────────────────────────── */
+
+.pageTop {
+  margin-top: var(--wp-header-h);
+  padding-block: 5.5rem 3rem;
+  text-align: center;
+  background-color: var(--wp-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.pageTop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--wp-border-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--wp-border-light) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.6;
+}
+
+.pageTopInner {
+  position: relative;
+  z-index: 1;
+}
+
+.pageLabel {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--wp-gold);
+  margin-bottom: 1rem;
+}
+
+.pageTitle {
+  font-family: var(--wp-font-serif);
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--wp-bg-green);
+  margin-bottom: 1.25rem;
+}
+
+.pageSubtitle {
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: var(--wp-text-sub);
+  letter-spacing: 0.06em;
+}
+
+/* ── Plan cards ─────────────────────────────────────────────────── */
+
+.plansSection {
+  padding-block: 4.5rem 6rem;
+}
+
+.plansGrid {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* Individual plan card */
+.planCard {
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1.5px solid var(--wp-border);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: var(--wp-shadow-sm);
+  transition:
+    box-shadow 0.3s,
+    transform 0.3s var(--wp-ease);
+  position: relative;
+}
+@media (hover: hover) {
+  .planCard:hover {
+    box-shadow: var(--wp-shadow);
+    transform: translateY(-3px);
+  }
+}
+
+/* Recommended / featured card */
+.planCardFeatured {
+  border-color: var(--wp-gold);
+  box-shadow:
+    0 0 0 3px rgba(181, 154, 115, 0.18),
+    var(--wp-shadow);
+}
+
+.planRibbon {
+  position: absolute;
+  top: -1px;
+  right: 1.75rem;
+  background: linear-gradient(135deg, var(--wp-gold), #c8a96e);
+  color: #fff;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem 0.45rem;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 4px 12px rgba(181, 154, 115, 0.35);
+}
+
+.planType {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--wp-gold);
+  margin-bottom: 0.875rem;
+}
+
+.planName {
+  font-family: var(--wp-font-serif);
+  font-size: 1.375rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--wp-bg-green);
+  margin-bottom: 0.375rem;
+}
+
+.planNameSub {
+  font-size: 0.8rem;
+  color: var(--wp-text-sub);
+  letter-spacing: 0.08em;
+  margin-bottom: 2rem;
+}
+
+.planDivider {
+  border: none;
+  border-top: 1px solid var(--wp-border-light);
+  margin-bottom: 2rem;
+}
+
+.planPrice {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  margin-bottom: 0.375rem;
+}
+
+.planPriceNum {
+  font-family: var(--wp-font-serif);
+  font-size: 2.5rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--wp-bg-green);
+  line-height: 1;
+}
+
+.planPriceUnit {
+  font-size: 0.85rem;
+  color: var(--wp-text-sub);
+  letter-spacing: 0.06em;
+}
+
+.planPriceNote {
+  font-size: 0.72rem;
+  color: var(--wp-text-sub);
+  letter-spacing: 0.06em;
+  margin-bottom: 2rem;
+}
+
+.planFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+.planFeature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  color: var(--wp-text);
+  line-height: 1.5;
+}
+
+.planFeatureIcon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--wp-bg-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.planFeatureIconGold {
+  background-color: var(--wp-gold);
+}
+
+/* check SVG inside icon */
+.planFeatureIcon svg {
+  width: 8px;
+  height: 8px;
+}
+
+.planCta {
+  display: block;
+  text-align: center;
+  padding: 0.95rem;
+  border-radius: var(--wp-radius);
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  border: 1.5px solid var(--wp-bg-green);
+  color: var(--wp-bg-green);
+  transition:
+    background-color 0.25s,
+    color 0.25s,
+    transform 0.2s var(--wp-ease);
+}
+@media (hover: hover) {
+  .planCta:hover {
+    background-color: var(--wp-bg-green);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+}
+.planCta:active {
+  transform: scale(0.98);
+}
+
+.planCtaFeatured {
+  background-color: var(--wp-terracotta);
+  border-color: var(--wp-terracotta);
+  color: #fff;
+}
+@media (hover: hover) {
+  .planCtaFeatured:hover {
+    background-color: var(--wp-terracotta-dark);
+    border-color: var(--wp-terracotta-dark);
+  }
+}
+
+/* ── Benefits section ────────────────────────────────────────────── */
+
+.benefits {
+  background-color: var(--wp-bg-sub);
+  padding-block: 5.5rem;
+}
+
+.benefitsHeading {
+  font-family: var(--wp-font-serif);
+  font-size: clamp(1.25rem, 3vw, 1.875rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--wp-bg-green);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.benefitsGrid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.benefitItem {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: var(--wp-radius-card);
+  border: 1px solid var(--wp-border-light);
+}
+
+.benefitIconWrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--wp-bg-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+}
+
+.benefitTitle {
+  font-family: var(--wp-font-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--wp-bg-green);
+  margin-bottom: 0.375rem;
+}
+
+.benefitDesc {
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: var(--wp-text-sub);
+  letter-spacing: 0.04em;
+}
+
+/* ── Trial banner ────────────────────────────────────────────────── */
+
+.trialBanner {
+  padding-block: 5.5rem;
+  text-align: center;
+  background-color: var(--wp-bg-green);
+  color: #fff;
+}
+
+.trialLabel {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1rem;
+}
+
+.trialHeading {
+  font-family: var(--wp-font-serif);
+  font-size: clamp(1.375rem, 3vw, 2rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1.9;
+  margin-bottom: 0.75rem;
+}
+
+.trialNote {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.06em;
+  margin-bottom: 2.5rem;
+}
+
+.trialBtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.trialBtnWhite {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: var(--wp-bg-green);
+  font-size: 0.875rem;
+  letter-spacing: 0.12em;
+  padding: 0.9rem 2.25rem;
+  border-radius: var(--wp-radius);
+  transition:
+    background-color 0.25s,
+    transform 0.25s var(--wp-ease);
+}
+@media (hover: hover) {
+  .trialBtnWhite:hover {
+    background-color: #f5f3ef;
+    transform: translateY(-2px);
+  }
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+
+@media (min-width: 640px) {
+  .benefitsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .plansGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .benefitsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

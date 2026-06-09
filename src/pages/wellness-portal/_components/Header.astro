@@ -1,0 +1,74 @@
+---
+import base from "../_styles/base.module.css";
+import styles from "./Header.module.css";
+
+interface Props {
+  currentPage?: string;
+}
+const { currentPage = "" } = Astro.props;
+
+const baseUrl = import.meta.env.BASE_URL;
+const root = `${baseUrl}wellness-portal/`;
+
+const navLinks = [
+  { href: `${root}studios/`, label: "店舗を探す", key: "studios" },
+  { href: `${root}plans/`, label: "プラン・料金", key: "plans" },
+  { href: `${root}column/`, label: "コラム", key: "column" },
+  { href: `${root}faq/`, label: "FAQ", key: "faq" },
+];
+---
+
+<header class={styles.header} data-header>
+  <div class:list={[base.container, styles.inner]}>
+    <a href={root} class={styles.logo} aria-label="SO_SEI トップへ">
+      <svg class={styles.logoMark} viewBox="0 0 32 36" fill="none" aria-hidden="true">
+        <!-- Leaf form: stem with two curving leaves -->
+        <line x1="16" y1="4" x2="16" y2="34" stroke="currentColor" stroke-width="1"/>
+        <path d="M16 16 C 10 14, 4 10, 5 4 C 6 10, 12 14, 16 16Z"
+          fill="currentColor" fill-opacity="0.9"/>
+        <path d="M16 16 C 22 14, 28 10, 27 4 C 26 10, 20 14, 16 16Z"
+          fill="currentColor" fill-opacity="0.5"/>
+        <path d="M16 26 C 11 24, 7 20, 8 14 C 9 20, 13 24, 16 26Z"
+          fill="currentColor" fill-opacity="0.6"/>
+      </svg>
+      <span class={styles.logoText}>SO_SEI</span>
+    </a>
+
+    <nav class={styles.desktopNav} aria-label="メインナビゲーション">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class:list={[styles.navLink, { [styles.navLinkActive]: currentPage === link.key }]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <a href={`${root}studios/`} class:list={[base.ctaBtn, styles.ctaDesktop]}>
+      体験予約
+    </a>
+
+    <button
+      class={styles.hamburger}
+      data-menu-btn
+      type="button"
+      aria-label="メニューを開く"
+      aria-expanded="false"
+      aria-controls="wp-mobile-menu"
+    >
+      <span class={styles.hamburgerBar}></span>
+      <span class={styles.hamburgerBar}></span>
+      <span class={styles.hamburgerBar}></span>
+    </button>
+  </div>
+
+  <div id="wp-mobile-menu" class={styles.mobileMenu} data-mobile-menu aria-hidden="true">
+    {navLinks.map(link => (
+      <a href={link.href} class={styles.mobileNavLink}>{link.label}</a>
+    ))}
+    <a href={`${root}studios/`} class:list={[base.ctaBtn, styles.ctaMobile]}>
+      体験予約
+    </a>
+  </div>
+</header>

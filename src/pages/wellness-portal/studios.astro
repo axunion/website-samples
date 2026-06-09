@@ -1,0 +1,248 @@
+---
+import Layout from "./_components/Layout.astro";
+import base from "./_styles/base.module.css";
+import { fallbackGreen } from "./_util/fallbacks";
+import styles from "./studios.module.css";
+
+const baseUrl = import.meta.env.BASE_URL;
+const root = `${baseUrl}wellness-portal/`;
+
+const studios = [
+  {
+    id: "ebisu",
+    name: "SO_SEI 恵比寿",
+    area: "渋谷・恵比寿",
+    programs: ["ヨガ", "ピラティス"],
+    purpose: ["yoga", "pilates"],
+    walk: "恵比寿駅 徒歩3分",
+    price: "¥12,800〜",
+    img: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=700&q=80&fit=crop",
+  },
+  {
+    id: "omotesando",
+    name: "SO_SEI 表参道",
+    area: "表参道・原宿",
+    programs: ["ヨガ", "ジム"],
+    purpose: ["yoga", "gym"],
+    walk: "表参道駅 徒歩5分",
+    price: "¥14,800〜",
+    img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&q=80&fit=crop",
+  },
+  {
+    id: "ginza",
+    name: "SO_SEI 銀座",
+    area: "銀座",
+    programs: ["ピラティス", "ジム"],
+    purpose: ["pilates", "gym"],
+    walk: "銀座駅 徒歩2分",
+    price: "¥15,800〜",
+    img: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=700&q=80&fit=crop",
+  },
+  {
+    id: "shibuya",
+    name: "SO_SEI 渋谷",
+    area: "渋谷・恵比寿",
+    programs: ["ヨガ", "ピラティス", "ジム"],
+    purpose: ["yoga", "pilates", "gym"],
+    walk: "渋谷駅 徒歩6分",
+    price: "¥12,800〜",
+    img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80&fit=crop",
+  },
+  {
+    id: "aoyama",
+    name: "SO_SEI 青山",
+    area: "表参道・原宿",
+    programs: ["ヨガ", "ピラティス"],
+    purpose: ["yoga", "pilates"],
+    walk: "外苑前駅 徒歩4分",
+    price: "¥13,800〜",
+    img: "https://images.unsplash.com/photo-1566737236500-f929872acb28?w=700&q=80&fit=crop",
+  },
+  {
+    id: "roppongi",
+    name: "SO_SEI 六本木",
+    area: "六本木・麻布",
+    programs: ["ヨガ", "ジム"],
+    purpose: ["yoga", "gym"],
+    walk: "六本木駅 徒歩7分",
+    price: "¥16,800〜",
+    img: "https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=700&q=80&fit=crop",
+  },
+];
+
+const areas = ["渋谷・恵比寿", "表参道・原宿", "銀座", "六本木・麻布"];
+const purposes = [
+  { key: "all", label: "すべて" },
+  { key: "yoga", label: "ヨガ" },
+  { key: "pilates", label: "ピラティス" },
+  { key: "gym", label: "ジム" },
+];
+---
+
+<Layout
+  title="店舗一覧"
+  description="SO_SEI の全スタジオ一覧。エリアや目的から自分に合ったスタジオを見つけてください。"
+  currentPage="studios"
+>
+  <!-- ─── Page hero ─────────────────────────────────────────── -->
+  <div class={styles.pageHero}>
+    <img
+      class={styles.pageHeroBg}
+      src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1400&q=85&fit=crop"
+      alt="静かな森"
+      width="1400"
+      height="800"
+      onerror={fallbackGreen}
+    />
+    <div class={styles.pageHeroOverlay}></div>
+    <span class={styles.pageHeroSub}>Studio List</span>
+    <h1 class={styles.pageHeroText}>店舗一覧</h1>
+  </div>
+
+  <!-- ─── Filter bar ────────────────────────────────────────── -->
+  <div class={styles.filterSection} role="search" aria-label="スタジオ絞り込み">
+    <div class={base.container}>
+      <div class={styles.filterInner}>
+        <!-- Purpose tabs -->
+        <div class={styles.purposeTabs} role="tablist" aria-label="プログラムで絞り込み">
+          {purposes.map(p => (
+            <button
+              class={styles.purposeTab}
+              role="tab"
+              data-purpose={p.key}
+              aria-selected={p.key === 'all' ? 'true' : 'false'}
+              type="button"
+            >
+              {p.label}
+            </button>
+          ))}
+        </div>
+
+        <!-- Area checkboxes -->
+        <div class={styles.areaFilters}>
+          <span class={styles.areaLabel}>エリア</span>
+          {areas.map(area => (
+            <label class={styles.areaCheck}>
+              <input type="checkbox" data-area={area} />
+              {area}
+            </label>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Results ───────────────────────────────────────────── -->
+  <div class={base.container}>
+    <div class={styles.resultsRow} data-reveal>
+      <p class={styles.resultsCount}>
+        <strong data-count>{studios.length}</strong>件のスタジオ
+      </p>
+    </div>
+
+    <div class={styles.studioGrid} id="studio-grid">
+      {studios.map((s, i) => (
+        <article
+          class={styles.studioCard}
+          data-card
+          data-purpose={s.purpose.join(' ')}
+          data-area={s.area}
+          data-reveal
+          style={`--reveal-delay: ${i * 0.07}s`}
+        >
+          <div class={styles.studioCardImgWrap}>
+            <img
+              class={styles.studioCardImg}
+              src={s.img}
+              alt={s.name}
+              width="700"
+              height="394"
+              onerror={fallbackGreen}
+            />
+          </div>
+          <div class={styles.studioCardBody}>
+            <div class={styles.studioCardTags}>
+              {s.programs.map(p => <span class={styles.studioCardTag}>{p}</span>)}
+            </div>
+            <h2 class={styles.studioCardName}>{s.name}</h2>
+            <p class={styles.studioCardArea}>{s.area}</p>
+            <p class={styles.studioCardWalk}>
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <circle cx="8" cy="6" r="2.5" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M8 2C5.24 2 3 4.24 3 7c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z"
+                  stroke="currentColor" stroke-width="1.2" fill="none"/>
+              </svg>
+              {s.walk}
+            </p>
+            <div class={styles.studioCardFooter}>
+              <p class={styles.studioCardPrice}>
+                月額 <strong>{s.price}</strong>
+              </p>
+              <a href={`${root}studio-detail/`} class={styles.studioCardLink}>
+                詳細を見る →
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <p class={styles.noResults} id="no-results">
+      条件に合うスタジオが見つかりませんでした。<br />別の条件でお試しください。
+    </p>
+  </div>
+</Layout>
+
+<script>
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-card]'));
+  const cardPurposes = cards.map(c => (c.dataset.purpose ?? '').split(' '));
+  const purposeBtns = Array.from(
+    document.querySelectorAll<HTMLButtonElement>('[data-purpose]')
+  );
+  const areaCheckboxes = Array.from(
+    document.querySelectorAll<HTMLInputElement>('[data-area]')
+  );
+  const countEl = document.querySelector<HTMLElement>('[data-count]');
+  const noResults = document.getElementById('no-results');
+
+  let activePurpose = 'all';
+  let activeAreas: Set<string> = new Set();
+
+  function applyFilters() {
+    let visible = 0;
+    for (let i = 0; i < cards.length; i++) {
+      const purposeMatch = activePurpose === 'all' || cardPurposes[i].includes(activePurpose);
+      const areaMatch = activeAreas.size === 0 || activeAreas.has(cards[i].dataset.area ?? '');
+
+      if (purposeMatch && areaMatch) {
+        cards[i].removeAttribute('data-hidden');
+        visible++;
+      } else {
+        cards[i].setAttribute('data-hidden', '');
+      }
+    }
+    if (countEl) countEl.textContent = String(visible);
+    if (noResults) {
+      noResults.toggleAttribute('data-visible', visible === 0);
+    }
+  }
+
+  for (const btn of purposeBtns) {
+    btn.addEventListener('click', () => {
+      activePurpose = btn.dataset.purpose ?? 'all';
+      for (const b of purposeBtns) {
+        b.setAttribute('aria-selected', String(b === btn));
+      }
+      applyFilters();
+    });
+  }
+
+  for (const cb of areaCheckboxes) {
+    cb.addEventListener('change', () => {
+      const area = cb.dataset.area ?? '';
+      if (cb.checked) activeAreas.add(area);
+      else activeAreas.delete(area);
+      applyFilters();
+    });
+  }
+</script>

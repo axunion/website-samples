@@ -1,0 +1,207 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "./_components/Layout.astro";
+import base from "./_styles/base.module.css";
+import styles from "./plans.module.css";
+
+const baseUrl = import.meta.env.BASE_URL;
+const root = `${baseUrl}wellness-portal/`;
+
+const plans = [
+  {
+    type: "Monthly",
+    name: "マンスリー4",
+    nameSub: "月4回プラン",
+    price: "12,800",
+    priceUnit: "円 / 月（税込）",
+    note: "初月入会金 ¥10,800（初回のみ）",
+    featured: false,
+    features: [
+      { text: "月4回のレッスン受け放題", gold: false },
+      { text: "全店舗共通でご利用可能", gold: false },
+      { text: "タオルレンタル無料", gold: false },
+      { text: "シャワー・更衣室利用", gold: false },
+      { text: "オーガニックハーブティ 1杯", gold: false },
+    ],
+    ctaLabel: "このプランを選ぶ",
+  },
+  {
+    type: "Most Popular",
+    name: "マンスリーフリー",
+    nameSub: "通い放題プラン",
+    price: "19,800",
+    priceUnit: "円 / 月（税込）",
+    note: "初月入会金 ¥10,800（初回のみ）",
+    featured: true,
+    features: [
+      { text: "月額定額でレッスン通い放題", gold: true },
+      { text: "全店舗共通でご利用可能", gold: true },
+      { text: "タオルレンタル無料", gold: false },
+      { text: "シャワー・更衣室利用", gold: false },
+      { text: "オーガニックハーブティ 毎回無料", gold: true },
+      { text: "優先予約特典あり", gold: true },
+    ],
+    ctaLabel: "このプランを選ぶ",
+  },
+  {
+    type: "Drop-in",
+    name: "ドロップイン",
+    nameSub: "都度利用プラン",
+    price: "3,500",
+    priceUnit: "円 / 回（税込）",
+    note: "予約はWebまたはアプリから",
+    featured: false,
+    features: [
+      { text: "1回から気軽に参加", gold: false },
+      { text: "全店舗でご利用可能", gold: false },
+      { text: "タオルレンタル ¥300（別途）", gold: false },
+      { text: "シャワー・更衣室利用", gold: false },
+    ],
+    ctaLabel: "予約・申し込みへ",
+  },
+];
+
+const benefits = [
+  {
+    icon: "lucide:leaf",
+    title: "オーガニックハーブティ",
+    desc: "レッスン後に身体を整えるオーガニックハーブティをご提供。心も身体もほぐれる一杯です。",
+  },
+  {
+    icon: "lucide:towel-rack",
+    title: "タオルレンタル無料",
+    desc: "月額プランの方は毎回のレッスンにタオルが無料。手ぶらでご来店いただけます。",
+  },
+  {
+    icon: "lucide:shower-head",
+    title: "シャワー完備",
+    desc: "男女別シャワールームを完備。レッスン後そのまま仕事や外出先へお出かけいただけます。",
+  },
+  {
+    icon: "lucide:star",
+    title: "全店舗共通利用",
+    desc: "ひとつのメンバーシップで全店舗をご利用いただけます。通勤ルートや気分に合わせて自由に。",
+  },
+  {
+    icon: "lucide:calendar-check",
+    title: "アプリで簡単予約",
+    desc: "スマートフォンアプリから24時間いつでも予約・変更が可能。直前キャンセルも対応。",
+  },
+  {
+    icon: "lucide:award",
+    title: "体験レッスン特典",
+    desc: "初めての方は体験レッスン料 ¥1,100（税込）でご参加いただけます。まずはお気軽に。",
+  },
+];
+---
+
+<Layout
+  title="料金・プラン"
+  description="SO_SEI の料金・プラン一覧。月額定額から都度利用まで、あなたのライフスタイルに合わせてお選びいただけます。"
+  currentPage="plans"
+>
+  <!-- ─── Page header ────────────────────────────────────────── -->
+  <div class={styles.pageTop}>
+    <div class:list={[base.container, styles.pageTopInner]}>
+      <span class={styles.pageLabel} data-reveal>Price & Plans</span>
+      <h1 class={styles.pageTitle} data-reveal style="--reveal-delay: 0.1s">料金のご案内</h1>
+      <p class={styles.pageSubtitle} data-reveal style="--reveal-delay: 0.2s">
+        あなたのライフスタイルに合わせた<br />
+        3つのプランをご用意しています。
+      </p>
+    </div>
+  </div>
+
+  <!-- ─── Plan cards ────────────────────────────────────────── -->
+  <section class={styles.plansSection}>
+    <div class={base.container}>
+      <div class={styles.plansGrid}>
+        {plans.map((plan, i) => (
+          <article
+            class:list={[styles.planCard, { [styles.planCardFeatured]: plan.featured }]}
+            data-reveal
+            style={`--reveal-delay: ${i * 0.1}s`}
+          >
+            {plan.featured && (
+              <div class={styles.planRibbon} aria-label="おすすめ">Recommended</div>
+            )}
+            <p class={styles.planType}>{plan.type}</p>
+            <h2 class={styles.planName}>{plan.name}</h2>
+            <p class={styles.planNameSub}>{plan.nameSub}</p>
+            <hr class={styles.planDivider} />
+            <div class={styles.planPrice}>
+              <span class={styles.planPriceNum}>¥{plan.price}</span>
+              <span class={styles.planPriceUnit}>{plan.priceUnit}</span>
+            </div>
+            <p class={styles.planPriceNote}>{plan.note}</p>
+            <ul class={styles.planFeatures}>
+              {plan.features.map(f => (
+                <li class={styles.planFeature}>
+                  <span
+                    class:list={[
+                      styles.planFeatureIcon,
+                      { [styles.planFeatureIconGold]: f.gold }
+                    ]}
+                    aria-hidden="true"
+                  >
+                    <svg viewBox="0 0 8 8" fill="none">
+                      <polyline points="1.5,4 3.5,6 6.5,2" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  {f.text}
+                </li>
+              ))}
+            </ul>
+            <a
+              href={`${root}studios/`}
+              class:list={[styles.planCta, { [styles.planCtaFeatured]: plan.featured }]}
+            >
+              {plan.ctaLabel}
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Benefits ─────────────────────────────────────────── -->
+  <section class={styles.benefits}>
+    <div class={base.container}>
+      <h2 class={styles.benefitsHeading} data-reveal>
+        すべてのプランに含まれるもの・体験特典
+      </h2>
+      <div class={styles.benefitsGrid}>
+        {benefits.map((b, i) => (
+          <div class={styles.benefitItem} data-reveal style={`--reveal-delay: ${i * 0.07}s`}>
+            <div class={styles.benefitIconWrap} aria-hidden="true">
+              <Icon name={b.icon} size={22} />
+            </div>
+            <div>
+              <h3 class={styles.benefitTitle}>{b.title}</h3>
+              <p class={styles.benefitDesc}>{b.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Trial banner ──────────────────────────────────────── -->
+  <section class={styles.trialBanner}>
+    <div class={base.container}>
+      <span class={styles.trialLabel} data-reveal>First Trial</span>
+      <h2 class={styles.trialHeading} data-reveal style="--reveal-delay: 0.1s">
+        まずは ¥1,100 の体験レッスンから。<br />あなたの「はじめの一歩」を応援します。
+      </h2>
+      <p class={styles.trialNote} data-reveal style="--reveal-delay: 0.15s">
+        入会金・月謝なし。体験後の勧誘は一切ございません。
+      </p>
+      <div class={styles.trialBtns} data-reveal style="--reveal-delay: 0.2s">
+        <a href={`${root}studios/`} class={styles.trialBtnWhite}>体験レッスンを申し込む</a>
+        <a href={`${root}faq/`} class={base.ctaGhost} style="color:#fff;border-color:rgba(255,255,255,0.5)">
+          よくある質問を見る
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

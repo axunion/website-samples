@@ -1,0 +1,181 @@
+/* Header – SO_SEI WELLNESS PORTAL */
+
+.header {
+  position: fixed;
+  top: 0;
+  inset-inline: 0;
+  z-index: 100;
+  height: var(--wp-header-h);
+  transition:
+    background-color 0.4s,
+    backdrop-filter 0.4s,
+    box-shadow 0.4s;
+}
+.header[data-scrolled] {
+  background-color: rgba(249, 248, 246, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--wp-border);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 2rem;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: var(--wp-bg-green);
+  flex-shrink: 0;
+}
+.logoMark {
+  width: 28px;
+  height: 28px;
+  color: var(--wp-bg-green);
+}
+.logoText {
+  font-family: var(--wp-font-serif);
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  color: var(--wp-bg-green);
+  line-height: 1;
+}
+
+/* Desktop nav */
+.desktopNav {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+  margin-inline-start: auto;
+}
+.navLink {
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  color: var(--wp-text);
+  padding-block: 0.25rem;
+  position: relative;
+  transition: color 0.2s;
+}
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--wp-terracotta);
+  transition: width 0.3s var(--wp-ease);
+}
+@media (hover: hover) {
+  .navLink:hover {
+    color: var(--wp-bg-green);
+  }
+  .navLink:hover::after {
+    width: 100%;
+  }
+}
+.navLinkActive {
+  color: var(--wp-bg-green);
+}
+.navLinkActive::after {
+  width: 100%;
+}
+
+.ctaDesktop {
+  display: none;
+  font-size: 0.8rem;
+  padding: 0.65rem 1.5rem;
+  margin-inline-start: 0.5rem;
+}
+
+/* Hamburger */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  margin-inline-start: auto;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  color: var(--wp-bg-green);
+}
+.hamburgerBar {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: currentcolor;
+  transition:
+    transform 0.3s var(--wp-ease),
+    opacity 0.3s;
+  transform-origin: center;
+}
+[data-open] ~ * .hamburger .hamburgerBar:nth-child(1),
+[aria-expanded="true"] .hamburgerBar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+[aria-expanded="true"] .hamburgerBar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+[aria-expanded="true"] .hamburgerBar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* Mobile menu */
+.mobileMenu {
+  position: fixed;
+  inset: var(--wp-header-h) 0 0 0;
+  background-color: rgba(249, 248, 246, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-12px);
+  transition:
+    opacity 0.35s var(--wp-ease),
+    transform 0.35s var(--wp-ease);
+}
+.mobileMenu[data-open] {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+.mobileNavLink {
+  font-family: var(--wp-font-serif);
+  font-size: 1.375rem;
+  letter-spacing: 0.18em;
+  color: var(--wp-bg-green);
+  transition: color 0.2s;
+}
+@media (hover: hover) {
+  .mobileNavLink:hover {
+    color: var(--wp-terracotta);
+  }
+}
+.ctaMobile {
+  margin-top: 0.5rem;
+  padding: 1rem 3rem;
+}
+
+@media (min-width: 768px) {
+  .desktopNav {
+    display: flex;
+  }
+  .ctaDesktop {
+    display: inline-flex;
+  }
+  .hamburger {
+    display: none;
+  }
+}

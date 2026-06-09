@@ -1,0 +1,126 @@
+/* Footer – SO_SEI WELLNESS PORTAL */
+
+.footer {
+  background-color: var(--wp-bg-green);
+  color: var(--wp-text-inv);
+  padding-block: 4rem 2.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+/* Brand block */
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.logoWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: #fff;
+}
+.logoMark {
+  width: 24px;
+  height: 28px;
+  opacity: 0.9;
+}
+.logoText {
+  font-family: var(--wp-font-serif);
+  font-size: 1.05rem;
+  letter-spacing: 0.22em;
+  color: #fff;
+}
+.tagline {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: rgba(245, 243, 239, 0.6);
+  line-height: 1.6;
+}
+
+/* Nav columns */
+.navCols {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+.navCol {
+}
+.navTitle {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--wp-gold-light, #d4c4a8);
+  margin-bottom: 1rem;
+}
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+.navLink {
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: rgba(245, 243, 239, 0.72);
+  transition: color 0.2s;
+}
+@media (hover: hover) {
+  .navLink:hover {
+    color: #fff;
+  }
+}
+
+/* Bottom bar */
+.divider {
+  border: none;
+  border-top: 1px solid rgba(245, 243, 239, 0.15);
+  margin-bottom: 1.5rem;
+}
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.legalLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.legalLink {
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  color: rgba(245, 243, 239, 0.5);
+  transition: color 0.2s;
+}
+@media (hover: hover) {
+  .legalLink:hover {
+    color: rgba(245, 243, 239, 0.85);
+  }
+}
+.copyright {
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  color: rgba(245, 243, 239, 0.4);
+}
+
+@media (min-width: 640px) {
+  .navCols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+  }
+  .navCols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

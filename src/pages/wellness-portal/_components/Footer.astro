@@ -1,0 +1,71 @@
+---
+import base from "../_styles/base.module.css";
+import styles from "./Footer.module.css";
+
+const baseUrl = import.meta.env.BASE_URL;
+const root = `${baseUrl}wellness-portal/`;
+---
+
+<footer class={styles.footer}>
+  <div class={base.container}>
+    <div class={styles.grid}>
+      <div class={styles.brand}>
+        <div class={styles.logoWrap}>
+          <svg class={styles.logoMark} viewBox="0 0 32 36" fill="none" aria-hidden="true">
+            <line x1="16" y1="4" x2="16" y2="34" stroke="currentColor" stroke-width="1"/>
+            <path d="M16 16 C 10 14, 4 10, 5 4 C 6 10, 12 14, 16 16Z"
+              fill="currentColor" fill-opacity="0.9"/>
+            <path d="M16 16 C 22 14, 28 10, 27 4 C 26 10, 20 14, 16 16Z"
+              fill="currentColor" fill-opacity="0.5"/>
+            <path d="M16 26 C 11 24, 7 20, 8 14 C 9 20, 13 24, 16 26Z"
+              fill="currentColor" fill-opacity="0.6"/>
+          </svg>
+          <span class={styles.logoText}>SO_SEI</span>
+        </div>
+        <p class={styles.tagline}>
+          心と身体を、自然な状態へ還す。<br />
+          ウェルネス複合スタジオ
+        </p>
+      </div>
+
+      <nav class={styles.navCols} aria-label="フッターナビゲーション">
+        <div class={styles.navCol}>
+          <p class={styles.navTitle}>サービス</p>
+          <ul class={styles.navList}>
+            <li><a href={`${root}studios/`} class={styles.navLink}>店舗を探す</a></li>
+            <li><a href={`${root}plans/`} class={styles.navLink}>プラン・料金</a></li>
+            <li><a href={`${root}studio-detail/`} class={styles.navLink}>店舗詳細</a></li>
+          </ul>
+        </div>
+        <div class={styles.navCol}>
+          <p class={styles.navTitle}>情報</p>
+          <ul class={styles.navList}>
+            <li><a href={`${root}column/`} class={styles.navLink}>コラム</a></li>
+            <li><a href={`${root}faq/`} class={styles.navLink}>よくある質問</a></li>
+          </ul>
+        </div>
+        <div class={styles.navCol}>
+          <p class={styles.navTitle}>会社情報</p>
+          <ul class={styles.navList}>
+            <li><a href="#" class={styles.navLink}>会社概要</a></li>
+            <li><a href="#" class={styles.navLink}>採用情報</a></li>
+            <li><a href="#" class={styles.navLink}>お問い合わせ</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <hr class={styles.divider} />
+
+    <div class={styles.bottom}>
+      <nav class={styles.legalLinks} aria-label="法的情報">
+        <a href="#" class={styles.legalLink}>プライバシーポリシー</a>
+        <a href="#" class={styles.legalLink}>特定商取引法に基づく表記</a>
+        <a href="#" class={styles.legalLink}>利用規約</a>
+      </nav>
+      <p class={styles.copyright}>
+        &copy; {new Date().getFullYear()} SO_SEI WELLNESS PORTAL
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,94 @@
+---
+import base from "../_styles/base.module.css";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  currentPage?: string;
+}
+const {
+  title,
+  description = "SO_SEI WELLNESS PORTAL — 心と身体を、自然な状態へ還す。ヨガ・ピラティス・ジム複合スタジオ。",
+  currentPage = "",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | SO_SEI WELLNESS</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <div class={base.root}>
+      <Header currentPage={currentPage} />
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<script>
+  // Scroll reveal
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = document.querySelectorAll<HTMLElement>('[data-reveal]');
+
+  if (reducedMotion) {
+    for (const el of revealEls) el.setAttribute('data-visible', '');
+  } else {
+    const io = new IntersectionObserver(
+      entries => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.setAttribute('data-visible', '');
+            io.unobserve(e.target);
+          }
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    for (const el of revealEls) io.observe(el);
+  }
+
+  // Sticky header background
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  if (header) {
+    const update = () => header.toggleAttribute('data-scrolled', window.scrollY > 30);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+
+  // Mobile menu toggle
+  const menuBtn = document.querySelector<HTMLButtonElement>('[data-menu-btn]');
+  const mobileMenu = document.querySelector<HTMLElement>('[data-mobile-menu]');
+  if (menuBtn && mobileMenu) {
+    function closeMenu() {
+      mobileMenu!.removeAttribute('data-open');
+      menuBtn!.setAttribute('aria-expanded', 'false');
+      mobileMenu!.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.hasAttribute('data-open');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        mobileMenu.setAttribute('data-open', '');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target instanceof HTMLAnchorElement) closeMenu();
+    });
+  }
+</script>

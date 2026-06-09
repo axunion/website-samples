@@ -1,0 +1,236 @@
+/* FAQ page – SO_SEI WELLNESS PORTAL */
+
+/* ── Page header ─────────────────────────────────────────────────── */
+
+.pageTop {
+  margin-top: var(--wp-header-h);
+  padding-block: 5rem 3.5rem;
+  text-align: center;
+  background-color: var(--wp-bg-sub);
+  position: relative;
+  overflow: hidden;
+}
+
+.pageTop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 100%,
+    rgba(44, 74, 62, 0.06) 0%,
+    transparent 70%
+  );
+}
+
+.pageTopInner {
+  position: relative;
+  z-index: 1;
+}
+
+.pageLabel {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--wp-gold);
+  margin-bottom: 1rem;
+}
+
+.pageTitle {
+  font-family: var(--wp-font-serif);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--wp-bg-green);
+  margin-bottom: 1rem;
+}
+
+.pageSubtitle {
+  font-size: 0.9rem;
+  color: var(--wp-text-sub);
+  letter-spacing: 0.07em;
+  line-height: 1.8;
+}
+
+/* ── FAQ section ─────────────────────────────────────────────────── */
+
+.faqSection {
+  padding-block: 5rem 6rem;
+}
+
+.faqCategories {
+  display: grid;
+  gap: 4rem;
+}
+
+.faqCatTitle {
+  font-family: var(--wp-font-serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--wp-bg-green);
+  margin-bottom: 2rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid var(--wp-border);
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.faqCatTitle::before {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 1.1em;
+  background-color: var(--wp-terracotta);
+  border-radius: 2px;
+}
+
+/* Accordion */
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.faqItem {
+  border-bottom: 1px solid var(--wp-border-light);
+}
+
+.faqItem:first-child {
+  border-top: 1px solid var(--wp-border-light);
+}
+
+.faqQuestion {
+  display: flex;
+  width: 100%;
+  text-align: left;
+  padding-block: 1.375rem;
+  gap: 1.25rem;
+  align-items: flex-start;
+  color: var(--wp-text);
+  background-color: transparent;
+  transition: color 0.2s;
+}
+@media (hover: hover) {
+  .faqQuestion:hover {
+    color: var(--wp-bg-green);
+  }
+}
+
+.faqQ {
+  font-family: var(--wp-font-serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--wp-terracotta);
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+  font-style: italic;
+}
+
+.faqQuestionText {
+  flex: 1;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  line-height: 1.7;
+}
+
+.faqIcon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--wp-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1rem;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s,
+    transform 0.35s var(--wp-ease);
+  color: var(--wp-text-sub);
+}
+
+.faqQuestion[aria-expanded="true"] .faqIcon {
+  background-color: var(--wp-bg-green);
+  border-color: var(--wp-bg-green);
+  color: #fff;
+  transform: rotate(45deg);
+}
+
+/* Answer panel */
+.faqAnswer {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.45s var(--wp-ease);
+}
+
+.faqAnswer[data-open] {
+  max-height: 600px;
+}
+
+.faqAnswerInner {
+  padding-inline-start: calc(1.1rem + 1.25rem); /* Q width + gap */
+  padding-bottom: 1.5rem;
+  padding-inline-end: 2rem;
+}
+
+.faqA {
+  display: inline-block;
+  font-family: var(--wp-font-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--wp-bg-green);
+  font-style: italic;
+  margin-bottom: 0.625rem;
+}
+
+.faqAnswerText {
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: var(--wp-text-sub);
+  letter-spacing: 0.04em;
+  white-space: pre-line;
+}
+
+/* ── Contact CTA ─────────────────────────────────────────────────── */
+
+.contactBanner {
+  padding-block: 5.5rem;
+  text-align: center;
+  background-color: var(--wp-bg-sub);
+  border-top: 1px solid var(--wp-border-light);
+}
+
+.contactHeading {
+  font-family: var(--wp-font-serif);
+  font-size: clamp(1.375rem, 3vw, 2rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--wp-bg-green);
+  line-height: 1.9;
+  margin-bottom: 0.75rem;
+}
+
+.contactNote {
+  font-size: 0.85rem;
+  color: var(--wp-text-sub);
+  letter-spacing: 0.06em;
+  margin-bottom: 2.5rem;
+}
+
+.contactBtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .faqAnswerInner {
+    padding-inline-start: calc(1.3rem + 1.25rem);
+  }
+}

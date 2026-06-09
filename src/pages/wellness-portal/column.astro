@@ -1,0 +1,262 @@
+---
+import Layout from "./_components/Layout.astro";
+import base from "./_styles/base.module.css";
+import { fallbackBeige } from "./_util/fallbacks";
+import styles from "./column.module.css";
+
+const articles = [
+  {
+    id: "breathing",
+    category: "Wellness",
+    title: "朝の5分で変わる呼吸法",
+    date: "2026.06.08",
+    img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop",
+    body: `深く、ゆっくりと。朝の呼吸はその一日の質を決めます。
+
+起き上がる前に、両手をお腹に当ててみてください。鼻から4カウントで息を吸い、6カウントで口からゆっくりと吐き出す。これを5回繰り返すだけで、自律神経が整い、頭がクリアになっていきます。
+
+呼吸は、私たちが意識的にコントロールできる唯一の自律神経の窓口です。忙しい朝でも5分間だけ、自分の内側に意識を向けてみましょう。
+
+その小さな習慣が、やがて身体全体のリズムを変えていきます。`,
+    featured: true,
+  },
+  {
+    id: "inner-muscle",
+    category: "Nutrition",
+    title: "インナーマッスルを鍛える食事",
+    date: "2026.06.03",
+    img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=700&q=80&fit=crop",
+    body: `体幹を支えるインナーマッスルは、トレーニングだけでなく食事からも育てることができます。
+
+特に重要なのはたんぱく質。鶏むね肉、豆腐、卵、魚などを毎食意識して取り入れることで、筋繊維の修復と成長を促します。
+
+また、ビタミンB群はエネルギー代謝を高め、マグネシウムは筋肉の収縮・弛緩を助けます。玄米、ナッツ、緑黄色野菜を積極的に取り入れてみてください。
+
+食事は、あなたのトレーニングの土台です。`,
+    featured: false,
+  },
+  {
+    id: "yoga-meditation",
+    category: "Yoga",
+    title: "ヨガと瞑想、自分に合う選び方",
+    date: "2026.05.28",
+    img: "https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=700&q=80&fit=crop",
+    body: `「ヨガと瞑想、どちらを始めればいいですか？」—よくいただく質問です。
+
+ヨガは身体を動かしながら呼吸を整え、心を静めていくアプローチ。瞑想は動かずに意識の焦点を内側に向けるアプローチ。どちらが優れているということはなく、その人の性質や目的によって異なります。
+
+「まず身体から整えたい」という方にはヨガを。「思考を静めたい、マインドフルネスを深めたい」という方には瞑想を。そして最終的に、どちらも心身の統合へと向かう道です。`,
+    featured: false,
+  },
+  {
+    id: "evening-ritual",
+    category: "Lifestyle",
+    title: "夜のボディケアを習慣にする",
+    date: "2026.05.20",
+    img: "https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=700&q=80&fit=crop",
+    body: `一日の疲れを翌日に持ち越さないために。就寝前の30分を、自分だけのリカバリータイムにしてみませんか。
+
+お気に入りのボディオイルを温めて、ゆっくりと脚からお腹、腕へとマッサージ。リンパの流れを促しながら、その日の緊張をほぐしていきます。
+
+ラベンダーやカモミールなど、鎮静系のエッセンシャルオイルを使うと、よりリラックス効果が高まります。照明を落とし、静かな音楽とともに過ごすこの時間が、深い眠りへの橋渡しとなります。`,
+    featured: false,
+  },
+  {
+    id: "stretch-routine",
+    category: "Pilates",
+    title: "10分でできる全身ストレッチルーティン",
+    date: "2026.05.14",
+    img: "https://images.unsplash.com/photo-1594381898411-846e7d193883?w=700&q=80&fit=crop",
+    body: `長時間のデスクワークで固まった身体をほぐす、10分間のストレッチルーティンをご紹介します。
+
+まずは首をゆっくり左右に傾けて、5秒ずつキープ。次に肩甲骨を寄せて開いて、胸を広げます。続いて座ったまま体幹をひねるツイストストレッチ。最後に、足を伸ばしての前屈で背面全体を伸ばします。
+
+ポイントは「痛みのない範囲で、呼吸を止めずに」。ストレッチは継続が命。毎日少しずつが、大きな変化を生みます。`,
+    featured: false,
+  },
+  {
+    id: "herbal-tea",
+    category: "Wellness",
+    title: "ハーブティで整える、内側からの美容",
+    date: "2026.05.07",
+    img: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=700&q=80&fit=crop",
+    body: `植物の力を借りて、身体の内側から整えるハーブティ習慣。
+
+ローズヒップは豊富なビタミンCで肌の透明感を高め、ネトルはミネラルが豊富で血液を浄化します。カモミールは不眠や消化不良に、ペパーミントは食後の消化促進に。
+
+SO_SEI の各スタジオでは、季節に合わせたブレンドのオーガニックハーブティをご提供しています。レッスン後に一杯。その静かな時間が、心身のリセットを助けてくれます。`,
+    featured: false,
+  },
+];
+
+const categories = [
+  "すべて",
+  "Wellness",
+  "Yoga",
+  "Pilates",
+  "Nutrition",
+  "Lifestyle",
+];
+---
+
+<Layout
+  title="ライフスタイル・コラム"
+  description="SO_SEI のウェルネスコラム。呼吸法、食事、ストレッチなど、日常に取り入れたいウェルネス情報をお届けします。"
+  currentPage="column"
+>
+  <!-- ─── Page header ────────────────────────────────────────── -->
+  <div class={styles.pageTop}>
+    <div class={base.container}>
+      <span class={styles.pageLabel} data-reveal>Lifestyle Column</span>
+      <h1 class={styles.pageTitle} data-reveal style="--reveal-delay: 0.1s">
+        ライフスタイル・コラム
+      </h1>
+      <p class={styles.pageSubtitle} data-reveal style="--reveal-delay: 0.2s">
+        心と身体を整えるウェルネス情報をお届けします。
+      </p>
+    </div>
+  </div>
+
+  <!-- ─── Category tabs ─────────────────────────────────────── -->
+  <div class={base.container}>
+    <div class={styles.catTabs} role="tablist" aria-label="カテゴリで絞り込み">
+      {categories.map(c => (
+        <button
+          class={styles.catTab}
+          role="tab"
+          data-cat={c}
+          aria-selected={c === 'すべて' ? 'true' : 'false'}
+          type="button"
+        >
+          {c}
+        </button>
+      ))}
+    </div>
+
+    <!-- ─── Article grid ──────────────────────────────────────── -->
+    <div class={styles.articleGrid}>
+      {articles.map((article, i) => (
+        <article
+          class:list={[styles.articleCard, { [styles.articleCardFeatured]: article.featured }]}
+          data-article={article.id}
+          data-cat={article.category}
+          data-body={article.body}
+          data-reveal
+          style={`--reveal-delay: ${(i % 3) * 0.08}s`}
+          tabindex="0"
+          role="button"
+          aria-label={`記事を読む: ${article.title}`}
+        >
+          <div class={styles.articleCardImgWrap}>
+            <img
+              class={styles.articleCardImg}
+              src={article.img}
+              alt={article.title}
+              width="800"
+              height="533"
+              onerror={fallbackBeige}
+            />
+          </div>
+          <div class={styles.articleCardBody}>
+            <p class={styles.articleCardCat}>{article.category}</p>
+            <h2 class={styles.articleCardTitle}>{article.title}</h2>
+            <div class={styles.articleCardMeta}>
+              <time class={styles.articleCardDate}>{article.date}</time>
+              <span class={styles.articleCardReadMore}>続きを読む →</span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <!-- ─── Article modal ────────────────────────────────────── -->
+  <div class={styles.modal} id="article-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class={styles.modalInner}>
+      <button class={styles.modalClose} id="modal-close" type="button" aria-label="閉じる">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <line x1="2" y1="2" x2="16" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="16" y1="2" x2="2" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class={styles.modalImgWrap}>
+        <img id="modal-img" class={styles.modalImg} src="" alt="" width="800" height="350" onerror={fallbackBeige} />
+      </div>
+      <div class={styles.modalBody}>
+        <span class={styles.modalCategory} id="modal-cat"></span>
+        <h2 class={styles.modalTitle} id="modal-title"></h2>
+        <time class={styles.modalDate} id="modal-date"></time>
+        <div class={styles.modalText} id="modal-text"></div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Category filter
+  const catBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-cat]'));
+  const articleCards = Array.from(document.querySelectorAll<HTMLElement>('[data-article]'));
+
+  for (const btn of catBtns) {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.cat ?? 'すべて';
+      catBtns.forEach(b => b.setAttribute('aria-selected', String(b === btn)));
+      articleCards.forEach(card => {
+        const match = cat === 'すべて' || card.dataset.cat === cat;
+        card.toggleAttribute('data-hidden', !match);
+      });
+    });
+  }
+
+  // Modal
+  const modal = document.getElementById('article-modal')!;
+  const modalImg = document.getElementById('modal-img') as HTMLImageElement;
+  const modalCat = document.getElementById('modal-cat')!;
+  const modalTitle = document.getElementById('modal-title')!;
+  const modalDate = document.getElementById('modal-date')!;
+  const modalText = document.getElementById('modal-text')!;
+  const closeBtn = document.getElementById('modal-close')!;
+
+  function openModal(card: HTMLElement) {
+    const img = card.querySelector<HTMLImageElement>('img')?.getAttribute('src') ?? '';
+    const title = card.querySelector('h2')?.textContent ?? '';
+    const category = card.dataset.cat ?? '';
+    const date = card.querySelector('time')?.textContent ?? '';
+    const body = card.dataset.body ?? '';
+    modalImg.src = img;
+    modalImg.alt = title;
+    modalCat.textContent = category;
+    modalTitle.textContent = title;
+    modalDate.textContent = date;
+    modalText.innerHTML = body
+      .split('\n\n')
+      .map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`)
+      .join('');
+    modal.setAttribute('data-open', '');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.removeAttribute('data-open');
+    document.body.style.overflow = '';
+  }
+
+  articleCards.forEach(card => {
+    card.addEventListener('click', () => openModal(card));
+    card.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(card);
+      }
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>

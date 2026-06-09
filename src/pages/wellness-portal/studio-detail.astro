@@ -1,0 +1,199 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "./_components/Layout.astro";
+import base from "./_styles/base.module.css";
+import { fallbackGreen } from "./_util/fallbacks";
+import styles from "./studio-detail.module.css";
+
+const baseUrl = import.meta.env.BASE_URL;
+const root = `${baseUrl}wellness-portal/`;
+
+const days = ["月", "火", "水", "木", "金", "土", "日"];
+
+const schedule: Record<string, (string | null)[]> = {
+  "7:00–9:00": ["○", "○", "△", "○", "○", "○", "△"],
+  "10:00–12:00": ["○", "△", "○", "○", "△", "○", "○"],
+  "13:00–15:00": [null, "○", "○", null, "○", "△", "○"],
+  "17:00–19:00": ["○", "○", "△", "○", "○", null, null],
+  "19:30–21:00": ["△", "○", "○", "△", "○", null, null],
+};
+
+const facilities = [
+  {
+    icon: "lucide:shower-head",
+    name: "シャワールーム",
+    note: "男女別、3ブース",
+  },
+  { icon: "lucide:sparkles", name: "パウダールーム", note: "アメニティ完備" },
+  { icon: "lucide:shirt", name: "レンタルウェア", note: "別途有料" },
+  { icon: "lucide:lock", name: "ロッカー", note: "無料貸し出し" },
+  { icon: "lucide:wifi", name: "Wi-Fi", note: "全エリア対応" },
+  { icon: "lucide:coffee", name: "フリードリンク", note: "ハーブティなど" },
+  { icon: "lucide:circle-parking", name: "近隣駐車場", note: "提携あり" },
+  { icon: "lucide:credit-card", name: "キャッシュレス", note: "全決済対応" },
+];
+---
+
+<Layout
+  title="SO_SEI 恵比寿"
+  description="SO_SEI 恵比寿 — 恵比寿の静かな路地に佇む、自然光とヒノキ香るウェルネス空間。"
+  currentPage="studios"
+>
+  <!-- ─── Hero ──────────────────────────────────────────────── -->
+  <div class={styles.hero}>
+    <img
+      class={styles.heroBg}
+      src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=1400&q=85&fit=crop"
+      alt="SO_SEI 恵比寿 スタジオ内装"
+      width="1400"
+      height="800"
+      onerror={fallbackGreen}
+    />
+    <div class={styles.heroOverlay}></div>
+    <div class={styles.heroContent}>
+      <div class={base.container}>
+        <span class={styles.heroArea}>Ebisu · Shibuya</span>
+        <h1 class={styles.heroName}>SO_SEI 恵比寿</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class={base.container}>
+    <div class={styles.main}>
+
+      <!-- ─── Concept ───────────────────────────────────────── -->
+      <section data-reveal>
+        <span class={styles.conceptLabel}>Concept</span>
+        <h2 class={styles.sectionTitle}>スタジオコンセプト</h2>
+        <p class={styles.conceptText}>
+恵比寿の静かな路地に佇む、SO_SEI 恵比寿。
+
+木の温もりと緑の静けさに満ちたこの空間は、
+都市の喧騒から切り離された、もうひとつの「日常」です。
+
+自然光が差し込む高天井のメインスタジオでは、
+季節の移ろいとともに、あなたの身体もゆっくりと変わっていきます。
+        </p>
+      </section>
+
+      <!-- ─── Schedule ──────────────────────────────────────── -->
+      <section data-reveal style="--reveal-delay: 0.05s">
+        <span class={styles.conceptLabel}>Schedule</span>
+        <h2 class={styles.sectionTitle}>スケジュール・空き状況</h2>
+        <div class={styles.scheduleWrap}>
+          <table class={styles.scheduleTable} aria-label="今週の空き状況">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                {days.map(d => <th scope="col">{d}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(schedule).map(([time, slots]) => (
+                <tr>
+                  <th scope="row">{time}</th>
+                  {slots.map(s => (
+                    <td>
+                      {s === '○' && <span class={styles.avail} aria-label="空きあり">○</span>}
+                      {s === '△' && <span class={styles.limited} aria-label="残りわずか">△</span>}
+                      {s === null && <span class={styles.full} aria-label="受付なし">—</span>}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.72rem;color:var(--wp-text-sub);margin-top:0.75rem;letter-spacing:0.05em">
+          ○ 空きあり &nbsp; △ 残りわずか &nbsp; — 受付なし
+        </p>
+      </section>
+
+      <!-- ─── Facilities ────────────────────────────────────── -->
+      <section data-reveal style="--reveal-delay: 0.05s">
+        <span class={styles.conceptLabel}>Facilities</span>
+        <h2 class={styles.sectionTitle}>施設・設備</h2>
+        <div class={styles.facilitiesGrid}>
+          {facilities.map((f, i) => (
+            <div class={styles.facilityItem} data-reveal style={`--reveal-delay: ${i * 0.05}s`}>
+              <div class={styles.facilityIcon} aria-hidden="true">
+                <Icon name={f.icon} size={18} />
+              </div>
+              <div>
+                <p class={styles.facilityName}>{f.name}</p>
+                <p class={styles.facilityNote}>{f.note}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ─── Access ────────────────────────────────────────── -->
+      <section data-reveal style="--reveal-delay: 0.05s">
+        <span class={styles.conceptLabel}>Access</span>
+        <h2 class={styles.sectionTitle}>アクセス・店舗情報</h2>
+        <div class={styles.accessLayout}>
+          <!-- Map placeholder -->
+          <div class={styles.mapPlaceholder} aria-label="地図（デモ）">
+            <div class={styles.mapGrid}></div>
+            <!-- SVG roads simulation -->
+            <svg class={styles.mapRoads} viewBox="0 0 400 280" fill="none" aria-hidden="true">
+              <path d="M0 140 L400 140" stroke="#ccc" stroke-width="6"/>
+              <path d="M200 0 L200 280" stroke="#ccc" stroke-width="4"/>
+              <path d="M0 80 L400 80" stroke="#e2ddd6" stroke-width="2"/>
+              <path d="M0 200 L400 200" stroke="#e2ddd6" stroke-width="2"/>
+              <path d="M100 0 L100 280" stroke="#e2ddd6" stroke-width="2"/>
+              <path d="M300 0 L300 280" stroke="#e2ddd6" stroke-width="2"/>
+              <path d="M0 140 Q200 120 400 140" stroke="#d4c4a8" stroke-width="3"/>
+            </svg>
+            <div class={styles.mapLabel}>
+              <div class={styles.mapPin}></div>
+              <span class={styles.mapText}>SO_SEI 恵比寿</span>
+            </div>
+          </div>
+
+          <!-- Info -->
+          <div class={styles.accessInfo}>
+            <div class={styles.accessRow}>
+              <span class={styles.accessKey}>住所</span>
+              <span class={styles.accessVal}>
+                東京都渋谷区恵比寿1-1-1<br />恵比寿ガーデンプレイス前ビル 3F
+              </span>
+            </div>
+            <div class={styles.accessRow}>
+              <span class={styles.accessKey}>アクセス</span>
+              <span class={styles.accessVal}>
+                JR山手線「恵比寿」駅 西口 徒歩3分<br />
+                東京メトロ日比谷線「恵比寿」駅 徒歩4分
+              </span>
+            </div>
+            <div class={styles.accessRow}>
+              <span class={styles.accessKey}>営業時間</span>
+              <span class={styles.accessVal}>
+                平日 7:00 – 21:30<br />
+                土曜 7:00 – 19:00<br />
+                日祝 8:00 – 17:00
+              </span>
+            </div>
+            <div class={styles.accessRow}>
+              <span class={styles.accessKey}>電話</span>
+              <span class={styles.accessVal}>03-XXXX-XXXX</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── Book CTA ───────────────────────────────────────── -->
+      <div class={styles.bookCta} data-reveal>
+        <p class={styles.bookCtaText}>
+          まずは体験レッスンから。<br />はじめの一歩を、SO_SEI と共に。
+        </p>
+        <div class={styles.bookCtaBtns}>
+          <a href={`${root}plans/`} class={base.ctaBtn}>体験レッスンを予約する</a>
+          <a href={`${root}plans/`} class={base.ctaGhost}>料金・プランを見る</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>

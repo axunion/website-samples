@@ -1,0 +1,156 @@
+---
+import Layout from "./_components/Layout.astro";
+import base from "./_styles/base.module.css";
+import styles from "./faq.module.css";
+
+const baseUrl = import.meta.env.BASE_URL;
+const root = `${baseUrl}wellness-portal/`;
+
+const faqCategories = [
+  {
+    title: "体験レッスンについて",
+    items: [
+      {
+        id: "faq-1",
+        q: "体が硬くても大丈夫ですか？",
+        a: `はい、大丈夫です。ヨガやピラティスは体の柔軟性に関係なく、どなたでもご参加いただけます。\n\nSO_SEI のインストラクターは、初心者の方にも丁寧に対応いたします。無理のないポーズの取り方をその場でご指導しますので、安心してご参加ください。\n\n続けることで徐々に柔軟性が高まっていきますので、まずは体験レッスンでお気軽にお試しください。`,
+      },
+      {
+        id: "faq-2",
+        q: "体験レッスン時の持ち物は？",
+        a: `動きやすい服装でお越しください。ヨガマットは貸し出しいたします（無料）。\n\n必要なもの：動きやすい服装、飲み物（水・スポーツドリンク）\n\nあると便利なもの：タオル（無料レンタルあり）、着替え（シャワールームをご利用の場合）\n\n初めての方向けに受付でご案内しておりますので、手ぶらに近い状態でもご参加いただけます。`,
+      },
+      {
+        id: "faq-3",
+        q: "体験後に入会を勧誘されますか？",
+        a: `いいえ、体験レッスン後の強引な勧誘は一切行っておりません。\n\n体験後はインストラクターとの簡単なフィードバック（5分程度）がありますが、プランのご案内はあくまで参考程度にとどめています。ご入会はお客様のペースで、じっくりとご検討ください。`,
+      },
+    ],
+  },
+  {
+    title: "ご入会・プランについて",
+    items: [
+      {
+        id: "faq-4",
+        q: "通い放題プランはいつでも解約できますか？",
+        a: `はい、月単位でいつでも解約いただけます。解約の申請は、翌月分の引き落とし前日までにアプリまたはフロントにてお申し出ください。\n\n最低利用期間の定めはございませんが、入会から3ヶ月未満での退会の場合、入会金の一部をご負担いただく場合があります（規約による）。\n\n詳細はフロントまたはお問い合わせフォームよりご確認ください。`,
+      },
+      {
+        id: "faq-5",
+        q: "複数店舗をまたいで利用できますか？",
+        a: `はい、月額プランをご契約の方は、全店舗を共通でご利用いただけます。\n\n渋谷帰りに恵比寿で、出張中に銀座でと、その日の予定に合わせて柔軟にご利用ください。ドロップイン（都度利用）の場合も、全店舗でご予約いただけます。`,
+      },
+    ],
+  },
+  {
+    title: "施設・サービスについて",
+    items: [
+      {
+        id: "faq-6",
+        q: "男性でも参加できますか？",
+        a: `はい、男女問わずご参加いただけます。\n\nSO_SEI の各スタジオでは男女別のシャワールーム・更衣室・ロッカーをご用意しています。ヨガやピラティスは性別を問わず、多くの男性の方にもお楽しみいただいています。体幹強化・姿勢改善・ストレスケアなど、目的は様々です。`,
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="よくある質問"
+  description="SO_SEI WELLNESS PORTAL に関するよくある質問。体験レッスン、プラン、施設についてご回答します。"
+  currentPage="faq"
+>
+  <!-- ─── Page header ────────────────────────────────────────── -->
+  <div class={styles.pageTop}>
+    <div class:list={[base.container, styles.pageTopInner]}>
+      <span class={styles.pageLabel} data-reveal>FAQ</span>
+      <h1 class={styles.pageTitle} data-reveal style="--reveal-delay: 0.1s">
+        よくある質問
+      </h1>
+      <p class={styles.pageSubtitle} data-reveal style="--reveal-delay: 0.2s">
+        体験前の不安やご疑問にお答えします。
+      </p>
+    </div>
+  </div>
+
+  <!-- ─── FAQ accordion ─────────────────────────────────────── -->
+  <section class={styles.faqSection}>
+    <div class={base.container}>
+      <div class={styles.faqCategories}>
+        {faqCategories.map((cat, ci) => (
+          <div data-reveal style={`--reveal-delay: ${ci * 0.07}s`}>
+            <h2 class={styles.faqCatTitle}>{cat.title}</h2>
+            <ul class={styles.faqList}>
+              {cat.items.map((item) => (
+                <li class={styles.faqItem}>
+                  <button
+                    class={styles.faqQuestion}
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls={item.id}
+                    data-faq-btn
+                  >
+                    <span class={styles.faqQ} aria-hidden="true">Q.</span>
+                    <span class={styles.faqQuestionText}>{item.q}</span>
+                    <span class={styles.faqIcon} aria-hidden="true">
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                        <line x1="5" y1="1" x2="5" y2="9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                        <line x1="1" y1="5" x2="9" y2="5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                      </svg>
+                    </span>
+                  </button>
+                  <div
+                    id={item.id}
+                    class={styles.faqAnswer}
+                    aria-hidden="true"
+                  >
+                    <div class={styles.faqAnswerInner}>
+                      <span class={styles.faqA}>A.</span>
+                      <p class={styles.faqAnswerText}>{item.a}</p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contact CTA ───────────────────────────────────────── -->
+  <section class={styles.contactBanner}>
+    <div class={base.container}>
+      <h2 class={styles.contactHeading} data-reveal>
+        解決しなかった場合は、<br />お気軽にお問い合わせください。
+      </h2>
+      <p class={styles.contactNote} data-reveal style="--reveal-delay: 0.1s">
+        平日 10:00〜19:00 メール・お電話にて対応しております。
+      </p>
+      <div class={styles.contactBtns} data-reveal style="--reveal-delay: 0.15s">
+        <a href="#" class={base.ctaBtn}>お問い合わせフォーム</a>
+        <a href={`${root}studios/`} class={base.ctaGhost}>体験レッスンを予約する</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const faqBtns = Array.from(
+    document.querySelectorAll<HTMLButtonElement>('[data-faq-btn]')
+  );
+
+  faqBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      const panelId = btn.getAttribute('aria-controls');
+      if (!panelId) return;
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      panel.setAttribute('aria-hidden', String(isExpanded));
+      panel.toggleAttribute('data-open', !isExpanded);
+    });
+  });
+</script>

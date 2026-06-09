@@ -1,0 +1,242 @@
+---
+import Layout from "./_components/Layout.astro";
+import base from "./_styles/base.module.css";
+import { fallbackBeige, fallbackGreen } from "./_util/fallbacks";
+import styles from "./index.module.css";
+
+const baseUrl = import.meta.env.BASE_URL;
+const root = `${baseUrl}wellness-portal/`;
+
+const studios = [
+  {
+    name: "SO_SEI 恵比寿",
+    area: "渋谷・恵比寿",
+    programs: ["ヨガ", "ピラティス"],
+    walk: "恵比寿駅 徒歩3分",
+    img: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=600&q=80&fit=crop",
+  },
+  {
+    name: "SO_SEI 表参道",
+    area: "表参道・原宿",
+    programs: ["ヨガ", "ジム"],
+    walk: "表参道駅 徒歩5分",
+    img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80&fit=crop",
+  },
+  {
+    name: "SO_SEI 銀座",
+    area: "銀座",
+    programs: ["ピラティス", "ジム"],
+    walk: "銀座駅 徒歩2分",
+    img: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80&fit=crop",
+  },
+  {
+    name: "SO_SEI 渋谷",
+    area: "渋谷・恵比寿",
+    programs: ["ヨガ", "ピラティス", "ジム"],
+    walk: "渋谷駅 徒歩6分",
+    img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop",
+  },
+];
+
+const columns = [
+  {
+    title: "朝の5分で変わる呼吸法",
+    category: "Wellness",
+    date: "2026.06.08",
+    img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=480&q=80&fit=crop",
+  },
+  {
+    title: "インナーマッスルを鍛える食事",
+    category: "Nutrition",
+    date: "2026.06.03",
+    img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=480&q=80&fit=crop",
+  },
+  {
+    title: "ヨガと瞑想、自分に合う選び方",
+    category: "Yoga",
+    date: "2026.05.28",
+    img: "https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=480&q=80&fit=crop",
+  },
+];
+---
+
+<Layout title="心と身体を、自然な状態へ還す">
+  <!-- ─── Hero ──────────────────────────────────────────────── -->
+  <section class={styles.hero}>
+    <img
+      class={styles.heroBg}
+      src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=1600&q=85&fit=crop"
+      alt="自然光が差し込むスタジオ"
+      width="1600"
+      height="900"
+      onerror={fallbackGreen}
+    />
+    <div class={styles.heroOverlay}></div>
+
+    <div class={styles.heroContent}>
+      <p class={styles.heroText}>
+        心と身体を、<br />自然な状態へ還す。
+      </p>
+      <div class={styles.heroCtas}>
+        <a href={`${root}studios/`} class={base.ctaBtn}>近くのスタジオを探す</a>
+        <a href={`${root}plans/`} class={base.ctaGhost} style="color:#fff;border-color:rgba(255,255,255,0.6)">
+          プランを見る
+        </a>
+      </div>
+    </div>
+
+    <div class={styles.scrollIndicator} aria-hidden="true">
+      <span>SCROLL</span>
+      <span class={styles.scrollLine}></span>
+    </div>
+  </section>
+
+  <!-- ─── Brand story ───────────────────────────────────────── -->
+  <section class={styles.story}>
+    <div class={styles.storyInner}>
+      <div class={styles.storyDecor} data-reveal>
+        <span class={styles.storyDecorLine}></span>
+        <span class={styles.storyDecorDot}></span>
+        <span class={styles.storyDecorLine}></span>
+      </div>
+      <span class={styles.storyLabel} data-reveal style="--reveal-delay: 0.1s">
+        Our Philosophy
+      </span>
+      <p class={styles.storyBody} data-reveal style="--reveal-delay: 0.2s">
+        朝、深く息を吸い込む瞬間。
+夜、静かに身体をほどく時間。
+
+SO_SEI は、喧騒の東京に
+自然とつながる場所を作りました。
+
+エリアや目的を問わず、
+あなたに合ったスタジオで、
+自分本来のリズムへ還る一歩を。
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── Find studios ──────────────────────────────────────── -->
+  <section class={styles.find}>
+    <div class={base.container}>
+      <div class={styles.findHeader} data-reveal>
+        <span class={base.secLabel}>Find Your Studio</span>
+        <h2 class={styles.findHeading}>スタジオを探す</h2>
+      </div>
+      <div class={styles.findCards}>
+        <a href={`${root}studios/?filter=area`} class={styles.findCard} data-reveal style="--reveal-delay: 0.05s">
+          <img
+            class={styles.findCardBg}
+            src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80&fit=crop"
+            alt="エリアから探す"
+            width="800"
+            height="450"
+            onerror={fallbackGreen}
+          />
+          <div class={styles.findCardOverlay}></div>
+          <div class={styles.findCardBody}>
+            <p class={styles.findCardLabel}>Search by Area</p>
+            <h3 class={styles.findCardTitle}>エリアから探す</h3>
+            <span class={styles.findCardArrow}>詳しく見る →</span>
+          </div>
+        </a>
+        <a href={`${root}studios/?filter=purpose`} class={styles.findCard} data-reveal style="--reveal-delay: 0.12s">
+          <img
+            class={styles.findCardBg}
+            src="https://images.unsplash.com/photo-1566737236500-f929872acb28?w=800&q=80&fit=crop"
+            alt="目的から探す"
+            width="800"
+            height="450"
+            onerror={fallbackGreen}
+          />
+          <div class={styles.findCardOverlay}></div>
+          <div class={styles.findCardBody}>
+            <p class={styles.findCardLabel}>Search by Purpose</p>
+            <h3 class={styles.findCardTitle}>目的から探す</h3>
+            <span class={styles.findCardArrow}>詳しく見る →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Featured studios ──────────────────────────────────── -->
+  <section class={styles.featured}>
+    <div class={styles.sectionHeader} data-reveal>
+      <span class={base.secLabel}>Featured Studios</span>
+      <h2 class={styles.sectionHeading}>おすすめのスタジオ</h2>
+    </div>
+    <div class={styles.carousel} role="list">
+      {studios.map((s, i) => (
+        <article class={styles.studioCard} role="listitem" data-reveal style={`--reveal-delay: ${i * 0.08}s`}>
+          <img
+            class={styles.studioCardImg}
+            src={s.img}
+            alt={s.name}
+            width="600"
+            height="450"
+            onerror={fallbackBeige}
+          />
+          <div class={styles.studioCardBody}>
+            <div class={styles.studioCardPrograms}>
+              {s.programs.map(p => <span class={styles.studioCardTag}>{p}</span>)}
+            </div>
+            <h3 class={styles.studioCardName}>{s.name}</h3>
+            <p class={styles.studioCardMeta}>{s.walk}</p>
+            <a href={`${root}studio-detail/`} class={styles.studioCardLink}>
+              詳細を見る →
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ─── Latest columns ────────────────────────────────────── -->
+  <section class={styles.columns}>
+    <div class={base.container}>
+      <div class={styles.columnsHeader} data-reveal>
+        <div>
+          <span class={base.secLabel}>Lifestyle Column</span>
+          <h2 class={styles.sectionHeading}>ライフスタイル・コラム</h2>
+        </div>
+        <a href={`${root}column/`} class={styles.columnsViewAll}>
+          すべて見る →
+        </a>
+      </div>
+      <div class={styles.columnGrid}>
+        {columns.map((c, i) => (
+          <a href={`${root}column/`} class={styles.columnCard} data-reveal style={`--reveal-delay: ${i * 0.1}s`}>
+            <img
+              class={styles.columnCardImg}
+              src={c.img}
+              alt={c.title}
+              width="480"
+              height="320"
+              onerror={fallbackBeige}
+            />
+            <div class={styles.columnCardBody}>
+              <p class={styles.columnCardCategory}>{c.category}</p>
+              <h3 class={styles.columnCardTitle}>{c.title}</h3>
+              <time class={styles.columnCardDate}>{c.date}</time>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Bottom CTA ────────────────────────────────────────── -->
+  <section class={styles.ctaBanner}>
+    <div class={base.container}>
+      <span class={styles.ctaBannerLabel} data-reveal>First Step</span>
+      <h2 class={styles.ctaBannerHeading} data-reveal style="--reveal-delay: 0.1s">
+        はじめの一歩は、<br />体験レッスンから。
+      </h2>
+      <div class={styles.ctaBannerBtns} data-reveal style="--reveal-delay: 0.2s">
+        <a href={`${root}studios/`} class={styles.ctaBtnWhite}>体験レッスンを予約する</a>
+        <a href={`${root}plans/`} class={styles.ctaBtnOutlineWhite}>料金・プランを見る</a>
+      </div>
+    </div>
+  </section>
+</Layout>
