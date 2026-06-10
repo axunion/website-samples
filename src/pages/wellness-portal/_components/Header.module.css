@@ -115,8 +115,8 @@
     opacity 0.3s;
   transform-origin: center;
 }
-[data-open] ~ * .hamburger .hamburgerBar:nth-child(1),
-[aria-expanded="true"] .hamburgerBar:nth-child(1) {
+[aria-expanded="true"] .hamburgerBar:nth-child(1),
+[data-open] ~ * .hamburger .hamburgerBar:nth-child(1) {
   transform: translateY(6.5px) rotate(45deg);
 }
 [aria-expanded="true"] .hamburgerBar:nth-child(2) {

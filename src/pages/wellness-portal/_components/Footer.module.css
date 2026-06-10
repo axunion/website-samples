@@ -48,8 +48,6 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
-.navCol {
-}
 .navTitle {
   font-size: 0.68rem;
   letter-spacing: 0.22em;
