@@ -1,0 +1,96 @@
+---
+import styles from "./Access.module.css";
+---
+
+<section id="access" class={styles.access}>
+  <div class={styles.inner}>
+    <div class={styles.header} data-reveal>
+      <span class={styles.label}>Access & Info</span>
+      <h2 class={styles.title}>
+        <span class={styles.titleEn}>Find Us</span>
+        <span class={styles.titleJa}>アクセス・店舗情報</span>
+      </h2>
+    </div>
+
+    <div class={styles.grid}>
+      <div class={styles.map} data-reveal data-delay="1">
+        <svg
+          viewBox="0 0 440 300"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class={styles.mapSvg}
+          role="img"
+          aria-label="店舗周辺地図（イメージ）"
+        >
+          <rect width="440" height="300" fill="#0c1828"/>
+          <line x1="0" y1="75" x2="440" y2="75" stroke="#162035" stroke-width="1"/>
+          <line x1="0" y1="150" x2="440" y2="150" stroke="#162035" stroke-width="1"/>
+          <line x1="0" y1="225" x2="440" y2="225" stroke="#162035" stroke-width="1"/>
+          <line x1="110" y1="0" x2="110" y2="300" stroke="#162035" stroke-width="1"/>
+          <line x1="220" y1="0" x2="220" y2="300" stroke="#162035" stroke-width="1"/>
+          <line x1="330" y1="0" x2="330" y2="300" stroke="#162035" stroke-width="1"/>
+          <rect x="55" y="30" width="330" height="26" rx="2" fill="#172338"/>
+          <rect x="0" y="110" x2="0" y2="110" width="440" height="22" rx="2" fill="#172338"/>
+          <rect x="80" y="170" width="280" height="20" rx="2" fill="#172338"/>
+          <rect x="190" y="0" width="22" height="300" fill="#172338"/>
+          <rect x="20" y="102" width="58" height="38" rx="3" fill="#1e3050"/>
+          <text x="49" y="126" text-anchor="middle" fill="#d4af37" font-size="9" font-family="serif" opacity="0.8">駅</text>
+          <circle cx="268" cy="165" r="7" fill="#d4af37" opacity="0.95"/>
+          <circle cx="268" cy="165" r="13" stroke="#d4af37" stroke-width="0.8" opacity="0.3" fill="none"/>
+          <circle cx="268" cy="165" r="22" stroke="#d4af37" stroke-width="0.5" opacity="0.15" fill="none"/>
+          <text x="268" y="197" text-anchor="middle" fill="#d4af37" font-size="9" font-family="serif" font-style="italic" opacity="0.75">Étoile</text>
+        </svg>
+        <p class={styles.mapNote}>※ 地図は表示イメージです。実際のアクセスはGoogleマップをご確認ください。</p>
+      </div>
+
+      <div class={styles.info} data-reveal data-delay="2">
+        <dl class={styles.dl}>
+          <div class={styles.row}>
+            <dt class={styles.dt}>住所</dt>
+            <dd class={styles.dd}>
+              〒106-0045<br />
+              東京都港区麻布十番2-X-XX<br />
+              グラン・シャトー麻布 B1F
+            </dd>
+          </div>
+          <div class={styles.row}>
+            <dt class={styles.dt}>アクセス</dt>
+            <dd class={styles.dd}>
+              東京メトロ南北線・都営大江戸線<br />
+              「麻布十番駅」7番出口より徒歩2分
+            </dd>
+          </div>
+          <div class={styles.row}>
+            <dt class={styles.dt}>営業時間</dt>
+            <dd class={styles.dd}>
+              ランチ　11:30 – 13:30 L.O.<br />
+              ディナー　18:00 – 21:30 L.O.<br />
+              <span class={styles.note}>火・水曜定休</span>
+            </dd>
+          </div>
+          <div class={styles.row}>
+            <dt class={styles.dt}>ご予約</dt>
+            <dd class={styles.dd}>
+              <a href="tel:03-0000-0000" class={styles.tel}>03-0000-0000</a><br />
+              <span class={styles.note}>受付時間 10:00 – 20:00</span>
+            </dd>
+          </div>
+          <div class={styles.row}>
+            <dt class={styles.dt}>ドレスコード</dt>
+            <dd class={styles.dd}>
+              スマートエレガント以上<br />
+              <span class={styles.note}>デニム・スニーカーはご遠慮ください</span>
+            </dd>
+          </div>
+          <div class={styles.row}>
+            <dt class={styles.dt}>お支払い</dt>
+            <dd class={styles.dd}>
+              現金 / 各種クレジットカード<br />
+              <span class={styles.note}>サービス料10%が加算されます</span>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>

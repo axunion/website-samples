@@ -1,0 +1,66 @@
+---
+import styles from "./Space.module.css";
+
+const spaces = [
+  {
+    nameEn: "Main Dining",
+    nameJa: "メインダイニング",
+    desc: "落ち着いた間接照明と生花が彩る40席のメインダイニング。テーブル間隔を広く確保し、プライベートな対話をお楽しみいただけます。",
+    img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&h=900&fit=crop&q=80",
+    alt: "暗い間接照明に照らされたエレガントなメインダイニングルーム",
+    tag: "40席",
+  },
+  {
+    nameEn: "Salon Privé",
+    nameJa: "完全個室",
+    desc: "最大8名様の完全個室。接待・記念日・プロポーズなど、特別な場面に理想の空間。専任のサービスマンが終始お側に控えます。",
+    img: "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=1200&h=900&fit=crop&q=80",
+    alt: "キャンドルが灯された完全個室のプライベートダイニング",
+    tag: "2〜8名",
+  },
+  {
+    nameEn: "Chef's Table",
+    nameJa: "シェフズテーブル",
+    desc: "オープンキッチンに面した4席限定の特別席。シェフの技巧を間近で目にしながら、料理についての対話をお楽しみいただける特別体験です。",
+    img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&h=900&fit=crop&q=80",
+    alt: "オープンキッチンが見えるシェフズテーブル席",
+    tag: "4席限定",
+  },
+];
+---
+
+<section id="space" class={styles.space}>
+  <div class={styles.inner}>
+    <div class={styles.header} data-reveal>
+      <span class={styles.label}>Ambiance</span>
+      <h2 class={styles.title}>
+        <span class={styles.titleEn}>The Space</span>
+        <span class={styles.titleJa}>空間とお席</span>
+      </h2>
+      <p class={styles.titleSub}>接待・記念日・大切なひとときを彩る、三つの空間</p>
+    </div>
+
+    <ul class={styles.grid} role="list">
+      {
+        spaces.map((space, i) => (
+          <li class={styles.item} data-reveal data-delay={String(i + 1)}>
+            <div class={styles.imageWrap}>
+              <img
+                src={space.img}
+                alt={space.alt}
+                loading="lazy"
+                onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3ClinearGradient id=%22g%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%230f1e35%22/%3E%3Cstop offset=%221%22 stop-color=%22%23070d1c%22/%3E%3C/linearGradient%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/%3E%3C/svg%3E'"
+              />
+              <span class={styles.tag}>{space.tag}</span>
+            </div>
+            <div class={styles.body}>
+              <h3 class={styles.nameEn}>{space.nameEn}</h3>
+              <p class={styles.nameJa}>{space.nameJa}</p>
+              <p class={styles.desc}>{space.desc}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

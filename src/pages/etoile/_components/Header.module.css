@@ -1,0 +1,105 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition:
+    background-color 0.5s ease,
+    border-color 0.5s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.header[data-scrolled] {
+  background-color: rgba(11, 19, 37, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: rgba(212, 175, 55, 0.15);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 24px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 3px;
+}
+
+.logoScript {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #d4af37;
+  letter-spacing: 0.03em;
+}
+
+.logoSub {
+  font-family: "Playfair Display", serif;
+  font-size: 0.52rem;
+  font-weight: 400;
+  color: #aaaaaa;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.reservationBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 22px;
+  min-height: 44px;
+  min-width: 44px;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  color: #d4af37;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.reservationBtn:hover {
+  background-color: rgba(212, 175, 55, 0.09);
+  border-color: #d4af37;
+}
+
+.btnEn {
+  font-family: "Playfair Display", serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #aaaaaa;
+}
+
+.btnJa {
+  font-size: 0.78rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 480px) {
+  .inner {
+    padding: 16px 20px;
+  }
+
+  .logoScript {
+    font-size: 1.55rem;
+  }
+
+  .btnEn {
+    display: none;
+  }
+
+  .btnJa {
+    font-size: 0.85rem;
+  }
+}

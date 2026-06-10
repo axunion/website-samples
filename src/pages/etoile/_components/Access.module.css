@@ -1,0 +1,142 @@
+.access {
+  padding: 120px 24px;
+  background-color: #080e1e;
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.label {
+  display: inline-block;
+  font-family: "Playfair Display", serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: #d4af37;
+  margin-bottom: 18px;
+}
+
+.title {
+  margin: 0;
+}
+
+.titleEn {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 400;
+  color: #f5f5f3;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}
+
+.titleJa {
+  display: block;
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(0.88rem, 2.5vw, 1.08rem);
+  font-weight: 300;
+  color: #cccccc;
+  letter-spacing: 0.16em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+}
+
+.map {
+  width: 100%;
+}
+
+.mapSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.mapNote {
+  font-family: "Noto Serif JP", serif;
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: #555555;
+  text-align: center;
+  margin: 10px 0 0;
+  letter-spacing: 0.04em;
+}
+
+.dl {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 6.5em 1fr;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.row:first-child {
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.dt {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 0.78rem;
+  color: #d4af37;
+  letter-spacing: 0.05em;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.dd {
+  font-family: "Noto Serif JP", serif;
+  font-size: 0.84rem;
+  font-weight: 300;
+  color: #cccccc;
+  line-height: 1.85;
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+.note {
+  display: inline-block;
+  font-size: 0.74rem;
+  color: #777777;
+  margin-top: 2px;
+}
+
+.tel {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.12rem;
+  font-weight: 500;
+  color: #d4af37;
+  letter-spacing: 0.08em;
+  transition: opacity 0.2s;
+}
+
+.tel:hover {
+  opacity: 0.7;
+}

@@ -1,0 +1,179 @@
+.concept {
+  padding: 120px 24px;
+  background-color: #0b1325;
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.label {
+  display: inline-block;
+  font-family: "Playfair Display", serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: #d4af37;
+  margin-bottom: 18px;
+}
+
+.title {
+  margin: 0;
+}
+
+.titleEn {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 400;
+  color: #f5f5f3;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}
+
+.titleJa {
+  display: block;
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(0.88rem, 2.5vw, 1.08rem);
+  font-weight: 300;
+  color: #cccccc;
+  letter-spacing: 0.16em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  margin-bottom: 80px;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.chefName {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 400;
+  color: #d4af37;
+  margin: 0 0 8px;
+  letter-spacing: 0.04em;
+}
+
+.body {
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(0.84rem, 2vw, 0.94rem);
+  font-weight: 300;
+  line-height: 2.1;
+  color: #cccccc;
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+.imageWrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background-color: #0f1e35;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.imageQuote {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 48px 24px 20px;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.88rem;
+  color: rgba(212, 175, 55, 0.85);
+  letter-spacing: 0.04em;
+  background: linear-gradient(
+    to top,
+    rgba(11, 19, 37, 0.9) 0%,
+    transparent 100%
+  );
+}
+
+.values {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(212, 175, 55, 0.18);
+}
+
+@media (min-width: 600px) {
+  .values {
+    flex-direction: row;
+  }
+}
+
+.value {
+  flex: 1;
+  padding: 40px 28px;
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .value + .value {
+    border-left: 1px solid rgba(212, 175, 55, 0.18);
+  }
+}
+
+.valueNum {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: #d4af37;
+  margin-bottom: 10px;
+  letter-spacing: 0.1em;
+}
+
+.valueTitle {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #f5f5f3;
+  margin: 0 0 12px;
+  letter-spacing: 0.06em;
+}
+
+.valueDesc {
+  font-family: "Noto Serif JP", serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: #999999;
+  line-height: 1.95;
+  margin: 0;
+  letter-spacing: 0.04em;
+}

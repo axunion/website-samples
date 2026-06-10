@@ -1,0 +1,111 @@
+---
+import styles from "./Menu.module.css";
+
+const menus = [
+  {
+    nameEn: "Menu de l'Étoile",
+    nameJa: "エトワールコース",
+    price: "¥25,000",
+    description:
+      "シェフの世界観を最も純粋な形でお伝えする8皿のグランコース。北海道フォアグラのテリーヌ、山形牛フィレのロティなど、選りすぐりの食材が織りなす至高の一夜。",
+    img: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800&h=600&fit=crop&q=80",
+    alt: "エトワールコースの前菜。ハーブとともに芸術的に盛り付けられたアミューズ",
+    dishes: [
+      "フォアグラのテリーヌ",
+      "オマール海老のビスク",
+      "フィレ・ド・ブッフ",
+      "フロマージュの盛り合わせ",
+    ],
+  },
+  {
+    nameEn: "Menu Saison",
+    nameJa: "季節のコース",
+    price: "¥18,000",
+    description:
+      "その季節にしか出逢えない食材を中心に組み上げる6皿のコース。毎月更新されるメニューは、日本の四季の豊かさをフランス料理の文法で語り直す試みです。",
+    img: "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800&h=600&fit=crop&q=80",
+    alt: "季節の野菜を使った彩り豊かなフランス料理のコース",
+    dishes: [
+      "季節野菜のアミューズ",
+      "旬の白身魚のポワレ",
+      "農家直送鴨肉のコンフィ",
+      "季節のソルベ",
+    ],
+  },
+  {
+    nameEn: "Menu Déjeuner",
+    nameJa: "ランチコース",
+    price: "¥8,500",
+    description:
+      "昼の光の中で楽しむ、日常の中の贅沢。4皿のランチコースは、夜のディナーと同じ哲学のもと、気軽にガストロノミーの世界へ入門できる一皿です。",
+    img: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=800&h=600&fit=crop&q=80",
+    alt: "ランチコースのメインディッシュ、鮮やかに盛り付けられた魚料理",
+    dishes: [
+      "本日のアミューズ",
+      "スープ・デュ・ジュール",
+      "本日のポワソン",
+      "デセール",
+    ],
+  },
+  {
+    nameEn: "Accord Mets & Vins",
+    nameJa: "ワインペアリング",
+    price: "+ ¥12,000",
+    description:
+      "ソムリエが厳選したワインをコースに合わせてペアリングする特別プラン。フランス各地のシャトーから取り寄せた希少なボトルが、料理の世界をより深く豊かにします。",
+    img: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&h=600&fit=crop&q=80",
+    alt: "ボルドーの赤ワインがグラスに注がれる瞬間",
+    dishes: [
+      "シャンパーニュ（NV）",
+      "白ワイン（ブルゴーニュ）",
+      "赤ワイン（ボルドー）",
+      "デザートワイン",
+    ],
+  },
+];
+---
+
+<section id="menu" class={styles.menu}>
+  <div class={styles.headerWrap}>
+    <div class={styles.header} data-reveal>
+      <span class={styles.label}>Gastronomie</span>
+      <h2 class={styles.title}>
+        <span class={styles.titleEn}>The Menu</span>
+        <span class={styles.titleJa}>コース料理</span>
+      </h2>
+    </div>
+  </div>
+
+  <div data-reveal data-delay="1">
+    <ul class={styles.carousel} role="list">
+      {
+        menus.map((item) => (
+          <li class={styles.card}>
+            <div class={styles.cardImage}>
+              <img
+                src={item.img}
+                alt={item.alt}
+                loading="lazy"
+                onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3ClinearGradient id=%22g%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%230f1e35%22/%3E%3Cstop offset=%221%22 stop-color=%22%23080e1e%22/%3E%3C/linearGradient%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/%3E%3C/svg%3E'"
+              />
+            </div>
+            <div class={styles.cardBody}>
+              <div class={styles.cardMeta}>
+                <h3 class={styles.cardNameEn}>{item.nameEn}</h3>
+                <p class={styles.cardNameJa}>{item.nameJa}</p>
+                <span class={styles.cardPrice}>{item.price}</span>
+              </div>
+              <p class={styles.cardDesc}>{item.description}</p>
+              <ul class={styles.cardDishes} role="list">
+                {item.dishes.map((dish) => (
+                  <li class={styles.cardDish}>{dish}</li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    <p class={styles.swipeHint} aria-hidden="true">swipe</p>
+  </div>
+</section>

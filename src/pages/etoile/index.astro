@@ -1,0 +1,77 @@
+---
+import Access from "./_components/Access.astro";
+import Concept from "./_components/Concept.astro";
+import Footer from "./_components/Footer.astro";
+import Header from "./_components/Header.astro";
+import Hero from "./_components/Hero.astro";
+import Menu from "./_components/Menu.astro";
+import ReservationCta from "./_components/ReservationCta.astro";
+import Space from "./_components/Space.astro";
+import styles from "./index.module.css";
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ÉTOILE — Gastronomie Française | 至高の一皿と、記憶に残るひとときを</title>
+    <meta
+      name="description"
+      content="東京・麻布十番に佇む高級ガストロノミーレストラン「ÉTOILE」。フランス料理の精髄と日本の食材が織りなす、唯一無二の美食体験。記念日・接待・特別な夜のご予約を承ります。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Serif+JP:wght@200;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class={styles.root}>
+      <Header />
+      <main>
+        <Hero />
+        <Concept />
+        <Menu />
+        <Space />
+        <ReservationCta />
+        <Access />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<script>
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const revealElements = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+
+  if (reducedMotion) {
+    revealElements.forEach((el) => el.setAttribute("data-visible", ""));
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute("data-visible", "");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+    );
+    revealElements.forEach((el) => observer.observe(el));
+  }
+
+  const header = document.getElementById("site-header");
+  if (header) {
+    const sentinel = document.createElement("div");
+    sentinel.style.cssText = "position:absolute;top:60px;left:0;width:1px;height:1px;pointer-events:none";
+    document.body.prepend(sentinel);
+    new IntersectionObserver(([entry]) => {
+      header.toggleAttribute("data-scrolled", !entry.isIntersecting);
+    }).observe(sentinel);
+  }
+</script>

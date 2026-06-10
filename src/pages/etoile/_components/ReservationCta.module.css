@@ -1,0 +1,110 @@
+.cta {
+  position: relative;
+  padding: 120px 24px;
+  overflow: hidden;
+}
+
+.imageWrap {
+  position: absolute;
+  inset: 0;
+}
+
+.bgImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #0a1020;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(11, 19, 37, 0.92) 0%,
+    rgba(8, 14, 30, 0.88) 100%
+  );
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.ornamentLine {
+  display: block;
+}
+
+.label {
+  font-family: "Playfair Display", serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #d4af37;
+}
+
+.title {
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(1.25rem, 3.8vw, 1.85rem);
+  font-weight: 300;
+  color: #f5f5f3;
+  line-height: 1.85;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+.desc {
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  font-weight: 300;
+  color: #aaaaaa;
+  line-height: 2.1;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 20px 52px;
+  min-height: 64px;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  color: #d4af37;
+  transition:
+    background-color 0.4s ease,
+    border-color 0.4s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgba(212, 175, 55, 0.07);
+  border-color: #d4af37;
+}
+
+.btnEn {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 0.72rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #aaaaaa;
+}
+
+.btnJa {
+  font-family: "Noto Serif JP", serif;
+  font-size: 0.92rem;
+  font-weight: 300;
+  letter-spacing: 0.16em;
+}

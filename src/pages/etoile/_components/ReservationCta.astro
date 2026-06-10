@@ -1,0 +1,58 @@
+---
+import styles from "./ReservationCta.module.css";
+---
+
+<section id="reservation" class={styles.cta}>
+  <div class={styles.imageWrap} aria-hidden="true">
+    <img
+      src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1920&h=800&fit=crop&q=80"
+      alt=""
+      loading="lazy"
+      class={styles.bgImage}
+      onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3ClinearGradient id=%22g%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%230d1a30%22/%3E%3Cstop offset=%221%22 stop-color=%22%23050c1a%22/%3E%3C/linearGradient%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/%3E%3C/svg%3E'"
+    />
+    <div class={styles.overlay}></div>
+  </div>
+
+  <div class={styles.inner}>
+    <div class={styles.content} data-reveal>
+      <svg
+        class={styles.ornamentLine}
+        width="140"
+        height="1"
+        viewBox="0 0 140 1"
+        fill="none"
+        aria-hidden="true"
+      >
+        <line x1="0" y1="0.5" x2="140" y2="0.5" stroke="#D4AF37" stroke-width="0.5" opacity="0.45"/>
+      </svg>
+
+      <span class={styles.label}>Reservation</span>
+
+      <h2 class={styles.title}>
+        大切な日のためのお席を、<br />ご用意いたします。
+      </h2>
+
+      <p class={styles.desc}>
+        記念日・接待・プロポーズ・お祝いの席など、特別なひとときのご相談も承ります。<br />
+        お席の確保は、お早めのご連絡をおすすめします。
+      </p>
+
+      <a href="tel:03-0000-0000" class={styles.btn} aria-label="お電話でご予約 03-0000-0000">
+        <span class={styles.btnEn}>Reserve Your Table</span>
+        <span class={styles.btnJa}>お席を確保する</span>
+      </a>
+
+      <svg
+        class={styles.ornamentLine}
+        width="140"
+        height="1"
+        viewBox="0 0 140 1"
+        fill="none"
+        aria-hidden="true"
+      >
+        <line x1="0" y1="0.5" x2="140" y2="0.5" stroke="#D4AF37" stroke-width="0.5" opacity="0.45"/>
+      </svg>
+    </div>
+  </div>
+</section>
