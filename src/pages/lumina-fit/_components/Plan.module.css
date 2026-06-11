@@ -27,7 +27,7 @@
   border-color: var(--lf-accent);
   background: linear-gradient(
     145deg,
-    rgba(197, 168, 128, 0.04) 0%,
+    rgba(53, 103, 214, 0.04) 0%,
     var(--lf-bg) 100%
   );
 }
@@ -91,8 +91,8 @@
   text-align: center;
   background: linear-gradient(
     to right,
-    rgba(197, 168, 128, 0.06),
-    rgba(212, 175, 55, 0.06)
+    rgba(53, 103, 214, 0.05),
+    rgba(30, 79, 196, 0.05)
   );
 }
 

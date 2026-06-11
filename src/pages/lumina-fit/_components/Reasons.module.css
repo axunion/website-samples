@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-/* Gold top accent line */
+/* Blue top accent line */
 .card::before {
   content: "";
   position: absolute;
@@ -38,7 +38,7 @@
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1;
-  color: rgba(197, 168, 128, 0.3);
+  color: rgba(53, 103, 214, 0.22);
   margin-bottom: 1.25rem;
   display: block;
 }

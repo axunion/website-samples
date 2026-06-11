@@ -2,13 +2,13 @@
 
 .root {
   /* Color palette */
-  --lf-bg: #fbfbfa;
-  --lf-bg-sub: #f4f3f0;
-  --lf-text: #2b2b2b;
-  --lf-text-sub: #666666;
-  --lf-accent: #c5a880;
-  --lf-accent-strong: #d4af37;
-  --lf-border: #e5e1da;
+  --lf-bg: #f6f9fd;
+  --lf-bg-sub: #ecf1f9;
+  --lf-text: #1c2436;
+  --lf-text-sub: #5a6b84;
+  --lf-accent: #3567d6;
+  --lf-accent-strong: #1e4fc4;
+  --lf-border: #d4deee;
 
   /* Layout */
   --lf-container: 1120px;
@@ -112,7 +112,7 @@
   letter-spacing: 0.12em;
   padding: 0.9rem 2.25rem;
   border-radius: var(--lf-radius);
-  box-shadow: 0 4px 20px rgba(197, 168, 128, 0.55);
+  box-shadow: 0 4px 20px rgba(53, 103, 214, 0.45);
   transition:
     background-color 0.25s,
     box-shadow 0.25s,
@@ -124,14 +124,14 @@
 @media (hover: hover) {
   .ctaBtn:hover {
     background-color: var(--lf-accent);
-    box-shadow: 0 10px 32px rgba(197, 168, 128, 0.6);
+    box-shadow: 0 10px 32px rgba(53, 103, 214, 0.5);
     transform: translateY(-2px);
   }
 }
 
 /* Touch tap feedback */
 .ctaBtn:active {
-  box-shadow: 0 2px 10px rgba(197, 168, 128, 0.4);
+  box-shadow: 0 2px 10px rgba(53, 103, 214, 0.35);
   transform: scale(0.97);
 }
 

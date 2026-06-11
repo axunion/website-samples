@@ -84,7 +84,7 @@
 
 .questionBtn[aria-expanded="true"] .toggle {
   border-color: var(--lf-accent);
-  background: rgba(197, 168, 128, 0.1);
+  background: rgba(53, 103, 214, 0.07);
   color: var(--lf-accent);
   transform: rotate(45deg);
 }

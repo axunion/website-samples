@@ -33,7 +33,7 @@
 
 .tab[aria-selected="true"] {
   color: var(--lf-accent-strong);
-  background-color: rgba(197, 168, 128, 0.08);
+  background-color: rgba(53, 103, 214, 0.06);
 }
 
 .tab[aria-selected="true"]::after {
