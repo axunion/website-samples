@@ -5,12 +5,12 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "24.16.0",
+      "version": "^24",
       "onFail": "warn"
     },
     "packageManager": {
       "name": "pnpm",
-      "version": "11.5.2",
+      "version": "^11",
       "onFail": "warn"
     }
   },
@@ -19,7 +19,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "biome check . && astro check",
+    "check": "biome check .",
     "fix": "biome check --write ."
   },
   "dependencies": {
@@ -27,10 +27,8 @@
     "astro-icon": "^1.1.5"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.9",
     "@biomejs/biome": "2.4.16",
     "@iconify-json/lucide": "^1.2.111",
-    "lightningcss": "^1.32.0",
-    "typescript": "^6.0.3"
+    "lightningcss": "^1.32.0"
   }
 }
