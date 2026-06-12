@@ -31,7 +31,6 @@ src/pages/
 - **Package manager**: pnpm (workspace)
 - **Linter / Formatter**: Biome
 - **CSS**: CSS Modules with LightningCSS (via Vite transformer)
-- **Type checking**: `astro check` + TypeScript
 
 ### Key Commands
 
@@ -40,8 +39,7 @@ src/pages/
 | `pnpm dev` | Start dev server |
 | `pnpm build` | Production build |
 | `pnpm preview` | Preview production build |
-| `pnpm check` | Lint + type-check |
-| `pnpm fix` | Auto-fix lint issues |
+| `pnpm fix` | Lint + auto-fix |
 
 ## Sample Isolation Rules
 

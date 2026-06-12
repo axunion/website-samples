@@ -19,7 +19,6 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "biome check .",
     "fix": "biome check --write ."
   },
   "dependencies": {
