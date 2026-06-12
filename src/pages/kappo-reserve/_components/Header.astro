@@ -1,0 +1,49 @@
+---
+import styles from "./Header.module.css";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<header id="site-header" class={styles.header}>
+  <div class={styles.inner}>
+    <a href={`${base}kappo-reserve/`} class={styles.logo} aria-label="雅膳 GAZEN — トップページへ">
+      <div class={styles.logoMark}>
+        <span class={styles.logoKanji}>雅膳</span>
+        <span class={styles.logoEn}>GAZEN</span>
+      </div>
+      <span class={styles.logoTagline}>高級和食 予約・案内サービス</span>
+    </a>
+
+    <nav class={styles.nav} aria-label="メインナビゲーション">
+      <a href={`${base}kappo-reserve/`} class={styles.navLink}>お店を探す</a>
+      <a href={`${base}kappo-reserve/#about`} class={styles.navLink}>サービスについて</a>
+      <a href={`${base}kappo-reserve/#guide`} class={styles.navLink}>ご利用ガイド</a>
+    </nav>
+
+    <a href={`${base}kappo-reserve/#reservation`} class={styles.reserveBtn}>
+      ご予約・お問い合わせ
+    </a>
+  </div>
+</header>
+
+<script>
+  let headerObserver: IntersectionObserver | null = null;
+
+  const setupHeader = () => {
+    headerObserver?.disconnect();
+    const header = document.getElementById("site-header");
+    if (!header) return;
+    const prev = document.getElementById("header-sentinel");
+    if (prev) prev.remove();
+    const sentinel = document.createElement("div");
+    sentinel.id = "header-sentinel";
+    sentinel.style.cssText =
+      "position:absolute;top:60px;left:0;width:1px;height:1px;pointer-events:none";
+    document.body.prepend(sentinel);
+    headerObserver = new IntersectionObserver(([entry]) => {
+      header.toggleAttribute("data-scrolled", !entry.isIntersecting);
+    });
+    headerObserver.observe(sentinel);
+  };
+  document.addEventListener("astro:page-load", setupHeader);
+</script>

@@ -1,0 +1,94 @@
+---
+import styles from "./CourseMenu.module.css";
+
+const courses = [
+  {
+    num: "01",
+    name: "おまかせ鮨コース",
+    nameEn: "Omakase — The Chef's Selection",
+    price: "¥55,000",
+    priceSub: "税別・サービス料15%別",
+    desc: "その日の最良のネタを宮田が選び、最も引き立つ仕事を施した、碧天の基本にして真髄。北海道・三陸・瀬戸内——各地から届いた海の恵みが、8席のカウンターで一期一会の輝きを放つ。",
+    dishes: [
+      "先付",
+      "お椀",
+      "造り盛り合わせ",
+      "焼き物",
+      "握り12貫",
+      "玉子",
+      "留め椀",
+      "水菓子",
+    ],
+  },
+  {
+    num: "02",
+    name: "特別おまかせコース",
+    nameEn: "Special Omakase — Seasonal Rarities",
+    price: "¥75,000",
+    priceSub: "税別・サービス料15%別",
+    desc: "希少食材を惜しみなく使い、宮田の技術を最高の形で体現するコース。白トリュフの季節には香りを纏い、真昆布で長時間昆布締めにした平目は、時間そのものが旨味に変わる。年に数回のみ提供。",
+    dishes: [
+      "先附（季節の珍味）",
+      "お椀（旬の汁物）",
+      "旬の造り",
+      "希少焼き物",
+      "握り14〜16貫",
+      "特別玉子",
+      "留め椀",
+      "甘味二品",
+    ],
+  },
+  {
+    num: "03",
+    name: "昼の鮨コース",
+    nameEn: "Lunch Omakase",
+    price: "¥30,000",
+    priceSub: "税別・サービス料15%別",
+    desc: "昼の光の中でいただく、凝縮された江戸前の世界。夜のコースと同じ品質のネタを使い、お昼ならではの明るい席で、鮨の奥深さを再発見していただく一時間半。月・水・金曜のみ。",
+    dishes: ["先付", "お椀", "造り（3点）", "握り10貫", "玉子", "お茶"],
+  },
+];
+---
+
+<section class={styles.section} id="menu" aria-labelledby="menu-heading">
+  <div class={styles.inner}>
+    <div class={styles.header} data-reveal>
+      <p class={styles.label}>Course Menu</p>
+      <h2 class={styles.title} id="menu-heading">コース・料金</h2>
+      <p class={styles.desc}>
+        食材は宮田が毎朝自ら市場へ出向き、目利きで選び抜いたもののみを使用します。すべてのコースは完全予約制・事前決済制です。
+      </p>
+    </div>
+
+    <ol class={styles.courses} data-reveal data-delay="1">
+      {courses.map((c) => (
+        <li class={styles.course}>
+          <span class={styles.courseNum}>{c.num}</span>
+          <div class={styles.courseBody}>
+            <h3 class={styles.courseName}>{c.name}</h3>
+            <p class={styles.courseNameEn}>{c.nameEn}</p>
+            <p class={styles.courseDesc}>{c.desc}</p>
+            <ul class={styles.courseDishes} role="list">
+              {c.dishes.map((d) => (
+                <li class={styles.dish}>{d}</li>
+              ))}
+            </ul>
+          </div>
+          <div class={styles.coursePrice}>
+            <span class={styles.priceAmount}>{c.price}</span>
+            <span class={styles.priceSub}>{c.priceSub}</span>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <div class={styles.note} data-reveal data-delay="2">
+      <p class={styles.noteText}>
+        表示価格はすべて税抜き・お一人様料金です。別途消費税（10%）と
+        サービス料（15%）が加算されます。お飲み物（酒肴・日本酒・ビールほか）は
+        別途ご注文となります。食材アレルギーのある方は、ご予約時に必ずお申し出ください。
+        仕入れの状況により、コース内容が変更になる場合がございます。
+      </p>
+    </div>
+  </div>
+</section>

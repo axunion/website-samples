@@ -1,0 +1,146 @@
+.card {
+  display: block;
+  position: relative;
+  background-color: var(--kr-sumi);
+  overflow: hidden;
+  cursor: pointer;
+  scroll-snap-align: start;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.3s;
+}
+
+.card:hover {
+  background-color: #1a1a1a;
+}
+
+.cardImageWrap {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background-color: #1c1a18;
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.card:hover .cardImg {
+  transform: scale(1.04);
+}
+
+.cardBadges {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  z-index: 1;
+}
+
+.badgeMichelin {
+  background: var(--kr-gold);
+  color: var(--kr-ink);
+  font-family: var(--kr-font-en);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  padding: 4px 10px;
+  font-style: italic;
+}
+
+.badgeFeature {
+  background: rgba(10, 10, 10, 0.75);
+  border: 1px solid var(--kr-border);
+  color: var(--kr-muted);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  padding: 3px 10px;
+  backdrop-filter: blur(6px);
+}
+
+.cardBody {
+  padding: 22px 24px 28px;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cardCategory {
+  font-family: var(--kr-font-en);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--kr-gold);
+  border: 1px solid var(--kr-gold-line);
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+.cardArea {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--kr-muted);
+}
+
+.cardName {
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1.35;
+  color: var(--kr-ivory);
+  margin: 0 0 10px;
+}
+
+.cardDesc {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  line-height: 1.9;
+  color: var(--kr-muted);
+  margin: 0 0 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid var(--kr-border);
+}
+
+.cardPrice {
+  font-family: var(--kr-font-en);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--kr-gold);
+  font-style: italic;
+}
+
+.cardLink {
+  font-family: var(--kr-font-en);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--kr-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition:
+    color 0.25s,
+    gap 0.25s;
+}
+
+.card:hover .cardLink {
+  color: var(--kr-ivory);
+  gap: 10px;
+}

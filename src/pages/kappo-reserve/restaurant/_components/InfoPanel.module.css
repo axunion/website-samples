@@ -1,0 +1,182 @@
+.section {
+  padding: clamp(80px, 10vw, 120px) var(--kr-pad);
+  border-bottom: 1px solid var(--kr-border);
+}
+
+.inner {
+  max-width: var(--kr-max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 7vw, 100px);
+  align-items: start;
+}
+
+.infoSide {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.label {
+  font-family: var(--kr-font-en);
+  font-size: 9px;
+  letter-spacing: 0.38em;
+  color: var(--kr-gold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--kr-ivory);
+  margin: 0 0 32px;
+}
+
+.dl {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--kr-border);
+}
+
+.row:first-child {
+  border-top: 1px solid var(--kr-border);
+}
+
+.dt {
+  font-family: var(--kr-font-en);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--kr-gold);
+  text-transform: uppercase;
+  padding-top: 3px;
+}
+
+.dd {
+  font-size: 13px;
+  letter-spacing: 0.07em;
+  line-height: 1.9;
+  color: var(--kr-ivory);
+  margin: 0;
+}
+
+.ddNote {
+  font-size: 11px;
+  color: var(--kr-muted);
+  margin-top: 2px;
+}
+
+.tel {
+  font-family: var(--kr-font-en);
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: var(--kr-gold);
+  font-style: italic;
+}
+
+/* Amenities grid */
+.amenities {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.amenity {
+  background: var(--kr-sumi);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.amenityIcon {
+  width: 28px;
+  height: 28px;
+  color: var(--kr-gold);
+  flex-shrink: 0;
+}
+
+.amenityName {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--kr-ivory);
+  font-weight: 400;
+}
+
+.amenityValue {
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  color: var(--kr-muted);
+  line-height: 1.6;
+}
+
+.amenityBadge {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 2px 8px;
+  border: 1px solid var(--kr-border);
+  color: var(--kr-muted);
+  margin-top: 2px;
+}
+
+/* Map */
+.mapSide {
+  position: sticky;
+  top: 100px;
+}
+
+.mapLabel {
+  font-family: var(--kr-font-en);
+  font-size: 9px;
+  letter-spacing: 0.38em;
+  color: var(--kr-gold);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.mapSvgWrap {
+  background: var(--kr-sumi);
+  border: 1px solid var(--kr-border);
+  overflow: hidden;
+}
+
+.mapNote {
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: var(--kr-subtle);
+  margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .mapSide {
+    position: static;
+  }
+
+  .amenities {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .amenities {
+    grid-template-columns: 1fr;
+  }
+  .row {
+    grid-template-columns: 100px 1fr;
+  }
+}

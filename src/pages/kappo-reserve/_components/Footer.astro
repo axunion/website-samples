@@ -1,0 +1,45 @@
+---
+import styles from "./Footer.module.css";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<footer class={styles.footer}>
+  <div class={styles.inner}>
+    <div class={styles.brand}>
+      <div class={styles.brandMark}>
+        <span class={styles.brandKanji}>雅膳</span>
+        <span class={styles.brandEn}>GAZEN</span>
+      </div>
+      <p class={styles.brandDesc}>
+        本物の一流を知る方々のために、厳選された高級和食店の予約・案内を承ります。接待、記念日、顔合わせ——特別な夜にふさわしい一軒を、ご一緒に探しましょう。
+      </p>
+    </div>
+
+    <div>
+      <p class={styles.colTitle}>Navigation</p>
+      <ul class={styles.links}>
+        <li><a href={`${base}kappo-reserve/`} class={styles.link}>お店を探す</a></li>
+        <li><a href={`${base}kappo-reserve/restaurant/`} class={styles.link}>店舗詳細（サンプル）</a></li>
+        <li><a href={`${base}kappo-reserve/#guide`} class={styles.link}>ご利用ガイド</a></li>
+        <li><a href={`${base}kappo-reserve/#about`} class={styles.link}>サービスについて</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class={styles.colTitle}>Information</p>
+      <ul class={styles.links}>
+        <li><a href="#" class={styles.link}>ご予約の流れ</a></li>
+        <li><a href="#" class={styles.link}>キャンセルポリシー</a></li>
+        <li><a href="#" class={styles.link}>ドレスコードについて</a></li>
+        <li><a href="#" class={styles.link}>プライバシーポリシー</a></li>
+        <li><a href="#" class={styles.link}>特定商取引法に基づく表記</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class={styles.bottom}>
+    <p class={styles.copy}>&copy; 2025 GAZEN 雅膳. All rights reserved.</p>
+    <p class={styles.disclaimer}>掲載情報はサンプルです。実在の店舗・人物とは関係ありません。</p>
+  </div>
+</footer>

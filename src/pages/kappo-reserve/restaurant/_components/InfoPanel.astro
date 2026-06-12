@@ -1,0 +1,153 @@
+---
+import { Icon } from "astro-icon/components";
+import styles from "./InfoPanel.module.css";
+---
+
+<section class={styles.section} id="info" aria-labelledby="info-heading">
+  <div class={styles.inner}>
+    <div class={styles.infoSide}>
+      <div data-reveal>
+        <p class={styles.label}>Restaurant Info</p>
+        <h2 class={styles.title} id="info-heading">店舗情報</h2>
+
+        <dl class={styles.dl}>
+          <div class={styles.row}>
+            <dt class={styles.dt}>住所</dt>
+            <dd class={styles.dd}>
+              〒104-0061<br />
+              東京都中央区銀座5-X-X<br />
+              銀座プレミアムビル B1F
+            </dd>
+          </div>
+          <div class={styles.row}>
+            <dt class={styles.dt}>アクセス</dt>
+            <dd class={styles.dd}>
+              東京メトロ銀座線・日比谷線・丸ノ内線<br />
+              「銀座駅」A4出口より徒歩3分
+            </dd>
+          </div>
+          <div class={styles.row}>
+            <dt class={styles.dt}>営業時間</dt>
+            <dd class={styles.dd}>
+              ランチ　12:00 — 開始<br />
+              ディナー　18:00 / 20:30 — 2回転<br />
+              <span class={styles.ddNote}>月・火曜定休（祝日の場合は翌日振替）</span>
+            </dd>
+          </div>
+          <div class={styles.row}>
+            <dt class={styles.dt}>ご予約</dt>
+            <dd class={styles.dd}>
+              <a href="tel:03-0000-0000" class={styles.tel}>03-0000-0000</a>
+              <span class={styles.ddNote}>受付：水〜日 11:00 — 19:00</span>
+            </dd>
+          </div>
+          <div class={styles.row}>
+            <dt class={styles.dt}>席数</dt>
+            <dd class={styles.dd}>
+              カウンター 8席のみ<br />
+              <span class={styles.ddNote}>完全個室のご用意はございません</span>
+            </dd>
+          </div>
+          <div class={styles.row}>
+            <dt class={styles.dt}>予約条件</dt>
+            <dd class={styles.dd}>
+              完全紹介制<br />
+              <span class={styles.ddNote}>お知り合いのご紹介またはGAZENコンシェルジュ経由のみ</span>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- Amenities grid -->
+      <div data-reveal data-delay="1">
+        <div class={styles.amenities}>
+          <div class={styles.amenity}>
+            <Icon name="lucide:home" class={styles.amenityIcon} aria-hidden="true" />
+            <span class={styles.amenityName}>ドレスコード</span>
+            <span class={styles.amenityValue}>スマートエレガント以上</span>
+            <span class={styles.amenityBadge}>デニム・スニーカー不可</span>
+          </div>
+
+          <div class={styles.amenity}>
+            <Icon name="lucide:calendar" class={styles.amenityIcon} aria-hidden="true" />
+            <span class={styles.amenityName}>キャンセルポリシー</span>
+            <span class={styles.amenityValue}>3日前まで：無料<br/>前日：コース料金50%<br/>当日・無断：100%</span>
+          </div>
+
+          <div class={styles.amenity}>
+            <Icon name="lucide:globe" class={styles.amenityIcon} aria-hidden="true" />
+            <span class={styles.amenityName}>英語対応</span>
+            <span class={styles.amenityValue}>英語メニューあり<br/>英語対応スタッフ常駐</span>
+          </div>
+
+          <div class={styles.amenity}>
+            <Icon name="lucide:lock" class={styles.amenityIcon} aria-hidden="true" />
+            <span class={styles.amenityName}>事前決済</span>
+            <span class={styles.amenityValue}>ご予約時にコース料金全額を<br/>事前決済していただきます</span>
+          </div>
+
+          <div class={styles.amenity}>
+            <Icon name="lucide:users" class={styles.amenityIcon} aria-hidden="true" />
+            <span class={styles.amenityName}>お子様の入店</span>
+            <span class={styles.amenityValue}>中学生以上のみ<br/>お断りする場合がございます</span>
+          </div>
+
+          <div class={styles.amenity}>
+            <Icon name="lucide:ban" class={styles.amenityIcon} aria-hidden="true" />
+            <span class={styles.amenityName}>禁煙</span>
+            <span class={styles.amenityValue}>店内全席完全禁煙<br/>電子タバコも含む</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map side -->
+    <div class={styles.mapSide} data-reveal data-delay="2">
+      <p class={styles.mapLabel}>Access Map</p>
+      <div class={styles.mapSvgWrap}>
+        <svg
+          viewBox="0 0 480 320"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="銀座 鮨 碧天 周辺地図（イメージ）"
+        >
+          <rect width="480" height="320" fill="#141414"/>
+          <!-- Grid lines -->
+          <line x1="0" y1="80" x2="480" y2="80" stroke="#1e1e1e" stroke-width="1"/>
+          <line x1="0" y1="160" x2="480" y2="160" stroke="#1e1e1e" stroke-width="1"/>
+          <line x1="0" y1="240" x2="480" y2="240" stroke="#1e1e1e" stroke-width="1"/>
+          <line x1="120" y1="0" x2="120" y2="320" stroke="#1e1e1e" stroke-width="1"/>
+          <line x1="240" y1="0" x2="240" y2="320" stroke="#1e1e1e" stroke-width="1"/>
+          <line x1="360" y1="0" x2="360" y2="320" stroke="#1e1e1e" stroke-width="1"/>
+          <!-- Main roads -->
+          <rect x="0" y="148" width="480" height="24" fill="#1c1c1c" rx="0"/>
+          <text x="30" y="164" fill="#444" font-size="9" font-family="serif" letter-spacing="2">晴海通り</text>
+          <rect x="0" y="62" width="480" height="18" fill="#1c1c1c"/>
+          <text x="30" y="75" fill="#444" font-size="9" font-family="serif" letter-spacing="2">昭和通り</text>
+          <rect x="228" y="0" width="24" height="320" fill="#1c1c1c"/>
+          <text x="232" y="40" fill="#444" font-size="8" font-family="serif" writing-mode="tb">銀座通り</text>
+          <!-- Station block -->
+          <rect x="30" y="172" width="64" height="40" rx="3" fill="#202020"/>
+          <text x="62" y="197" text-anchor="middle" fill="#c9a96e" font-size="10" font-family="serif" opacity="0.9">銀座駅</text>
+          <text x="62" y="208" text-anchor="middle" fill="#555" font-size="7" font-family="serif" opacity="0.8">A4出口</text>
+          <!-- City blocks -->
+          <rect x="130" y="90" width="80" height="48" rx="2" fill="#181818"/>
+          <rect x="260" y="90" width="70" height="48" rx="2" fill="#181818"/>
+          <rect x="380" y="90" width="80" height="48" rx="2" fill="#181818"/>
+          <rect x="130" y="188" width="80" height="48" rx="2" fill="#181818"/>
+          <rect x="380" y="188" width="80" height="48" rx="2" fill="#181818"/>
+          <!-- Destination pin -->
+          <circle cx="310" cy="172" r="10" fill="#c9a96e" opacity="0.95"/>
+          <circle cx="310" cy="172" r="18" stroke="#c9a96e" stroke-width="1" opacity="0.25" fill="none"/>
+          <circle cx="310" cy="172" r="28" stroke="#c9a96e" stroke-width="0.5" opacity="0.12" fill="none"/>
+          <text x="310" y="210" text-anchor="middle" fill="#c9a96e" font-size="9" font-family="serif" font-style="italic" opacity="0.8">鮨 碧天</text>
+          <!-- Walk path dotted -->
+          <line x1="94" y1="192" x2="290" y2="172" stroke="#c9a96e" stroke-width="1" stroke-dasharray="4 4" opacity="0.35"/>
+          <text x="180" y="187" fill="#7a7268" font-size="8" font-family="serif" font-style="italic" opacity="0.7">徒歩約3分</text>
+        </svg>
+      </div>
+      <p class={styles.mapNote}>※ 地図は表示イメージです。実際のアクセスはGoogleマップをご確認ください。</p>
+    </div>
+  </div>
+</section>

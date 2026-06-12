@@ -1,0 +1,29 @@
+<script>
+  let revealObserver: IntersectionObserver | null = null;
+
+  const setupReveals = () => {
+    revealObserver?.disconnect();
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reveals = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-reveal]:not([data-visible])")
+    );
+    if (reducedMotion) {
+      reveals.forEach((el) => el.setAttribute("data-visible", ""));
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute("data-visible", "");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.06, rootMargin: "0px 0px -32px 0px" }
+    );
+    revealObserver = observer;
+    reveals.forEach((el) => observer.observe(el));
+  };
+  document.addEventListener("astro:page-load", setupReveals);
+</script>

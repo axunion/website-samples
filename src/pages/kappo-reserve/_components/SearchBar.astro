@@ -1,0 +1,66 @@
+---
+import styles from "./SearchBar.module.css";
+
+interface Props {
+  initialArea?: string;
+  initialPurpose?: string;
+  initialFeature?: string;
+}
+
+const {
+  initialArea = "",
+  initialPurpose = "",
+  initialFeature = "",
+} = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<form class={styles.form} method="get" action={`${base}kappo-reserve/search/`} role="search" aria-label="レストラン検索">
+  <div class={styles.field}>
+    <label for="search-area" class={styles.label}>Area / エリア</label>
+    <select id="search-area" class={styles.select} name="area">
+      <option value="">エリアを選ぶ</option>
+      <option value="ginza" selected={initialArea === "ginza"}>銀座・築地</option>
+      <option value="gion" selected={initialArea === "gion"}>祇園・河原町（京都）</option>
+      <option value="roppongi" selected={initialArea === "roppongi"}>六本木・麻布</option>
+      <option value="akasaka" selected={initialArea === "akasaka"}>赤坂・永田町</option>
+      <option value="aoyama" selected={initialArea === "aoyama"}>青山・表参道</option>
+      <option value="kagurazaka" selected={initialArea === "kagurazaka"}>神楽坂・四ツ谷</option>
+      <option value="shinjuku" selected={initialArea === "shinjuku"}>新宿・西新宿</option>
+      <option value="namba" selected={initialArea === "namba"}>難波・心斎橋（大阪）</option>
+    </select>
+  </div>
+
+  <div class={styles.field}>
+    <label for="search-purpose" class={styles.label}>Purpose / 利用目的</label>
+    <select id="search-purpose" class={styles.select} name="purpose">
+      <option value="">目的を選ぶ</option>
+      <option value="settai" selected={initialPurpose === "settai"}>接待・会食</option>
+      <option value="kinenbi" selected={initialPurpose === "kinenbi"}>記念日・誕生日</option>
+      <option value="kaoawase" selected={initialPurpose === "kaoawase"}>顔合わせ・両家の席</option>
+      <option value="date" selected={initialPurpose === "date"}>大切な方との二人席</option>
+      <option value="solo" selected={initialPurpose === "solo"}>お一人様でのご来店</option>
+      <option value="group" selected={initialPurpose === "group"}>グループ・貸切</option>
+    </select>
+  </div>
+
+  <div class={styles.field}>
+    <label for="search-feature" class={styles.label}>Feature / こだわり</label>
+    <select id="search-feature" class={styles.select} name="feature">
+      <option value="">特徴で絞る</option>
+      <option value="private" selected={initialFeature === "private"}>完全個室あり</option>
+      <option value="counter" selected={initialFeature === "counter"}>カウンター席のみ</option>
+      <option value="michelin" selected={initialFeature === "michelin"}>ミシュラン星付き</option>
+      <option value="shokai" selected={initialFeature === "shokai"}>紹介制・一見さんお断り</option>
+      <option value="english" selected={initialFeature === "english"}>英語対応あり</option>
+      <option value="prepay" selected={initialFeature === "prepay"}>事前決済対応</option>
+    </select>
+  </div>
+
+  <button type="submit" class={styles.submitBtn}>
+    検索
+    <svg class={styles.submitArrow} viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</form>

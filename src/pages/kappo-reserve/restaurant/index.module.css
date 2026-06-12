@@ -1,0 +1,6 @@
+@import "../_base.module.css";
+
+.root {
+  min-height: 100vh;
+  overflow-x: hidden;
+}

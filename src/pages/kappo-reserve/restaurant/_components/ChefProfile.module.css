@@ -1,0 +1,149 @@
+.section {
+  padding: clamp(80px, 10vw, 120px) var(--kr-pad);
+  border-bottom: 1px solid var(--kr-border);
+}
+
+.inner {
+  max-width: var(--kr-max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 7vw, 100px);
+  align-items: center;
+}
+
+.portrait {
+  position: relative;
+}
+
+.portraitFrame {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background-color: #1a1a14;
+}
+
+.portraitFrame::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 1px solid var(--kr-gold-line);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.portraitImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(0.8) brightness(0.9);
+}
+
+.portraitCaption {
+  margin-top: 16px;
+  font-family: var(--kr-font-en);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--kr-muted);
+  text-align: center;
+  font-style: italic;
+}
+
+.bio {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.bioLabel {
+  font-family: var(--kr-font-en);
+  font-size: 9px;
+  letter-spacing: 0.38em;
+  color: var(--kr-gold);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.bioOrnament {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.bioOrnamentLine {
+  height: 1px;
+  width: 36px;
+  background: var(--kr-gold-line);
+  flex-shrink: 0;
+}
+
+.chefName {
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: var(--kr-ivory);
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+
+.chefNameEn {
+  font-family: var(--kr-font-en);
+  font-size: clamp(13px, 1.5vw, 16px);
+  letter-spacing: 0.24em;
+  color: var(--kr-muted);
+  font-style: italic;
+  margin-bottom: 28px;
+}
+
+.bioRule {
+  width: 40px;
+  height: 1px;
+  background: var(--kr-gold);
+  margin-bottom: 28px;
+  opacity: 0.5;
+}
+
+.bioText {
+  font-size: clamp(13px, 1.2vw, 15px);
+  letter-spacing: 0.06em;
+  line-height: 2.1;
+  color: rgba(240, 232, 216, 0.75);
+  margin: 0 0 24px;
+}
+
+.bioQuote {
+  margin: 0;
+  padding: 20px 24px;
+  border-left: 2px solid var(--kr-gold-line);
+  background: var(--kr-gold-pale);
+}
+
+.bioQuoteText {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 2;
+  color: var(--kr-ivory);
+  font-style: normal;
+  margin: 0 0 8px;
+}
+
+.bioQuoteAuthor {
+  font-family: var(--kr-font-en);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--kr-gold);
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+}

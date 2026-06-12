@@ -1,0 +1,90 @@
+.form {
+  display: flex;
+  align-items: stretch;
+  background: rgba(14, 14, 14, 0.82);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--kr-border);
+  border-top: 1px solid rgba(201, 169, 110, 0.18);
+  max-width: 740px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.field {
+  flex: 1;
+  min-width: 0;
+  border-right: 1px solid var(--kr-border);
+}
+
+.label {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 0.28em;
+  color: var(--kr-gold);
+  padding: 14px 18px 0;
+  text-transform: uppercase;
+  font-family: var(--kr-font-en);
+}
+
+.select {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--kr-ivory);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  padding: 5px 18px 14px;
+  appearance: none;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.select option {
+  background: #1c1c1c;
+  color: var(--kr-ivory);
+}
+
+.submitBtn {
+  flex-shrink: 0;
+  padding: 0 28px;
+  background: var(--kr-gold);
+  border: none;
+  color: var(--kr-ink);
+  font-family: var(--kr-font-ja);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.25s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.submitBtn:hover {
+  background-color: #d4b87a;
+}
+
+.submitArrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .form {
+    flex-direction: column;
+  }
+
+  .field {
+    border-right: none;
+    border-bottom: 1px solid var(--kr-border);
+  }
+
+  .submitBtn {
+    padding: 16px 20px;
+    justify-content: center;
+  }
+}

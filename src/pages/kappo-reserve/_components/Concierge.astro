@@ -1,0 +1,132 @@
+---
+import styles from "./Concierge.module.css";
+---
+
+<section class={styles.section} id="reservation" aria-labelledby="concierge-heading">
+  <div class={styles.inner}>
+    <div class={styles.header} data-reveal>
+      <p class={styles.label}>Concierge Consultation</p>
+      <h2 class={styles.title} id="concierge-heading">コンシェルジュに相談する</h2>
+      <p class={styles.desc}>
+        ご希望の条件をお聞かせください。担当コンシェルジュより、<br />
+        最適な一軒をご提案いたします。ご相談は無料です。
+      </p>
+    </div>
+
+    <form class={styles.form} id="concierge-form" novalidate data-reveal data-delay="1">
+      <div class={styles.row}>
+        <div class={styles.field}>
+          <label for="con-name" class={styles.fieldLabel}>
+            Name / お名前
+            <span class={styles.req} aria-label="必須">*</span>
+          </label>
+          <input type="text" id="con-name" name="name" placeholder="山田 太郎" class={styles.input} autocomplete="name" required />
+        </div>
+        <div class={styles.field}>
+          <label for="con-email" class={styles.fieldLabel}>
+            Email / メールアドレス
+            <span class={styles.req} aria-label="必須">*</span>
+          </label>
+          <input type="email" id="con-email" name="email" placeholder="example@email.com" class={styles.input} autocomplete="email" required />
+        </div>
+      </div>
+
+      <div class={styles.row}>
+        <div class={styles.field}>
+          <label for="con-purpose" class={styles.fieldLabel}>Purpose / ご利用目的</label>
+          <select id="con-purpose" name="purpose" class={styles.select}>
+            <option value="">目的を選ぶ</option>
+            <option value="settai">接待・会食</option>
+            <option value="kinenbi">記念日・誕生日</option>
+            <option value="kaoawase">顔合わせ・両家の席</option>
+            <option value="date">大切な方との二人席</option>
+            <option value="solo">お一人様でのご来店</option>
+            <option value="group">グループ・貸切</option>
+          </select>
+        </div>
+        <div class={styles.field}>
+          <label for="con-guests" class={styles.fieldLabel}>Guests / 人数</label>
+          <select id="con-guests" name="guests" class={styles.select}>
+            <option value="">人数を選ぶ</option>
+            <option value="1">1名様</option>
+            <option value="2">2名様</option>
+            <option value="3">3名様</option>
+            <option value="4">4名様</option>
+            <option value="5">5名様</option>
+            <option value="6">6〜8名様</option>
+            <option value="9">9名様以上（貸切）</option>
+          </select>
+        </div>
+      </div>
+
+      <div class={styles.row}>
+        <div class={styles.field}>
+          <label for="con-date" class={styles.fieldLabel}>Date / ご希望の時期</label>
+          <input type="text" id="con-date" name="date" placeholder="例：7月上旬の平日夜" class={styles.input} />
+        </div>
+        <div class={styles.field}>
+          <label for="con-budget" class={styles.fieldLabel}>Budget / おひとり様のご予算</label>
+          <select id="con-budget" name="budget" class={styles.select}>
+            <option value="">予算を選ぶ</option>
+            <option value="20000">¥20,000〜</option>
+            <option value="30000">¥30,000〜</option>
+            <option value="40000">¥40,000〜</option>
+            <option value="50000">¥50,000〜</option>
+            <option value="consult">ご相談</option>
+          </select>
+        </div>
+      </div>
+
+      <div class={styles.fieldFull}>
+        <label for="con-request" class={styles.fieldLabel}>Message / ご要望・こだわりなど</label>
+        <textarea
+          id="con-request"
+          name="request"
+          rows={4}
+          placeholder="個室希望、ミシュラン星付き希望、接待相手のお好みなど、お気軽にご記入ください。"
+          class={styles.textarea}
+        ></textarea>
+      </div>
+
+      <div class={styles.submitWrap}>
+        <button type="submit" class={styles.submitBtn}>
+          コンシェルジュに相談する
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+            <path d="M1 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <p class={styles.submitNote}>送信後、担当コンシェルジュより2営業日以内にご連絡いたします。なお、本フォームはデモ用サンプルです。</p>
+      </div>
+    </form>
+
+    <div class={styles.thanks} id="concierge-thanks" hidden aria-live="polite">
+      <svg class={styles.thanksIcon} viewBox="0 0 52 52" fill="none" aria-hidden="true">
+        <circle cx="26" cy="26" r="25" stroke="currentColor" stroke-width="1"/>
+        <path d="M15 26L22 33L37 19" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p class={styles.thanksLabel}>Thank you</p>
+      <h3 class={styles.thanksTitle}>お問い合わせを承りました</h3>
+      <p class={styles.thanksText}>
+        ご登録のメールアドレス宛に、担当コンシェルジュより<br />
+        2営業日以内にご連絡いたします。しばらくお待ちください。
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const setupConcierge = () => {
+    const form = document.getElementById("concierge-form") as HTMLFormElement | null;
+    const thanks = document.getElementById("concierge-thanks") as HTMLElement | null;
+    if (!form || !thanks) return;
+    form.hidden = false;
+    thanks.hidden = true;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      form.hidden = true;
+      thanks.hidden = false;
+      thanks.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  };
+  document.addEventListener("astro:page-load", setupConcierge);
+</script>

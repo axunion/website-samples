@@ -1,0 +1,49 @@
+---
+import styles from "./Guide.module.css";
+---
+
+<section class={styles.section} id="guide" aria-labelledby="guide-heading">
+  <div class={styles.inner}>
+    <div class={styles.header} data-reveal>
+      <p class={styles.label}>How It Works</p>
+      <h2 class={styles.title} id="guide-heading">ご利用の流れ</h2>
+    </div>
+
+    <div class={styles.steps} data-reveal data-delay="1">
+      <div class={styles.step}>
+        <div class={styles.stepNumWrap}>
+          <span class={styles.stepNum} aria-hidden="true">01</span>
+          <span class={styles.stepLine} aria-hidden="true"></span>
+        </div>
+        <h3 class={styles.stepTitle}>ご希望を<br />お伝えください</h3>
+        <p class={styles.stepText}>エリア・利用目的・人数・予算・こだわりを検索フォームまたはお問い合わせフォームにご入力ください。</p>
+      </div>
+
+      <div class={styles.step}>
+        <div class={styles.stepNumWrap}>
+          <span class={styles.stepNum} aria-hidden="true">02</span>
+          <span class={styles.stepLine} aria-hidden="true"></span>
+        </div>
+        <h3 class={styles.stepTitle}>最適な<br />一軒をご提案</h3>
+        <p class={styles.stepText}>専任コンシェルジュが条件を精査し、最適な1〜3軒を厳選。コースや個室の詳細とともにご案内します。</p>
+      </div>
+
+      <div class={styles.step}>
+        <div class={styles.stepNumWrap}>
+          <span class={styles.stepNum} aria-hidden="true">03</span>
+          <span class={styles.stepLine} aria-hidden="true"></span>
+        </div>
+        <h3 class={styles.stepTitle}>内容を<br />ご確認いただき</h3>
+        <p class={styles.stepText}>ご提案内容にご納得いただければ、コンシェルジュが店舗との連絡・予約手続きを一切代行します。</p>
+      </div>
+
+      <div class={styles.step}>
+        <div class={styles.stepNumWrap}>
+          <span class={styles.stepNum} aria-hidden="true">04</span>
+        </div>
+        <h3 class={styles.stepTitle}>当日の<br />おもてなし</h3>
+        <p class={styles.stepText}>当日はGAZENのコンシェルジュカードをご持参ください。お店は皆様のご来店を心よりお待ちしています。</p>
+      </div>
+    </div>
+  </div>
+</section>

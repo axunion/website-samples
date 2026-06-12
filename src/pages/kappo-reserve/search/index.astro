@@ -1,0 +1,399 @@
+---
+import { ClientRouter } from "astro:transitions";
+import Footer from "../_components/Footer.astro";
+import Header from "../_components/Header.astro";
+import SearchBar from "../_components/SearchBar.astro";
+import styles from "./index.module.css";
+
+const base = import.meta.env.BASE_URL;
+
+interface Restaurant {
+  name: string;
+  category: string;
+  area: string;
+  areaKey: string;
+  stars: number;
+  bib?: boolean;
+  founded?: string;
+  price: string;
+  features: string[];
+  featureKeys: string[];
+  purposeKeys: string[];
+  desc: string;
+  img: string;
+  imgAlt: string;
+}
+
+const restaurants: Restaurant[] = [
+  {
+    name: "銀座 鮨 碧天",
+    category: "鮨",
+    area: "銀座",
+    areaKey: "ginza",
+    stars: 3,
+    price: "¥55,000〜",
+    features: ["カウンター8席", "紹介制"],
+    featureKeys: ["counter", "shokai", "michelin", "prepay"],
+    purposeKeys: ["settai", "kinenbi", "date"],
+    desc: "江戸前の技と、季節の恵みが重なる八席のカウンター。宮田義雄が紡ぐ一貫一貫は、静寂の中に深く語りかけてくる。",
+    img: "https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?w=800&h=534&fit=crop&q=80",
+    imgAlt: "職人が握る高級江戸前鮨のカウンター",
+  },
+  {
+    name: "京都 料亭 花邸",
+    category: "料亭",
+    area: "祇園",
+    areaKey: "gion",
+    stars: 2,
+    price: "¥45,000〜",
+    features: ["完全個室", "数寄屋造り"],
+    featureKeys: ["private", "michelin"],
+    purposeKeys: ["settai", "kinenbi", "kaoawase", "date"],
+    desc: "石畳の路地の奥、百年の歴史を刻む数寄屋造りの離れ。移ろう季節と、ままならぬ夜に彩りを添える一献。",
+    img: "https://images.unsplash.com/photo-1578269174936-2709b6aeb913?w=800&h=534&fit=crop&q=80",
+    imgAlt: "静寂に包まれた京都の高級料亭の個室",
+  },
+  {
+    name: "六本木 炉端 澄懐",
+    category: "炉端料理",
+    area: "六本木",
+    areaKey: "roppongi",
+    stars: 0,
+    bib: true,
+    price: "¥28,000〜",
+    features: ["個室あり", "接待向き"],
+    featureKeys: ["private"],
+    purposeKeys: ["settai", "group"],
+    desc: "炭の香りと共に現れる食材の素顔は、どんな言葉よりも饒舌だ。炎の前で語り合う夜が、縁を深める。",
+    img: "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&h=534&fit=crop&q=80",
+    imgAlt: "炉端で炭火焼きにされる旬の食材",
+  },
+  {
+    name: "麻布 割烹 間",
+    category: "割烹",
+    area: "麻布十番",
+    areaKey: "roppongi",
+    stars: 0,
+    founded: "1962年創業",
+    price: "¥38,000〜",
+    features: ["個室あり"],
+    featureKeys: ["private"],
+    purposeKeys: ["settai", "kinenbi", "date"],
+    desc: "先代から受け継がれた包丁の技と、その季節だけが持つ食材の声に耳を澄ます。余白の中に宿る美しさ。",
+    img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=534&fit=crop&q=80",
+    imgAlt: "老舗割烹の落ち着いた和の佇まい",
+  },
+  {
+    name: "赤坂 懐石 空音",
+    category: "懐石",
+    area: "赤坂",
+    areaKey: "akasaka",
+    stars: 2,
+    price: "¥42,000〜",
+    features: ["ミシュラン", "個室あり"],
+    featureKeys: ["michelin", "private"],
+    purposeKeys: ["settai", "kinenbi"],
+    desc: "器は料理の着物。四季の器に盛られた一皿一皿は、それ自体が詩だ。空音の厨房には余分な音がない。",
+    img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800&h=534&fit=crop&q=80",
+    imgAlt: "繊細な懐石料理の美しい盛り付け",
+  },
+  {
+    name: "神楽坂 鮨 彩",
+    category: "鮨",
+    area: "神楽坂",
+    areaKey: "kagurazaka",
+    stars: 1,
+    price: "¥48,000〜",
+    features: ["カウンター席", "完全紹介制"],
+    featureKeys: ["counter", "shokai", "michelin"],
+    purposeKeys: ["kinenbi", "date", "solo"],
+    desc: "カウンター越しに職人の指先を眺めながら過ごす時間は、それ自体が芸術の鑑賞だ。語らずとも伝わるものがある。",
+    img: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800&h=534&fit=crop&q=80",
+    imgAlt: "高級鮨店の洗練されたカウンター",
+  },
+  {
+    name: "表参道 懐石 水鏡",
+    category: "懐石",
+    area: "表参道",
+    areaKey: "aoyama",
+    stars: 2,
+    price: "¥52,000〜",
+    features: ["完全個室", "接待向き"],
+    featureKeys: ["private", "michelin"],
+    purposeKeys: ["settai", "kinenbi"],
+    desc: "水を湛えた中庭に面する茶室風の個室。日常から切り離されたひとときをもたらす、接待の定番。",
+    img: "https://images.unsplash.com/photo-1554797589-7241bb691973?w=800&h=534&fit=crop&q=80",
+    imgAlt: "水庭に面した懐石料亭の個室",
+  },
+  {
+    name: "銀座 割烹 輝",
+    category: "割烹",
+    area: "銀座",
+    areaKey: "ginza",
+    stars: 1,
+    price: "¥35,000〜",
+    features: ["個室4室", "接待向き"],
+    featureKeys: ["private", "michelin"],
+    purposeKeys: ["settai", "kinenbi", "group"],
+    desc: "銀座の地下に佇む、光と影の空間。独立した個室が織りなす静けさの中で、料理の輝きだけが場を満たす。",
+    img: "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800&h=534&fit=crop&q=80",
+    imgAlt: "洗練された割烹料理の一皿",
+  },
+  {
+    name: "青山 料亭 月の庭",
+    category: "料亭",
+    area: "青山",
+    areaKey: "aoyama",
+    stars: 0,
+    price: "¥40,000〜",
+    features: ["完全個室", "顔合わせ向き"],
+    featureKeys: ["private"],
+    purposeKeys: ["kaoawase", "kinenbi", "date"],
+    desc: "青山の路地奥に現れる、月を映す坪庭を持つ料亭。顔合わせや両家の祝い事に、この場が選ばれ続ける理由がある。",
+    img: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=800&h=534&fit=crop&q=80",
+    imgAlt: "料亭の庭に面した個室",
+  },
+];
+
+const detailHref = `${base}kappo-reserve/restaurant/`;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>検索結果 | 雅膳 GAZEN</title>
+    <meta name="description" content="雅膳 GAZENの厳選店舗一覧。エリア・目的・こだわりから最適な高級和食店をお探しください。" />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <ClientRouter />
+  </head>
+  <body>
+    <div class={styles.root}>
+      <Header />
+      <main>
+        <div class={styles.resultsHeader}>
+          <div class={styles.resultsHeaderInner}>
+            <nav class={styles.breadcrumb} aria-label="パンくずリスト">
+              <a href={`${base}kappo-reserve/`} class={styles.breadcrumbLink}>お店を探す</a>
+              <span class={styles.breadcrumbSep} aria-hidden="true">/</span>
+              <span class={styles.breadcrumbCurrent}>検索結果</span>
+            </nav>
+
+            <div id="filter-chips" class={styles.filterChips} role="list" aria-label="絞り込み条件"></div>
+
+            <div class={styles.resultsMeta}>
+              <p id="results-count" class={styles.resultsCount}>店舗を検索中...</p>
+              <a href={`${base}kappo-reserve/#top`} class={styles.refineLink}>
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true">
+                  <path d="M11 5H1M5 1l-4 4 4 4" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                条件を変更する
+              </a>
+            </div>
+
+            <div class={styles.searchRefine}>
+              <SearchBar />
+            </div>
+          </div>
+        </div>
+
+        <div class={styles.grid}>
+          <div id="results-grid" class={styles.gridInner}>
+            {
+              restaurants.map((r) => (
+                <a
+                  href={detailHref}
+                  class={styles.card}
+                  data-area={r.areaKey}
+                  data-features={r.featureKeys.join(",")}
+                  data-purposes={r.purposeKeys.join(",")}
+                >
+                  <div class={styles.cardImageWrap}>
+                    <img
+                      src={r.img}
+                      alt={r.imgAlt}
+                      class={styles.cardImg}
+                      loading="lazy"
+                      onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3ClinearGradient id=%22g%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%231c1814%22/%3E%3Cstop offset=%221%22 stop-color=%22%2310100e%22/%3E%3C/linearGradient%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/%3E%3C/svg%3E'"
+                    />
+                    <div class={styles.cardBadges}>
+                      {r.stars > 0 && (
+                        <span class={styles.badgeMichelin}>{"★".repeat(r.stars)} Michelin</span>
+                      )}
+                      {r.bib && <span class={styles.badgeMichelin}>Bib Gourmand</span>}
+                      {r.founded && <span class={styles.badgeFeature}>{r.founded}</span>}
+                      {r.features.slice(0, 1).map((f) => (
+                        <span class={styles.badgeFeature}>{f}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div class={styles.cardBody}>
+                    <div class={styles.cardMeta}>
+                      <span class={styles.cardCategory}>{r.category}</span>
+                      <span class={styles.cardArea}>{r.area}</span>
+                    </div>
+                    <h3 class={styles.cardName}>{r.name}</h3>
+                    <p class={styles.cardDesc}>{r.desc}</p>
+                    <div class={styles.cardFooter}>
+                      <span class={styles.cardPrice}>{r.price}</span>
+                      <span class={styles.cardLink}>
+                        詳細を見る
+                        <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                          <path d="M1 4h10M7 1l3 3-3 3" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+
+          <div id="results-empty" class={styles.empty} hidden>
+            <svg class={styles.emptyIcon} viewBox="0 0 52 52" fill="none" aria-hidden="true">
+              <circle cx="22" cy="22" r="17" stroke="currentColor" stroke-width="1"/>
+              <path d="M35 35L47 47" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M16 22h12M22 16v12" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
+            </svg>
+            <p class={styles.emptyTitle}>条件に合う店舗が見つかりませんでした</p>
+            <p class={styles.emptyText}>
+              別のエリアや目的でお試しいただくか、条件を絞らずに検索してください。<br />
+              ご希望のお席をコンシェルジュに直接ご相談いただくことも可能です。
+            </p>
+            <div class={styles.emptyActions}>
+              <a href={`${base}kappo-reserve/search/`} class={styles.emptyBtnPrimary}>
+                すべての店舗を見る
+              </a>
+              <a href={`${base}kappo-reserve/#reservation`} class={styles.emptyBtnSecondary}>
+                コンシェルジュに相談する
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<script>
+  const areaLabels: Record<string, string> = {
+    ginza: "銀座・築地",
+    gion: "祇園・河原町（京都）",
+    roppongi: "六本木・麻布",
+    akasaka: "赤坂・永田町",
+    aoyama: "青山・表参道",
+    kagurazaka: "神楽坂・四ツ谷",
+    shinjuku: "新宿・西新宿",
+    namba: "難波・心斎橋（大阪）",
+  };
+  const purposeLabels: Record<string, string> = {
+    settai: "接待・会食",
+    kinenbi: "記念日・誕生日",
+    kaoawase: "顔合わせ・両家の席",
+    date: "大切な方との二人席",
+    solo: "お一人様でのご来店",
+    group: "グループ・貸切",
+  };
+  const featureLabels: Record<string, string> = {
+    private: "完全個室あり",
+    counter: "カウンター席のみ",
+    michelin: "ミシュラン星付き",
+    shokai: "紹介制・一見さんお断り",
+    english: "英語対応あり",
+    prepay: "事前決済対応",
+  };
+
+  const setup = () => {
+    const params = new URLSearchParams(window.location.search);
+    const area = params.get("area") ?? "";
+    const purpose = params.get("purpose") ?? "";
+    const feature = params.get("feature") ?? "";
+
+    // Pre-select SearchBar values
+    const areaEl = document.getElementById("search-area") as HTMLSelectElement | null;
+    const purposeEl = document.getElementById("search-purpose") as HTMLSelectElement | null;
+    const featureEl = document.getElementById("search-feature") as HTMLSelectElement | null;
+    if (areaEl && area) areaEl.value = area;
+    if (purposeEl && purpose) purposeEl.value = purpose;
+    if (featureEl && feature) featureEl.value = feature;
+
+    // Build filter chips
+    const chipsEl = document.getElementById("filter-chips");
+    if (chipsEl) {
+      chipsEl.innerHTML = "";
+      const activeFilters = [
+        area && areaLabels[area],
+        purpose && purposeLabels[purpose],
+        feature && featureLabels[feature],
+      ].filter(Boolean) as string[];
+      activeFilters.forEach((label) => {
+        const chip = document.createElement("span");
+        chip.className = "search-chip";
+        chip.setAttribute("role", "listitem");
+        chip.textContent = label;
+        chipsEl.appendChild(chip);
+      });
+    }
+
+    // Filter cards
+    const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-area]"));
+    cards.forEach((c) => (c.hidden = false));
+    let visibleCount = 0;
+
+    cards.forEach((card) => {
+      const cardArea = card.dataset.area ?? "";
+      const cardFeatures = (card.dataset.features ?? "").split(",");
+      const cardPurposes = (card.dataset.purposes ?? "").split(",");
+
+      const areaMatch = !area || cardArea === area;
+      const purposeMatch = !purpose || cardPurposes.includes(purpose);
+      const featureMatch = !feature || cardFeatures.includes(feature);
+
+      if (areaMatch && purposeMatch && featureMatch) {
+        card.hidden = false;
+        visibleCount++;
+      } else {
+        card.hidden = true;
+      }
+    });
+
+    // Update count and empty state
+    const countEl = document.getElementById("results-count");
+    const emptyEl = document.getElementById("results-empty") as HTMLElement | null;
+    const gridEl = document.getElementById("results-grid") as HTMLElement | null;
+    if (countEl) {
+      countEl.textContent =
+        visibleCount > 0
+          ? `${visibleCount}件の店舗が見つかりました`
+          : "条件に合う店舗が見つかりませんでした";
+    }
+    if (gridEl) gridEl.hidden = visibleCount === 0;
+    if (emptyEl) emptyEl.hidden = visibleCount > 0;
+
+    // Reveal animation
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reveals = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-reveal]:not([data-visible])")
+    );
+    if (reducedMotion) {
+      reveals.forEach((el) => el.setAttribute("data-visible", ""));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.setAttribute("data-visible", "");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.06, rootMargin: "0px 0px -32px 0px" }
+      );
+      reveals.forEach((el) => observer.observe(el));
+    }
+  };
+
+  document.addEventListener("astro:page-load", setup);
+</script>

@@ -1,0 +1,45 @@
+---
+import styles from "./ChefProfile.module.css";
+---
+
+<section class={styles.section} id="chef" aria-labelledby="chef-heading">
+  <div class={styles.inner}>
+    <div class={styles.portrait} data-reveal>
+      <div class={styles.portraitFrame}>
+        <img
+          src="https://images.unsplash.com/photo-1591914316578-0bbb82f7a6f9?w=600&h=800&fit=crop&q=80"
+          alt="宮田義雄 料理長"
+          class={styles.portraitImg}
+          loading="lazy"
+          onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3ClinearGradient id=%22g%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%231a1812%22/%3E%3Cstop offset=%221%22 stop-color=%22%2310100e%22/%3E%3C/linearGradient%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/%3E%3C/svg%3E'"
+        />
+      </div>
+      <p class={styles.portraitCaption}>Chef Yoshio Miyata — 宮田 義雄</p>
+    </div>
+
+    <div class={styles.bio} data-reveal data-delay="1">
+      <p class={styles.bioLabel}>The Chef & His Philosophy</p>
+
+      <div>
+        <h2 class={styles.chefName} id="chef-heading">宮田 義雄</h2>
+        <p class={styles.chefNameEn}>Yoshio Miyata — Executive Chef</p>
+        <div class={styles.bioRule}></div>
+      </div>
+
+      <p class={styles.bioText}>
+        1971年、北海道函館に生まれる。地元の漁師の息子として育ち、幼い頃から海の恵みと共に生きてきた宮田は、18歳で上京し、銀座の老舗鮨店「山彦」に入門。師匠・坂本一郎のもとで20年にわたり江戸前の技を研鑽した。
+      </p>
+      <p class={styles.bioText}>
+        独立後は完全紹介制のカウンター鮨として「碧天」を開店。仕入れは自ら築地・豊洲へ通い、その日最良の一尾を見極める。酢飯の温度、シャリの握り加減、ネタの熟成——すべては、口に含んだその一瞬のために費やされる。
+      </p>
+
+      <blockquote class={styles.bioQuote}>
+        <p class={styles.bioQuoteText}>
+          「鮨は、海と職人と食べる方、三者の対話です。<br />
+          この席に座ってくださる方の記念日を、私は一生忘れません。」
+        </p>
+        <footer class={styles.bioQuoteAuthor}>— 宮田 義雄</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>

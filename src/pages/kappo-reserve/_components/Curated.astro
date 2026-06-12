@@ -1,0 +1,176 @@
+---
+import styles from "./Curated.module.css";
+import RestaurantCard from "./RestaurantCard.astro";
+import SectionHeader from "./SectionHeader.astro";
+
+const base = import.meta.env.BASE_URL;
+const detailHref = `${base}kappo-reserve/restaurant/`;
+
+const recommended = [
+  {
+    name: "銀座 鮨 碧天",
+    nameEn: "Hekiten",
+    category: "鮨",
+    area: "銀座",
+    stars: 3,
+    price: "¥55,000〜",
+    features: ["カウンター8席", "紹介制"],
+    desc: "江戸前の技と、季節の恵みが重なる八席のカウンター。宮田義雄が紡ぐ一貫一貫は、静寂の中に深く語りかけてくる。",
+    img: "https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?w=800&h=534&fit=crop&q=80",
+    imgAlt: "職人が握る高級江戸前鮨のカウンター",
+  },
+  {
+    name: "京都 料亭 花邸",
+    nameEn: "Hanajō",
+    category: "料亭",
+    area: "祇園",
+    stars: 2,
+    price: "¥45,000〜",
+    features: ["完全個室", "数寄屋造り"],
+    desc: "石畳の路地の奥、百年の歴史を刻む数寄屋造りの離れ。移ろう季節と、ままならぬ夜に彩りを添える一献。",
+    img: "https://images.unsplash.com/photo-1578269174936-2709b6aeb913?w=800&h=534&fit=crop&q=80",
+    imgAlt: "静寂に包まれた京都の高級料亭の個室",
+  },
+  {
+    name: "六本木 炉端 澄懐",
+    nameEn: "Sumikai",
+    category: "炉端料理",
+    area: "六本木",
+    stars: 0,
+    bib: true,
+    price: "¥28,000〜",
+    features: ["個室あり", "接待向き"],
+    desc: "炭の香りと共に現れる食材の素顔は、どんな言葉よりも饒舌だ。炎の前で語り合う夜が、縁を深める。",
+    img: "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&h=534&fit=crop&q=80",
+    imgAlt: "炉端で炭火焼きにされる旬の食材",
+  },
+];
+
+const heritage = [
+  {
+    name: "麻布 割烹 間",
+    nameEn: "Ma",
+    category: "割烹",
+    area: "麻布十番",
+    stars: 0,
+    founded: "1962年創業",
+    price: "¥38,000〜",
+    features: ["個室あり"],
+    desc: "先代から受け継がれた包丁の技と、その季節だけが持つ食材の声に耳を澄ます。余白の中に宿る美しさ。",
+    img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=534&fit=crop&q=80",
+    imgAlt: "老舗割烹の落ち着いた和の佇まい",
+  },
+  {
+    name: "赤坂 懐石 空音",
+    nameEn: "Sorane",
+    category: "懐石",
+    area: "赤坂",
+    stars: 2,
+    price: "¥42,000〜",
+    features: ["ミシュラン", "個室あり"],
+    desc: "器は料理の着物。四季の器に盛られた一皿一皿は、それ自体が詩だ。空音の厨房には余分な音がない。",
+    img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800&h=534&fit=crop&q=80",
+    imgAlt: "繊細な懐石料理の美しい盛り付け",
+  },
+  {
+    name: "神楽坂 鮨 彩",
+    nameEn: "Aya",
+    category: "鮨",
+    area: "神楽坂",
+    stars: 1,
+    price: "¥48,000〜",
+    features: ["カウンター席", "完全紹介制"],
+    desc: "カウンター越しに職人の指先を眺めながら過ごす時間は、それ自体が芸術の鑑賞だ。語らずとも伝わるものがある。",
+    img: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800&h=534&fit=crop&q=80",
+    imgAlt: "高級鮨店の洗練されたカウンター",
+  },
+];
+
+const privateRooms = [
+  {
+    name: "表参道 懐石 水鏡",
+    nameEn: "Mizukagami",
+    category: "懐石",
+    area: "表参道",
+    stars: 2,
+    price: "¥52,000〜",
+    features: ["完全個室", "接待向き"],
+    desc: "水を湛えた中庭に面する茶室風の個室。目の前に展開する懐石の世界は、日常から切り離されたひとときをもたらす。接待の場として、多くの要人に愛され続けている。",
+    img: "https://images.unsplash.com/photo-1554797589-7241bb691973?w=800&h=534&fit=crop&q=80",
+    imgAlt: "水庭に面した懐石料亭の個室",
+  },
+  {
+    name: "銀座 割烹 輝",
+    nameEn: "Kagayaki",
+    category: "割烹",
+    area: "銀座",
+    stars: 1,
+    price: "¥35,000〜",
+    features: ["個室4室", "接待向き"],
+    desc: "銀座の地下に佇む、光と影の空間。独立した個室が織りなす静けさの中で、料理の輝きだけが場を満たす。",
+    img: "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800&h=534&fit=crop&q=80",
+    imgAlt: "洗練された割烹料理の一皿",
+  },
+  {
+    name: "青山 料亭 月の庭",
+    nameEn: "Tsuki no Niwa",
+    category: "料亭",
+    area: "青山",
+    stars: 0,
+    price: "¥40,000〜",
+    features: ["完全個室", "顔合わせ向き"],
+    desc: "青山の路地奥に現れる、月を映す坪庭を持つ料亭。顔合わせや両家の祝い事に、この場が選ばれ続ける理由がある。",
+    img: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=800&h=534&fit=crop&q=80",
+    imgAlt: "料亭の庭に面した個室",
+  },
+];
+---
+
+<div id="curated">
+  <section class={styles.section} aria-labelledby="sec-recommended">
+    <SectionHeader
+      label="Monthly Pick"
+      title="今月のおすすめ"
+      titleId="sec-recommended"
+      href={detailHref}
+    />
+    <div class={styles.gridThree} data-reveal data-delay="1">
+      {recommended.map((r) => <RestaurantCard restaurant={r} href={detailHref} />)}
+    </div>
+  </section>
+
+  <div class={styles.banner} data-reveal>
+    <p class={styles.bannerLabel}>Our Philosophy</p>
+    <blockquote class={styles.bannerQuote}>
+      静寂が包む、五感を研ぎ澄ますひととき。<br />
+      一流の職人が紡ぐ料理は、言葉を超えた語らいだ。
+    </blockquote>
+    <p class={styles.bannerSub}>
+      GAZEN curates only those places where craft, silence, and seasonal beauty converge.
+    </p>
+  </div>
+
+  <section class={styles.section} aria-labelledby="sec-heritage">
+    <SectionHeader
+      label="Heritage & Mastery"
+      title="伝統を紡ぐ名店"
+      titleId="sec-heritage"
+      href={detailHref}
+    />
+    <div class={styles.gridThree} data-reveal data-delay="1">
+      {heritage.map((r) => <RestaurantCard restaurant={r} href={detailHref} />)}
+    </div>
+  </section>
+
+  <section class={styles.section} aria-labelledby="sec-private">
+    <SectionHeader
+      label="Private Sanctuaries"
+      title="完全個室の隠れ家"
+      titleId="sec-private"
+      href={detailHref}
+    />
+    <div class={styles.gridThree} data-reveal data-delay="1">
+      {privateRooms.map((r) => <RestaurantCard restaurant={r} href={detailHref} />)}
+    </div>
+  </section>
+</div>

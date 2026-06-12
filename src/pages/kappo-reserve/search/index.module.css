@@ -1,0 +1,358 @@
+@import "../_base.module.css";
+
+.root {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Results header */
+.resultsHeader {
+  padding-top: 80px;
+  background: linear-gradient(to bottom, var(--kr-sumi), var(--kr-ink));
+  border-bottom: 1px solid var(--kr-border);
+}
+
+.resultsHeaderInner {
+  max-width: var(--kr-max-w);
+  margin: 0 auto;
+  padding: clamp(32px, 5vw, 56px) var(--kr-pad) clamp(28px, 4vw, 44px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--kr-font-en);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+}
+
+.breadcrumbLink {
+  color: var(--kr-muted);
+  transition: color 0.2s;
+}
+
+.breadcrumbLink:hover {
+  color: var(--kr-ivory);
+}
+
+.breadcrumbSep {
+  color: var(--kr-subtle);
+}
+
+.breadcrumbCurrent {
+  color: var(--kr-ivory);
+}
+
+/* Filter chips */
+.filterChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+:global(.search-chip) {
+  padding: 5px 14px;
+  border: 1px solid var(--kr-gold-line);
+  background: var(--kr-gold-pale);
+  color: var(--kr-gold);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+/* Results meta */
+.resultsMeta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.resultsCount {
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--kr-ivory);
+  margin: 0;
+}
+
+.refineLink {
+  font-family: var(--kr-font-en);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--kr-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--kr-subtle);
+  padding-bottom: 1px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.refineLink:hover {
+  color: var(--kr-ivory);
+  border-bottom-color: var(--kr-ivory);
+}
+
+/* Inline search refinement */
+.searchRefine {
+  padding-top: 8px;
+}
+
+/* Results grid */
+.grid {
+  padding: clamp(48px, 7vw, 80px) var(--kr-pad);
+}
+
+.gridInner {
+  max-width: var(--kr-max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+/* Restaurant card */
+.card {
+  display: block;
+  position: relative;
+  background-color: var(--kr-sumi);
+  overflow: hidden;
+  cursor: pointer;
+  scroll-snap-align: start;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.3s;
+}
+
+.card:hover {
+  background-color: #1a1a1a;
+}
+
+.cardImageWrap {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background-color: #1c1a18;
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.card:hover .cardImg {
+  transform: scale(1.04);
+}
+
+.cardBadges {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  z-index: 1;
+}
+
+.badgeMichelin {
+  background: var(--kr-gold);
+  color: var(--kr-ink);
+  font-family: var(--kr-font-en);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  padding: 4px 10px;
+  font-style: italic;
+}
+
+.badgeFeature {
+  background: rgba(10, 10, 10, 0.75);
+  border: 1px solid var(--kr-border);
+  color: var(--kr-muted);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  padding: 3px 10px;
+  backdrop-filter: blur(6px);
+}
+
+.cardBody {
+  padding: 22px 24px 28px;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cardCategory {
+  font-family: var(--kr-font-en);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--kr-gold);
+  border: 1px solid var(--kr-gold-line);
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+.cardArea {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--kr-muted);
+}
+
+.cardName {
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1.35;
+  color: var(--kr-ivory);
+  margin: 0 0 10px;
+}
+
+.cardDesc {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  line-height: 1.9;
+  color: var(--kr-muted);
+  margin: 0 0 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid var(--kr-border);
+}
+
+.cardPrice {
+  font-family: var(--kr-font-en);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--kr-gold);
+  font-style: italic;
+}
+
+.cardLink {
+  font-family: var(--kr-font-en);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--kr-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition:
+    color 0.25s,
+    gap 0.25s;
+}
+
+.card:hover .cardLink {
+  color: var(--kr-ivory);
+  gap: 10px;
+}
+
+/* Empty state */
+.empty {
+  padding: clamp(80px, 12vw, 140px) var(--kr-pad);
+}
+
+.emptyInner {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.emptyIcon {
+  width: 52px;
+  height: 52px;
+  color: var(--kr-subtle);
+  margin: 0 auto 28px;
+  display: block;
+}
+
+.emptyTitle {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--kr-ivory);
+  margin: 0 0 16px;
+}
+
+.emptyText {
+  font-size: 13px;
+  letter-spacing: 0.07em;
+  line-height: 2.2;
+  color: var(--kr-muted);
+  margin-bottom: 36px;
+}
+
+.emptyActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.emptyBtnPrimary {
+  padding: 14px 36px;
+  background: var(--kr-gold);
+  color: var(--kr-ink);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  transition: background-color 0.25s;
+}
+
+.emptyBtnPrimary:hover {
+  background-color: #d4b87a;
+}
+
+.emptyBtnSecondary {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--kr-muted);
+  border-bottom: 1px solid var(--kr-subtle);
+  padding-bottom: 1px;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.emptyBtnSecondary:hover {
+  color: var(--kr-ivory);
+  border-bottom-color: var(--kr-ivory);
+}
+
+@media (max-width: 900px) {
+  .gridInner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .gridInner {
+    grid-template-columns: 1fr;
+  }
+
+  .resultsMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
