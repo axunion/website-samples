@@ -1,0 +1,273 @@
+@import "../_base.module.css";
+
+/* ── Page Hero ───────────────────────────────────────── */
+.pageHero {
+  background: var(--navy);
+  min-height: 40vh;
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(80px, 10vw, 120px) clamp(24px, 6vw, 80px)
+    clamp(48px, 6vw, 80px);
+}
+
+.pageHeroInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: pageFadeIn 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.pageLabel {
+  font-family: var(--serif-en);
+  font-size: 0.6875rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--champagne);
+}
+
+.pageHeroRule {
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: var(--platinum);
+  opacity: 0.3;
+}
+
+.pageHeroTitle {
+  font-family: var(--serif-ja);
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--white);
+}
+
+/* ── Core Philosophy ─────────────────────────────────── */
+.core {
+  background: var(--ivory);
+  padding: clamp(80px, 12vw, 160px) clamp(24px, 6vw, 80px);
+}
+
+.coreInner {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.coreHeading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.sectionEn {
+  font-family: var(--serif-en);
+  font-size: 0.6875rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--champagne);
+}
+
+.sectionRule {
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: var(--champagne);
+  opacity: 0.45;
+}
+
+.coreTitle {
+  font-family: var(--serif-ja);
+  font-size: clamp(1.25rem, 3vw, 1.875rem);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  color: var(--navy);
+}
+
+.coreBody {
+  font-family: var(--serif-ja);
+  font-size: 0.9375rem;
+  line-height: 2.2;
+  letter-spacing: 0.07em;
+  color: var(--text-mid);
+  border-left: 2px solid var(--champagne);
+  padding-left: 1.75rem;
+}
+
+/* ── Three Pillars ───────────────────────────────────── */
+.pillars {
+  background: var(--navy);
+  padding: clamp(80px, 12vw, 160px) clamp(24px, 6vw, 80px);
+}
+
+.pillarsInner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pillarsHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.875rem;
+  text-align: center;
+  margin-bottom: clamp(48px, 8vw, 80px);
+}
+
+.pillarsTitle {
+  font-family: var(--serif-ja);
+  font-size: clamp(1.25rem, 3vw, 1.875rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--white);
+}
+
+.pillarGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 2rem;
+  border: 1px solid rgba(184, 191, 200, 0.15);
+  transition: border-color 0.4s ease;
+}
+
+.pillar:hover {
+  border-color: rgba(196, 164, 124, 0.35);
+}
+
+.pillarNum {
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--champagne);
+  opacity: 0.6;
+}
+
+.pillarRule {
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: var(--champagne);
+  opacity: 0.35;
+  margin-bottom: 0.25rem;
+}
+
+.pillarEn {
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  color: var(--platinum-light);
+  letter-spacing: 0.05em;
+}
+
+.pillarJa {
+  font-family: var(--serif-ja);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--champagne);
+}
+
+.pillarDesc {
+  font-family: var(--serif-ja);
+  font-size: 0.875rem;
+  line-height: 2;
+  letter-spacing: 0.05em;
+  color: var(--platinum);
+  opacity: 0.7;
+  margin-top: 0.5rem;
+}
+
+/* ── Next CTA ────────────────────────────────────────── */
+.next {
+  background: var(--ivory-dark);
+  padding: clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px);
+}
+
+.nextInner {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nextLabel {
+  font-family: var(--serif-en);
+  font-size: 0.6875rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  opacity: 0.6;
+}
+
+.nextRule {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--divider);
+}
+
+.nextText {
+  font-family: var(--serif-ja);
+  font-size: 0.9375rem;
+  line-height: 2;
+  letter-spacing: 0.08em;
+  color: var(--text-mid);
+}
+
+.nextLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--serif-en);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--navy);
+  border-bottom: 1px solid var(--navy);
+  padding-bottom: 2px;
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.nextLink:hover {
+  color: var(--champagne);
+  border-color: var(--champagne);
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .pillarGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

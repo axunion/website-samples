@@ -1,0 +1,205 @@
+---
+import Footer from "./_components/Footer.astro";
+import Header from "./_components/Header.astro";
+import styles from "./index.module.css";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FORMA | 卓越した生の、静かなる調和。</title>
+    <meta
+      name="description"
+      content="FORMAは、高級ホテルという比類なき空間を舞台に、エグゼクティブの方々が持つ本来の力を、静かに、誠実に引き出す専門集団です。"
+    />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <Header variant="light" />
+
+    <main>
+      <!-- Hero -->
+      <section class={styles.hero}>
+        <div class={styles.heroInner}>
+          <div class={styles.heroRule} aria-hidden="true"></div>
+          <h1 class={styles.heroTitle}>FORMA</h1>
+          <div class={styles.heroRule} aria-hidden="true"></div>
+          <p class={styles.heroTaglineJa}>卓越した生の、静かなる調和。</p>
+          <p class={styles.heroTaglineEn}>The Quiet Harmony of Excellent Living.</p>
+        </div>
+        <div class={styles.scrollIndicator} aria-hidden="true">
+          <span class={styles.scrollText}>SCROLL</span>
+          <span class={styles.scrollLine}></span>
+        </div>
+      </section>
+
+      <!-- Brand Statement -->
+      <section class={styles.statement}>
+        <div class={styles.statementInner}>
+          <div class={styles.statementLabel} data-reveal>
+            <span class={styles.labelText}>FORMA</span>
+            <span class={styles.labelRule} aria-hidden="true"></span>
+          </div>
+          <blockquote class={styles.quote} data-reveal data-reveal-delay="2">
+            人は、本来の姿へ還るとき、もっとも輝く。
+          </blockquote>
+          <p class={styles.statementBody} data-reveal data-reveal-delay="3">
+            FORMAは、高級ホテルという比類なき空間を舞台に、エグゼクティブの方々が持つ本来の力を、静かに、誠実に引き出します。それは指導でも管理でもなく、深い信頼関係に根ざした、ひとつひとつが唯一無二の伴走です。
+          </p>
+        </div>
+      </section>
+
+      <!-- Split: Philosophy & Programs -->
+      <section class={styles.split}>
+        <div class={styles.splitInner}>
+          <article class={styles.splitCard} data-reveal>
+            <div class={styles.splitImgWrap}>
+              <img
+                src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop&q=80"
+                alt="洗練されたホテルの空間"
+                width="800"
+                height="600"
+                class={styles.splitImg}
+                onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3ClinearGradient id=%22g%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%230B1D3A%22/%3E%3Cstop offset=%221%22 stop-color=%22%231A3060%22/%3E%3C/linearGradient%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/%3E%3C/svg%3E'"
+              />
+            </div>
+            <div class={styles.splitContent}>
+              <span class={styles.splitLabel}>Philosophy</span>
+              <span class={styles.splitRule} aria-hidden="true"></span>
+              <h2 class={styles.splitTitle}>私たちの哲学</h2>
+              <p class={styles.splitText}>
+                心身の調和とは、いかなる成果をも支える、最も根源的な基盤です。FORMAは、その基盤を磨くことが、あらゆるエグゼクティブへの最高の奉仕と確信しています。
+              </p>
+              <a href={`${base}forma/philosophy/`} class={styles.splitLink}>
+                詳しく見る
+                <span class={styles.splitArrow} aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <article class={styles.splitCard} data-reveal data-reveal-delay="2">
+            <div class={styles.splitImgWrap}>
+              <img
+                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&q=80"
+                alt="静寂の夜明け"
+                width="800"
+                height="600"
+                class={styles.splitImg}
+                onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3ClinearGradient id=%22g%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%23112244%22/%3E%3Cstop offset=%221%22 stop-color=%22%230B1D3A%22/%3E%3C/linearGradient%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/%3E%3C/svg%3E'"
+              />
+            </div>
+            <div class={styles.splitContent}>
+              <span class={styles.splitLabel}>Programs</span>
+              <span class={styles.splitRule} aria-hidden="true"></span>
+              <h2 class={styles.splitTitle}>提供プログラム</h2>
+              <p class={styles.splitText}>
+                完全個別最適の三段階。お一人おひとりの現在地から始め、理想の姿へ向けて静かに伴走する、テーラーメイドのプロセスをご提供しています。
+              </p>
+              <a href={`${base}forma/programs/`} class={styles.splitLink}>
+                詳しく見る
+                <span class={styles.splitArrow} aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Programs Preview -->
+      <section class={styles.programs}>
+        <div class={styles.programsInner}>
+          <header class={styles.programsHeader} data-reveal>
+            <span class={styles.sectionEn}>Programs</span>
+            <span class={styles.sectionRule} aria-hidden="true"></span>
+            <h2 class={styles.sectionTitle}>ご提供するプログラム</h2>
+          </header>
+
+          <div class={styles.programGrid}>
+            <div class={styles.programCard} data-reveal data-reveal-delay="1">
+              <span class={styles.programChampagne} aria-hidden="true"></span>
+              <em class={styles.programEn}>Séance Initiale</em>
+              <h3 class={styles.programJa}>始まりの調律</h3>
+              <p class={styles.programDesc}>
+                初回の対話と深い傾聴から始まります。あなたの現在地、生活のリズム、内なる志向を丁寧に伺い、唯一無二の道程を設計します。
+              </p>
+            </div>
+
+            <div class={styles.programCard} data-reveal data-reveal-delay="2">
+              <span class={styles.programChampagne} aria-hidden="true"></span>
+              <em class={styles.programEn}>Atelier</em>
+              <h3 class={styles.programJa}>研鑽の時間</h3>
+              <p class={styles.programDesc}>
+                ホテルという洗練された環境の中で、静かに、しかし確かに、心身の均衡を取り戻す時間をご提供します。ご滞在中、またはご自宅にて。
+              </p>
+            </div>
+
+            <div class={styles.programCard} data-reveal data-reveal-delay="3">
+              <span class={styles.programChampagne} aria-hidden="true"></span>
+              <em class={styles.programEn}>Retraite</em>
+              <h3 class={styles.programJa}>深化の旅</h3>
+              <p class={styles.programDesc}>
+                数日間の集中プログラム。ご滞在を通じて、より深い次元での心身の再調整と、人生設計の本質的な見直しをともに行います。
+              </p>
+            </div>
+          </div>
+
+          <div class={styles.programCta} data-reveal>
+            <a href={`${base}forma/programs/`} class={styles.textLink}>
+              プログラムの詳細を見る
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Inquiry CTA -->
+      <section class={styles.cta}>
+        <div class={styles.ctaInner} data-reveal>
+          <span class={styles.ctaLabel}>Inquiry</span>
+          <span class={styles.ctaRule} aria-hidden="true"></span>
+          <p class={styles.ctaText}>
+            ご縁ある方のみのご紹介制にて、ご案内しております。
+          </p>
+          <a href={`${base}forma/inquiry/`} class={styles.ctaBtn}>
+            ご連絡・ご照会
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<script>
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const revealEls = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+
+  if (reducedMotion) {
+    revealEls.forEach((el) => el.setAttribute("data-visible", ""));
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute("data-visible", "");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -48px 0px" }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+  }
+</script>

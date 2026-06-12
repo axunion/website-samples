@@ -1,0 +1,166 @@
+---
+import Footer from "../_components/Footer.astro";
+import Header from "../_components/Header.astro";
+import styles from "./index.module.css";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programs — 提供プログラム | FORMA</title>
+    <meta
+      name="description"
+      content="FORMAのテーラーメイドプログラム。Séance Initiale、Atelier、Retraiteの三段階で、お一人おひとりに最適な道程を設計します。"
+    />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <Header active="programs" variant="light" />
+
+    <main>
+      <!-- Page Hero -->
+      <section class={styles.pageHero}>
+        <div class={styles.pageHeroInner}>
+          <span class={styles.pageLabel}>Programs</span>
+          <span class={styles.pageHeroRule} aria-hidden="true"></span>
+          <h1 class={styles.pageHeroTitle}>提供プログラム</h1>
+        </div>
+      </section>
+
+      <!-- Process Intro -->
+      <section class={styles.intro}>
+        <div class={styles.introInner} data-reveal>
+          <span class={styles.sectionEn}>Tailored for You</span>
+          <span class={styles.sectionRule} aria-hidden="true"></span>
+          <p class={styles.introText}>
+            テーラーメイドとは、既製品の反対語ではありません。あなたという唯一の存在を深く理解した上で、初めて設計が始まります。FORMAのすべてのプログラムは、型を持たず、ただあなたのために在ります。
+          </p>
+        </div>
+      </section>
+
+      <!-- Program 1: Séance Initiale -->
+      <section class={styles.program}>
+        <div class={styles.programInner}>
+          <div class={styles.programText} data-reveal>
+            <span class={styles.programNum} aria-hidden="true">01</span>
+            <span class={styles.programRule} aria-hidden="true"></span>
+            <em class={styles.programEn}>Séance Initiale</em>
+            <h2 class={styles.programJa}>始まりの調律</h2>
+            <p class={styles.programDesc}>
+              初回の対話と深い傾聴から、すべては始まります。身体の現状、生活のリズム、内なる志向——あなたのすべてを丁寧に伺い、唯一無二の道程を設計します。高級ホテルの静謐な空間にて、二時間の対話から。
+            </p>
+          </div>
+          <div class={styles.programImgWrap} data-reveal data-reveal-delay="2">
+            <img
+              src="https://images.unsplash.com/photo-1545239351-ef35f43d514b?w=800&h=600&fit=crop&q=80"
+              alt="静謐な空間での対話"
+              width="800"
+              height="600"
+              class={styles.programImg}
+              onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3ClinearGradient id=%22g%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%230B1D3A%22/%3E%3Cstop offset=%221%22 stop-color=%22%231A3060%22/%3E%3C/linearGradient%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/%3E%3C/svg%3E'"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Program 2: Atelier -->
+      <section class={`${styles.program} ${styles.programAlt}`}>
+        <div class={styles.programInner}>
+          <div class={styles.programImgWrap} data-reveal>
+            <img
+              src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=600&fit=crop&q=80"
+              alt="洗練されたホテル空間"
+              width="800"
+              height="600"
+              class={styles.programImg}
+              onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3ClinearGradient id=%22g%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%23112244%22/%3E%3Cstop offset=%221%22 stop-color=%22%230B1D3A%22/%3E%3C/linearGradient%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/%3E%3C/svg%3E'"
+            />
+          </div>
+          <div class={styles.programText} data-reveal data-reveal-delay="2">
+            <span class={styles.programNum} aria-hidden="true">02</span>
+            <span class={styles.programRule} aria-hidden="true"></span>
+            <em class={styles.programEn}>Atelier</em>
+            <h2 class={styles.programJa}>研鑽の時間</h2>
+            <p class={styles.programDesc}>
+              ご滞在中またはご自宅にて、継続的なセッションをご提供します。ホテルという洗練された環境の中で、静かに、しかし確かに、心身の均衡を取り戻す時間。一週間から数ヶ月に及ぶ、根本的な変化のための継続的な伴走です。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Program 3: Retraite -->
+      <section class={styles.program}>
+        <div class={styles.programInner}>
+          <div class={styles.programText} data-reveal>
+            <span class={styles.programNum} aria-hidden="true">03</span>
+            <span class={styles.programRule} aria-hidden="true"></span>
+            <em class={styles.programEn}>Retraite</em>
+            <h2 class={styles.programJa}>深化の旅</h2>
+            <p class={styles.programDesc}>
+              数日間の集中プログラム。ご滞在を通じて、より深い次元での心身の再調整と、人生設計の本質的な見直しをともに行います。日常から離れ、本来の自己と向き合う、格別な時間をご用意いたします。
+            </p>
+          </div>
+          <div class={styles.programImgWrap} data-reveal data-reveal-delay="2">
+            <img
+              src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&h=600&fit=crop&q=80"
+              alt="最高峰のホテル空間"
+              width="800"
+              height="600"
+              class={styles.programImg}
+              onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3ClinearGradient id=%22g%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%230B1D3A%22/%3E%3Cstop offset=%221%22 stop-color=%22%231A3060%22/%3E%3C/linearGradient%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/%3E%3C/svg%3E'"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Inquiry CTA -->
+      <section class={styles.cta}>
+        <div class={styles.ctaInner} data-reveal>
+          <span class={styles.ctaLabel}>Inquiry</span>
+          <span class={styles.ctaRule} aria-hidden="true"></span>
+          <p class={styles.ctaText}>
+            プログラムの詳細は、ご照会いただいた方のみにご案内しております。
+          </p>
+          <a href={`${base}forma/inquiry/`} class={styles.ctaBtn}>
+            ご連絡・ご照会
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<script>
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const revealEls = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+
+  if (reducedMotion) {
+    revealEls.forEach((el) => el.setAttribute("data-visible", ""));
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute("data-visible", "");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+  }
+</script>

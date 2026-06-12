@@ -1,0 +1,137 @@
+---
+import Footer from "../_components/Footer.astro";
+import Header from "../_components/Header.astro";
+import styles from "./index.module.css";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Philosophy — 私たちの哲学 | FORMA</title>
+    <meta
+      name="description"
+      content="心身の調和は、卓越した人生の基盤である。FORMAが大切にする哲学と、エグゼクティブへの誠実な伴走についてお伝えします。"
+    />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <Header active="philosophy" variant="light" />
+
+    <main>
+      <!-- Page Hero -->
+      <section class={styles.pageHero}>
+        <div class={styles.pageHeroInner}>
+          <span class={styles.pageLabel}>Philosophy</span>
+          <span class={styles.pageHeroRule} aria-hidden="true"></span>
+          <h1 class={styles.pageHeroTitle}>私たちの哲学</h1>
+        </div>
+      </section>
+
+      <!-- Core Philosophy -->
+      <section class={styles.core}>
+        <div class={styles.coreInner}>
+          <div class={styles.coreHeading} data-reveal>
+            <span class={styles.sectionEn}>Our Belief</span>
+            <span class={styles.sectionRule} aria-hidden="true"></span>
+            <h2 class={styles.coreTitle}>心身の調和は、卓越した人生の基盤である。</h2>
+          </div>
+          <p class={styles.coreBody} data-reveal data-reveal-delay="2">
+            エグゼクティブにとって、時間とは最も希少な資源です。判断の鋭さ、感情の安定、エネルギーの質——それらはすべて、心身の調和によって支えられています。FORMAはその確信から生まれました。極上の滞在空間に溶け込むように、あなたの傍らに寄り添い、本質的な在り方の探求をともに行います。処方箋でも指導でもなく、あなたの内なる可能性を静かに照らす、誠実な伴走者として。
+          </p>
+        </div>
+      </section>
+
+      <!-- Three Pillars -->
+      <section class={styles.pillars}>
+        <div class={styles.pillarsInner}>
+          <header class={styles.pillarsHeader} data-reveal>
+            <span class={styles.sectionEn}>Three Pillars</span>
+            <span class={styles.sectionRule} aria-hidden="true"></span>
+            <h2 class={styles.pillarsTitle}>三つの礎</h2>
+          </header>
+
+          <div class={styles.pillarGrid}>
+            <article class={styles.pillar} data-reveal data-reveal-delay="1">
+              <span class={styles.pillarNum} aria-hidden="true">I</span>
+              <span class={styles.pillarRule} aria-hidden="true"></span>
+              <em class={styles.pillarEn}>Equilibrium</em>
+              <h3 class={styles.pillarJa}>均衡</h3>
+              <p class={styles.pillarDesc}>
+                心と身体は、切り離すことのできない一体です。どちらか一方が乱れれば、もう一方も応じます。FORMAは、その均衡の回復と維持を、すべての礎と考えています。
+              </p>
+            </article>
+
+            <article class={styles.pillar} data-reveal data-reveal-delay="2">
+              <span class={styles.pillarNum} aria-hidden="true">II</span>
+              <span class={styles.pillarRule} aria-hidden="true"></span>
+              <em class={styles.pillarEn}>Refinement</em>
+              <h3 class={styles.pillarJa}>研鑽</h3>
+              <p class={styles.pillarDesc}>
+                卓越は、一夜にして生まれません。静かに、継続的に、積み重ねることによってのみ、本質的な変化が訪れます。FORMAは、その長い道のりに寄り添う伴走者です。
+              </p>
+            </article>
+
+            <article class={styles.pillar} data-reveal data-reveal-delay="3">
+              <span class={styles.pillarNum} aria-hidden="true">III</span>
+              <span class={styles.pillarRule} aria-hidden="true"></span>
+              <em class={styles.pillarEn}>Discretion</em>
+              <h3 class={styles.pillarJa}>誠実と守秘</h3>
+              <p class={styles.pillarDesc}>
+                私どもとのすべての対話、すべての経緯は、厳格な守秘義務のもとに置かれます。信頼なき伴走は存在しません。FORMAの根本は、その誠実さにあります。
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Programs CTA -->
+      <section class={styles.next}>
+        <div class={styles.nextInner} data-reveal>
+          <span class={styles.nextLabel}>Next</span>
+          <span class={styles.nextRule} aria-hidden="true"></span>
+          <p class={styles.nextText}>
+            哲学を実践へ。私どもが提供するプログラムをご覧ください。
+          </p>
+          <a href={`${base}forma/programs/`} class={styles.nextLink}>
+            提供プログラムを見る
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<script>
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const revealEls = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+
+  if (reducedMotion) {
+    revealEls.forEach((el) => el.setAttribute("data-visible", ""));
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute("data-visible", "");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+  }
+</script>

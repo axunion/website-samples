@@ -1,0 +1,143 @@
+---
+import Footer from "../_components/Footer.astro";
+import Header from "../_components/Header.astro";
+import styles from "./index.module.css";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company — 会社概要 | FORMA</title>
+    <meta
+      name="description"
+      content="FORMAは、高級ホテルに専従するライフパフォーマンス最適化の専門集団です。2018年の創業以来、国内外の一流ホテルと独占的なパートナーシップを結んでいます。"
+    />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <Header active="company" variant="light" />
+
+    <main>
+      <!-- Page Hero -->
+      <section class={styles.pageHero}>
+        <div class={styles.pageHeroInner}>
+          <span class={styles.pageLabel}>Company</span>
+          <span class={styles.pageHeroRule} aria-hidden="true"></span>
+          <h1 class={styles.pageHeroTitle}>会社概要</h1>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class={styles.about}>
+        <div class={styles.aboutInner}>
+          <div class={styles.aboutText} data-reveal>
+            <span class={styles.sectionEn}>About FORMA</span>
+            <span class={styles.sectionRule} aria-hidden="true"></span>
+            <h2 class={styles.aboutTitle}>ともに、卓越を追求する。</h2>
+            <p class={styles.aboutBody}>
+              FORMAは、高級ホテルに専従するライフパフォーマンス最適化の専門集団です。2018年の創業以来、国内外の一流ホテルと独占的なパートナーシップを結び、その滞在空間において、選ばれた方々のみへ、最高水準のプログラムをご提供してきました。
+            </p>
+            <p class={styles.aboutBody}>
+              私どもは、ホスピタリティの精神と、深い専門性の融合こそが、真のラグジュアリーであると考えています。数多の実績ではなく、一人ひとりとの深い信頼関係を誇りとしています。
+            </p>
+          </div>
+          <div class={styles.aboutImgWrap} data-reveal data-reveal-delay="2">
+            <img
+              src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=800&h=600&fit=crop&q=80"
+              alt="一流ホテルの空間"
+              width="800"
+              height="600"
+              class={styles.aboutImg}
+              onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3ClinearGradient id=%22g%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%230B1D3A%22/%3E%3Cstop offset=%221%22 stop-color=%22%231A3060%22/%3E%3C/linearGradient%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/%3E%3C/svg%3E'"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Company Info -->
+      <section class={styles.info}>
+        <div class={styles.infoInner}>
+          <header class={styles.infoHeader} data-reveal>
+            <span class={styles.sectionEn}>Profile</span>
+            <span class={styles.sectionRule} aria-hidden="true"></span>
+            <h2 class={styles.infoTitle}>会社情報</h2>
+          </header>
+
+          <dl class={styles.dl} data-reveal data-reveal-delay="2">
+            <div class={styles.dlRow}>
+              <dt class={styles.dt}>会社名</dt>
+              <dd class={styles.dd}>株式会社 FORMA INSTITUTE</dd>
+            </div>
+            <div class={styles.dlRow}>
+              <dt class={styles.dt}>設立</dt>
+              <dd class={styles.dd}>2018年</dd>
+            </div>
+            <div class={styles.dlRow}>
+              <dt class={styles.dt}>所在地</dt>
+              <dd class={styles.dd}>東京都港区</dd>
+            </div>
+            <div class={styles.dlRow}>
+              <dt class={styles.dt}>事業内容</dt>
+              <dd class={styles.dd}>
+                高級ホテル専従ライフパフォーマンスプログラムの提供および管理運営
+              </dd>
+            </div>
+            <div class={styles.dlRow}>
+              <dt class={styles.dt}>提携ホテル</dt>
+              <dd class={styles.dd}>国内外一流ホテル（非公開）</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class={styles.cta}>
+        <div class={styles.ctaInner} data-reveal>
+          <span class={styles.ctaLabel}>Inquiry</span>
+          <span class={styles.ctaRule} aria-hidden="true"></span>
+          <p class={styles.ctaText}>
+            プログラムへのご関心、ご照会をお待ちしております。
+          </p>
+          <a href={`${base}forma/inquiry/`} class={styles.ctaBtn}>
+            ご連絡・ご照会
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<script>
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const revealEls = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+
+  if (reducedMotion) {
+    revealEls.forEach((el) => el.setAttribute("data-visible", ""));
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute("data-visible", "");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+  }
+</script>

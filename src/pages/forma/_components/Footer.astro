@@ -1,0 +1,23 @@
+---
+import styles from "./Footer.module.css";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<footer class={styles.footer}>
+  <div class={styles.inner}>
+    <a href={`${base}forma/`} class={styles.logo}>FORMA</a>
+
+    <nav class={styles.nav} aria-label="Footer navigation">
+      <a href={`${base}forma/philosophy/`} class={styles.link}>Philosophy</a>
+      <a href={`${base}forma/programs/`} class={styles.link}>Programs</a>
+      <a href={`${base}forma/company/`} class={styles.link}>Company</a>
+      <a href={`${base}forma/inquiry/`} class={styles.link}>Inquiry</a>
+    </nav>
+
+    <div class={styles.meta}>
+      <span class={styles.copy}>© 2024 FORMA INSTITUTE</span>
+      <span class={styles.sub}>高級ホテル専従ライフパフォーマンス最適化</span>
+    </div>
+  </div>
+</footer>
