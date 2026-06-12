@@ -22,8 +22,7 @@ Published at: https://axunion.github.io/website-samples
 | `pnpm dev`     | Start local dev server         |
 | `pnpm build`   | Build for production           |
 | `pnpm preview` | Preview the production build   |
-| `pnpm check`   | Lint and type-check            |
-| `pnpm fix`     | Auto-fix lint issues           |
+| `pnpm fix`     | Lint and auto-fix              |
 
 ## Adding a Sample
 
