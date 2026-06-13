@@ -1,0 +1,133 @@
+.section {
+  padding: 0 48px 148px;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 88px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.heading {
+  font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: #1a1916;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.item:nth-child(even) .imgWrap {
+  order: 2;
+}
+
+.item:nth-child(even) .body {
+  order: 1;
+}
+
+.imgWrap {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: #e4dfd4;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.imgWrap:hover .img {
+  transform: scale(1.05);
+}
+
+.body {
+  padding: 8px 0;
+}
+
+.num {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.625rem;
+  letter-spacing: 0.28em;
+  color: #c4995a;
+  margin-bottom: 18px;
+}
+
+.titleJa {
+  font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(1.125rem, 2vw, 1.3125rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: #1a1916;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.titleEn {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  color: #a09d98;
+  margin-bottom: 24px;
+}
+
+.divider {
+  width: 30px;
+  height: 1px;
+  background: #c4995a;
+  margin-bottom: 24px;
+  opacity: 0.55;
+}
+
+.text {
+  font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+  font-size: 0.9375rem;
+  line-height: 2.3;
+  letter-spacing: 0.04em;
+  color: #6b6860;
+}
+
+@media (max-width: 860px) {
+  .section {
+    padding: 0 28px 100px;
+  }
+
+  .item {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .item:nth-child(even) .imgWrap,
+  .item:nth-child(even) .body {
+    order: unset;
+  }
+
+  .list {
+    gap: 72px;
+  }
+}

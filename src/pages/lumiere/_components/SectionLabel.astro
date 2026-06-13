@@ -1,0 +1,12 @@
+---
+import styles from "./_shared.module.css";
+
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+
+<span class={styles.rule}></span>
+<span class={styles.labelText}>{text}</span>
+<span class={styles.rule}></span>

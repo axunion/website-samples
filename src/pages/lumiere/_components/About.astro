@@ -1,0 +1,60 @@
+---
+import styles from "./About.module.css";
+import SectionLabel from "./SectionLabel.astro";
+---
+
+<section class={styles.section} id="about">
+  <div class={styles.inner}>
+    <div class={styles.imgCol} data-reveal>
+      <div class={styles.imgWrap}>
+        <img
+          src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&q=80"
+          alt="静謐な滞在空間"
+          class={styles.img}
+          width="900"
+          height="1125"
+          onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3ClinearGradient id=%22g%22 x2=%220%22 y2=%221%22%3E%3Cstop stop-color=%22%23c8c2b4%22/%3E%3Cstop offset=%221%22 stop-color=%22%23a09888%22/%3E%3C/linearGradient%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/%3E%3C/svg%3E'"
+        />
+      </div>
+    </div>
+
+    <div class={styles.textCol}>
+      <div class={styles.label} data-reveal>
+        <SectionLabel text="Company" />
+      </div>
+
+      <h2 class={styles.heading} data-reveal style="--reveal-delay: 0.15s">
+        三十年の静かな誇りと、<br />
+        揺るぎない信頼。
+      </h2>
+
+      <div class={styles.divider} data-reveal style="--reveal-delay: 0.15s"></div>
+
+      <p class={styles.text} data-reveal style="--reveal-delay: 0.3s">
+        株式会社LUMIÈREは1994年の設立以来、富裕層向けホスピタリティ事業の
+        専門企業として、国内外の一流施設との連携のもと事業を展開してまいりました。
+      </p>
+      <p class={styles.text} data-reveal style="--reveal-delay: 0.3s">
+        当社は、卓越した人材育成プログラムと独自の品質管理体制を軸に、
+        業界における高い信頼性と専門性を確立しています。
+        コンプライアンスを重視した透明性のある経営姿勢が、
+        長期的な取引関係の礎となっています。
+      </p>
+
+      <ul class={styles.stats} data-reveal style="--reveal-delay: 0.45s">
+        <li class={styles.stat}>
+          <span class={styles.statNum}>1994<span class={styles.statUnit}>年</span></span>
+          <span class={styles.statLabel}>設立</span>
+        </li>
+        <li class={styles.stat}>
+          <span class={styles.statNum}>48<span class={styles.statUnit}>施設</span></span>
+          <span class={styles.statLabel}>連携実績</span>
+        </li>
+        <li class={styles.stat}>
+          <span class={styles.statNum}>320<span class={styles.statUnit}>名</span></span>
+          <span class={styles.statLabel}>在籍スタッフ</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

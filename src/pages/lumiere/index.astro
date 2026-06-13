@@ -1,0 +1,104 @@
+---
+import About from "./_components/About.astro";
+import Concept from "./_components/Concept.astro";
+import CtaFooter from "./_components/CtaFooter.astro";
+import Header from "./_components/Header.astro";
+import Hero from "./_components/Hero.astro";
+import Services from "./_components/Services.astro";
+import styles from "./index.module.css";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LUMIÈRE — Premium Hospitality Management Co., Ltd.</title>
+    <meta
+      name="description"
+      content="株式会社LUMIÈREは、富裕層向けホスピタリティ事業を専門とするマネジメント企業です。コンシェルジュ事業・空間演出・ダイニングプロデュースの3領域において、一流施設との連携のもと事業を展開しています。"
+    />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class={styles.body}>
+    <Header />
+    <main>
+      <Hero />
+      <Concept />
+      <Services />
+      <About />
+    </main>
+    <CtaFooter />
+  </body>
+</html>
+
+<style is:global>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 1s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+  document.querySelectorAll("[data-reveal]").forEach((el) => observer.observe(el));
+
+  const header = document.getElementById("site-header");
+  let headerScrolled = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      const now = window.scrollY > 60;
+      if (now !== headerScrolled) {
+        headerScrolled = now;
+        header?.toggleAttribute("data-scrolled", headerScrolled);
+      }
+    },
+    { passive: true },
+  );
+</script>

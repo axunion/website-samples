@@ -1,0 +1,18 @@
+---
+import styles from "./Header.module.css";
+---
+
+<header class={styles.header} id="site-header">
+  <a href="#hero" class={styles.logo} aria-label="LUMIÈRE — トップへ">
+    <span class={styles.logoText}>LUMIÈRE</span>
+    <span class={styles.logoSub}>PREMIUM HOSPITALITY</span>
+  </a>
+  <nav class={styles.nav} aria-label="Main navigation">
+    <ul class={styles.navList}>
+      <li><a href="#concept" class={styles.navLink}>Philosophy</a></li>
+      <li><a href="#services" class={styles.navLink}>Business</a></li>
+      <li><a href="#about" class={styles.navLink}>Company</a></li>
+      <li><a href="#contact" class={styles.ctaLink}>Contact</a></li>
+    </ul>
+  </nav>
+</header>

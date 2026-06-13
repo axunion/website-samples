@@ -1,0 +1,39 @@
+---
+import styles from "./CtaFooter.module.css";
+import SectionLabel from "./SectionLabel.astro";
+---
+
+<section class={styles.cta} id="contact">
+  <div class={styles.ctaInner}>
+    <div class={styles.ctaLabel} data-reveal>
+      <SectionLabel text="Contact" />
+    </div>
+
+    <h2 class={styles.ctaHeading} data-reveal style="--reveal-delay: 0.15s">
+      事業連携・採用・取材に<br />
+      関するお問い合わせ
+    </h2>
+
+    <p class={styles.ctaText} data-reveal style="--reveal-delay: 0.3s">
+      下記フォームより、担当部署へお問い合わせください。<br />
+      内容を確認のうえ、3営業日以内にご連絡いたします。
+    </p>
+
+    <div data-reveal style="--reveal-delay: 0.45s">
+      <a href="mailto:contact@lumiere.example" class={styles.ctaBtn}>
+        <span class={styles.ctaBtnJa}>お問い合わせ</span>
+        <span class={styles.ctaBtnEn}>Contact Us</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class={styles.footer}>
+  <div class={styles.footerInner}>
+    <div class={styles.footerLogo}>
+      <span class={styles.footerLogoText}>LUMIÈRE</span>
+      <span class={styles.footerLogoSub}>Premium Hospitality Management</span>
+    </div>
+    <p class={styles.copyright}>© 2024 LUMIÈRE Inc. All rights reserved.</p>
+  </div>
+</footer>

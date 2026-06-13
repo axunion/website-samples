@@ -1,0 +1,31 @@
+---
+import styles from "./Concept.module.css";
+import SectionLabel from "./SectionLabel.astro";
+---
+
+<section class={styles.section} id="concept">
+  <div class={styles.inner}>
+    <div class={styles.label} data-reveal>
+      <SectionLabel text="Philosophy" />
+    </div>
+
+    <h2 class={styles.heading} data-reveal style="--reveal-delay: 0.15s">
+      見えない真心を、<br />事業の根幹に。
+    </h2>
+
+    <div class={styles.divider} data-reveal style="--reveal-delay: 0.15s"></div>
+
+    <p class={styles.lead} data-reveal style="--reveal-delay: 0.3s">
+      私たちが追求するのは、目に見えないところにある、<br />
+      真のホスピタリティです。<br />
+      どれほど優れた環境も、それを支える哲学なくして完成しません。
+    </p>
+
+    <p class={styles.body} data-reveal style="--reveal-delay: 0.45s">
+      LUMIÈREは創業以来、人材の育成と倫理的な事業運営を通じて、<br />
+      業界における信頼を積み重ねてきました。<br />
+      私どもの強みは、華やかさではなく、細部への一貫した誠実さにあります。<br />
+      その姿勢こそが、三十年にわたり選ばれ続けてきた理由です。
+    </p>
+  </div>
+</section>

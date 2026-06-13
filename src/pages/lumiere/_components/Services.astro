@@ -1,0 +1,63 @@
+---
+import SectionLabel from "./SectionLabel.astro";
+import styles from "./Services.module.css";
+
+const services = [
+  {
+    num: "01",
+    titleJa: "コンシェルジュ事業",
+    titleEn: "Concierge Operations",
+    text: "専任コンシェルジュの採用・教育・配置を一貫して手がける事業領域です。属人的なスキルに依存しない独自の研修体系を構築し、業界水準を超えた人材の育成に取り組んでいます。",
+    img: "https://images.unsplash.com/photo-1578774296842-c45e472b3028?w=900&q=80",
+  },
+  {
+    num: "02",
+    titleJa: "空間演出・環境設計",
+    titleEn: "Spatial Curation",
+    text: "滞在空間の設計・演出を包括的にプロデュースする事業です。インテリアコーディネート、照明計画、季節ごとの空間更新まで、居住性と審美性を両立した環境づくりを担います。",
+    img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80",
+  },
+  {
+    num: "03",
+    titleJa: "ダイニング・プロデュース",
+    titleEn: "Private Dining",
+    text: "食空間の企画・運営・人材統括を行う事業領域です。食材の調達基準の策定から調理スタッフのマネジメント、接遇フローの設計まで、食体験全体の品質管理を担います。",
+    img: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=900&q=80",
+  },
+];
+---
+
+<section class={styles.section} id="services">
+  <div class={styles.header} data-reveal>
+    <div class={styles.label}>
+      <SectionLabel text="Business" />
+    </div>
+    <h2 class={styles.heading}>事業内容</h2>
+  </div>
+
+  <ul class={styles.list}>
+    {
+      services.map((s, i) => (
+        <li class={styles.item} data-reveal style={`--reveal-delay: ${(i + 1) * 0.15}s`}>
+          <div class={styles.imgWrap}>
+            <img
+              src={s.img}
+              alt={s.titleJa}
+              class={styles.img}
+              width="900"
+              height="600"
+              onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3ClinearGradient id=%22g%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%23d4c9b0%22/%3E%3Cstop offset=%221%22 stop-color=%22%23b8a88a%22/%3E%3C/linearGradient%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22url(%23g)%22/%3E%3C/svg%3E'"
+            />
+          </div>
+          <div class={styles.body}>
+            <span class={styles.num}>{s.num}</span>
+            <h3 class={styles.titleJa}>{s.titleJa}</h3>
+            <p class={styles.titleEn}>{s.titleEn}</p>
+            <div class={styles.divider} />
+            <p class={styles.text}>{s.text}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>

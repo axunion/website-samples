@@ -1,0 +1,148 @@
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 70% 50% at 62% 18%,
+      rgba(196, 153, 90, 0.07) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 50% 60% at 15% 90%,
+      rgba(30, 26, 18, 0.8) 0%,
+      transparent 100%
+    ),
+    linear-gradient(155deg, #1e1b13 0%, #131109 45%, #080705 100%);
+}
+
+.bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.032;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  text-align: center;
+  color: #fafaf8;
+  padding: 0 24px;
+  animation: fadeUp 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eyebrow {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.625rem;
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  color: rgba(196, 153, 90, 0.75);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.5rem, 12vw, 10rem);
+  font-weight: 300;
+  letter-spacing: 0.32em;
+  line-height: 1;
+  margin-bottom: 32px;
+  color: #fafaf8;
+}
+
+@media (max-width: 480px) {
+  .title {
+    letter-spacing: 0.16em;
+  }
+
+  .eyebrow {
+    letter-spacing: 0.25em;
+  }
+}
+
+.taglineJa {
+  font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(0.9375rem, 2vw, 1.125rem);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: rgba(250, 250, 248, 0.65);
+  margin-bottom: 24px;
+}
+
+.goldLine {
+  width: 44px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #c4995a, transparent);
+  margin: 0 auto 20px;
+}
+
+.taglineEn {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.9375rem;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  color: rgba(250, 250, 248, 0.4);
+}
+
+.scroll {
+  position: absolute;
+  bottom: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: fadeUp 1.4s cubic-bezier(0.4, 0, 0.2, 1) 1.2s both;
+}
+
+.scrollText {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.5625rem;
+  letter-spacing: 0.3em;
+  color: rgba(250, 250, 248, 0.3);
+  text-transform: uppercase;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(to bottom, rgba(196, 153, 90, 0.6), transparent);
+  animation: scrollPulse 2.2s ease-in-out infinite;
+  transform-origin: top;
+}
+
+@keyframes scrollPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleY(0.8);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scaleY(1);
+  }
+}

@@ -1,0 +1,16 @@
+.rule {
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: #c4995a;
+  opacity: 0.6;
+}
+
+.labelText {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 0.6875rem;
+  letter-spacing: 0.32em;
+  color: #c4995a;
+  text-transform: uppercase;
+}

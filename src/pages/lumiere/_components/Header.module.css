@@ -1,0 +1,155 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 56px;
+  transition:
+    background 0.5s ease,
+    box-shadow 0.5s ease,
+    backdrop-filter 0.5s ease;
+}
+
+.header[data-scrolled] {
+  background: rgba(250, 250, 248, 0.96);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(196, 153, 90, 0.18);
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.logoText {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.1875rem;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  color: #fafaf8;
+  transition: color 0.5s ease;
+  line-height: 1;
+}
+
+.logoSub {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.45rem;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  color: rgba(250, 250, 248, 0.55);
+  transition: color 0.5s ease;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.header[data-scrolled] .logoText {
+  color: #1a1916;
+}
+
+.header[data-scrolled] .logoSub {
+  color: rgba(26, 25, 22, 0.45);
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  list-style: none;
+}
+
+.navLink {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: rgba(250, 250, 248, 0.8);
+  transition: color 0.3s ease;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #c4995a;
+  transition: width 0.35s ease;
+}
+
+.navLink:hover {
+  color: #c4995a;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.header[data-scrolled] .navLink {
+  color: rgba(26, 25, 22, 0.65);
+}
+
+.header[data-scrolled] .navLink:hover {
+  color: #c4995a;
+}
+
+.ctaLink {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c4995a;
+  border: 1px solid rgba(196, 153, 90, 0.55);
+  padding: 9px 22px;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.ctaLink:hover {
+  background: rgba(196, 153, 90, 0.1);
+  border-color: #c4995a;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 20px 28px;
+  }
+
+  .navList {
+    gap: 28px;
+  }
+
+  .navLink,
+  .ctaLink {
+    font-size: 0.625rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .header {
+    padding: 18px 20px;
+  }
+
+  .logoSub {
+    display: none;
+  }
+
+  .navLink {
+    display: none;
+  }
+
+  .ctaLink {
+    font-size: 0.5625rem;
+    padding: 8px 16px;
+    letter-spacing: 0.18em;
+  }
+}
